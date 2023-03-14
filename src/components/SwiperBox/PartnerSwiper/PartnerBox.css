@@ -1,0 +1,24 @@
+.swiper-partner .partner-box {
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 30px;
+    border-radius: var(--main-border-radius-02);
+    box-shadow: 0px 3px 6px #02466a0f;
+    max-height: 140px;
+}
+
+.swiper-partner .partner-box .box-img {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.swiper-partner .partner-box .box-img img {
+    width: 197px;
+    height: 86px;
+    /* object-fit: cover; */
+}

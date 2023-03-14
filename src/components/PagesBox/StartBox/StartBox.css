@@ -1,0 +1,263 @@
+.start-box {
+    background-image: url("../../../assets/Img/hero.jpg");
+    position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.start-box::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.93);
+}
+
+.start-box .all {
+    padding-top: 40px;
+    padding-bottom: 150px;
+}
+
+.start-box .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 100px;
+    position: relative;
+    z-index: 30;
+}
+
+.start-box .start-hero {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 28px;
+    height: 160px;
+    position: relative;
+    background-image: url("../../../assets/Img/bannerStart.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0 !important;
+}
+
+.start-box .start-hero h2 {
+    text-align: center;
+    width: 100%;
+    color: var(--font-color-04);
+    margin: 0;
+    font-size: var(--font-size-54);
+    font-weight: var(--font-weight-04);
+}
+
+.start-box .start-content {
+    width: 100%;
+    max-width: 1088px;
+    /* border: 1px solid red; */
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 82px;
+}
+
+.start-box .start-content .top {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 16px;
+}
+
+.start-box .start-content .top .box {
+    height: 398px;
+    width: 100%;
+    background-image: url("../../../assets/Img/image 5.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    border-radius: var(--main-border-radius-16);
+    cursor: pointer;
+}
+.start-box .start-content .top .box:nth-child(1) {
+    background-image: url("../../../assets/Img/image@2x.png");
+}
+.start-box .start-content .top .box:nth-child(2) {
+    background-image: url("../../../assets/Img/image 5.png");
+}
+
+.start-box .start-content .top .box h4 {
+    font-size: var(--font-size-28);
+    text-align: center;
+    color: var(--font-color-04);
+    margin: 0;
+    font-weight: var(--font-weight-04);
+    position: relative;
+    z-index: 7;
+}
+
+.start-box .start-content .top .box h4::after {
+    content: "";
+    position: absolute;
+    height: 25px;
+    width: calc(100% + 40px);
+    border-radius: var(--main-border-radius-17);
+    background-color: var(--default-color-01);
+    z-index: 5;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -5px;
+}
+
+.start-box .start-content .top .box h4 span {
+    z-index: 7;
+    position: relative;
+}
+
+.start-box .start-content .top .box p {
+    position: absolute;
+    left: 50%;
+    width: calc(100% - 40px);
+    transform: translateX(-50%);
+    text-align: center;
+    bottom: 20px;
+    color: var(--font-color-04);
+    font-weight: var(--font-weight-03);
+    font-size: var(--font-size-22);
+}
+
+.start-box .start-content .start-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.start-box .start-content .start-body .info {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin-bottom: 12px;
+    width: 100%;
+    height: 40px;
+}
+
+.start-box .start-content .start-body .info h4 {
+    font-size: var(--font-size-24);
+    text-align: center;
+    color: var(--black-color-01);
+    margin: 0;
+    font-weight: var(--font-weight-04);
+    position: relative;
+    z-index: 7;
+}
+
+.start-box .start-content .start-body .info h4::before {
+    content: "";
+    position: absolute;
+    height: 25px;
+    width: calc(100% + 50px);
+    border-radius: var(--main-border-radius-17);
+    background-color: var(--main-color-01);
+    z-index: 5;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -11px;
+}
+
+.start-box .start-content .start-body .info h4 span {
+    position: relative;
+    z-index: 7;
+    white-space: nowrap;
+}
+
+.start-box .start-content .start-body p {
+    font-size: var(--font-size-22);
+    color: var(--black-color-01);
+    margin: 0;
+    font-weight: var(--font-weight-03);
+    margin-bottom: 60px;
+}
+
+.start-box .start-content .start-body .box-video {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 48px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.start-box .start-content .start-body .box-video video,
+.start-box .start-content .start-body .box-video iframe,
+.start-box .start-content .start-body .box-video .box-img {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--main-border-radius-16);
+    max-height: 547px;
+}
+.start-box .start-content .start-body .box-video .box-img img {
+    border-radius: var(--main-border-radius-17);
+}
+
+.start-box .start-content .start-body button {
+    margin: 0 auto;
+    background-color: var(--default-color-01);
+    width: fit-content;
+    padding: 12px 94px;
+}
+
+@media (max-width: 992px) {
+    .start-box .start-content .start-body .box-video video,
+    .start-box .start-content .start-body .box-video iframe {
+        height: 360px;
+    }
+
+    .start-box .start-content .start-body button {
+        width: fit-content;
+        padding: 12px 50px;
+    }
+
+    .start-box .start-hero {
+        height: 200px;
+    }
+}
+@media (max-width: 400px) {
+    .start-box .start-content .start-body button {
+        width: fit-content;
+        padding: 12px 25px;
+        font-size: var(--font-size-20);
+    }
+}
+@media (max-width: 768px) {
+    .start-box .start-content .start-body .box-video video,
+    .start-box .start-content .start-body .box-video iframe {
+        height: 260px;
+    }
+    .start-box .all {
+        padding-bottom: 40px;
+    }
+    .start-box .start-content .start-body p {
+        text-align: center;
+    }
+    .start-box .start-hero {
+        border-radius: 14px;
+    }
+    .start-box .start-content .top .box h4 span {
+        font-size: var(--font-size-18);
+    }
+}

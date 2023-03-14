@@ -1,0 +1,1051 @@
+.register-box {
+    background-color: var(--back-color-06);
+    position: fixed;
+    width: 100%;
+    max-width: 1920px;
+    height: 100vh;
+    overflow: auto;
+    top: 0;
+    bottom: 0;
+    z-index: 500;
+    /* background-color: #f5f8f9; */
+}
+
+.register-box .all-content {
+    height: 2000px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.register-box .all-content.show {
+    height: 1200px;
+}
+
+.register-box .all-content .box-form-banner {
+    flex: 1;
+    background: transparent
+        linear-gradient(
+            150deg,
+            var(--unnamed-color-1dbbbe) 0%,
+            var(--unnamed-color-02466a) 100%
+        )
+        0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(150deg, #1dbbbe 0%, #02466a 100%) 0%
+        0% no-repeat padding-box;
+    opacity: 0.95;
+    height: 100%;
+    padding-top: 65px !important;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    position: relative;
+    z-index: 22;
+    gap: 60px;
+    width: 100%;
+    max-width: 947px;
+}
+
+/* .register-box .all-content .box-form-banner::before {
+  position: absolute;
+  content: '';
+  background-image: url('../../../assets/Img/hero.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+} */
+
+.register-box .all-content .box-form-banner h5 {
+    width: 100%;
+    margin: 0;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 15px;
+    cursor: pointer;
+    color: var(--font-color-default);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-03);
+    margin-bottom: 40px;
+}
+
+.register-box .all-content .box-form-banner .info-svg {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.register-box .all-content .box-form-banner .info-svg svg {
+    width: 60px;
+}
+
+.register-box .all-content .box-form-banner .text {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.register-box .all-content .box-form-banner .text h1 {
+    margin: 0;
+    color: var(--back-color-01);
+    font-size: var(--font-size-94);
+    font-weight: var(--font-weight-04);
+}
+
+.register-box .all-content .box-form-banner .text h2 {
+    margin: 0;
+    color: var(--back-color-01);
+    font-size: var(--font-size-54);
+    font-weight: var(--font-weight-2);
+}
+
+/* ================================================== */
+
+.register-box .all-content .box-form-banner h5 span svg {
+    max-width: 100%;
+}
+
+.register-box .all-content .box-container-form {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+    padding-left: 40px !important;
+}
+.register-box .all-content .box-container-form .all-register {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.register-box .all-content .box-container-form .all-1 {
+    padding-top: 50px;
+    display: none;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+    /* max-width: 665px; */
+    gap: 40px;
+}
+
+.register-box .all-content .box-container-form .all-1.show {
+    display: flex;
+}
+
+.register-box .all-content .box-container-form .all-1 h2 {
+    margin: 0;
+    color: var(--main-color-01);
+    font-size: var(--font-size-28);
+    font-weight: var(--font-weight-04);
+}
+
+.register-box .all-content .box-container-form .all-1 h2 {
+    margin: 0;
+    color: var(--main-color-01);
+    font-size: var(--font-size-28);
+    font-weight: var(--font-weight-04);
+}
+
+.register-box .all-content .box-container-form .all-1 .user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 16px;
+}
+
+.register-box .all-content .box-container-form .all-1 .user-info button {
+    flex: 1;
+    width: 100%;
+    border: 1px solid var(--main-color-01);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-03);
+    height: 56px;
+}
+
+.register-box
+    .all-content
+    .box-container-form
+    .all-1
+    .user-info
+    button:nth-child(1) {
+    background-color: var(--main-color-01);
+    cursor: text;
+    color: var(--back-color-01);
+}
+
+.register-box
+    .all-content
+    .box-container-form
+    .all-1
+    .user-info
+    button:nth-child(2) {
+    background-color: transparent;
+    color: var(--main-color-01);
+}
+
+.register-box .all-1 .user-form {
+    width: 100%;
+}
+
+.register-box .all-1 .user-form .content {
+    width: 100%;
+    height: 600px;
+    overflow-y: auto;
+    direction: ltr;
+    padding-right: 10px;
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: row;
+}
+
+.register-box .all-1 h4 {
+    width: 100%;
+    margin: 0;
+    color: var(--main-color-01);
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-03);
+    margin-bottom: 26px;
+    margin-right: 10px;
+}
+
+.register-box .all-1 .user-form .content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.register-box .all-1 .user-form .content::-webkit-scrollbar-track {
+    border: 2px solid #dddddd;
+}
+
+.register-box .all-1 .user-form .content::-webkit-scrollbar-thumb {
+    border: 2px solid #bebebe;
+    border-radius: 30px;
+}
+
+.register-box .all-1 .user-form form {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 20px;
+    direction: rtl;
+    height: 1020px;
+    max-width: 570px;
+}
+
+.register-box .all-1 .user-form div {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.register-box .all-1 .user-form div {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+/* .register-box .all-1 .user-form div .box {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    flex-direction: row;
+}
+.register-box .all-1 .user-form div .box h5 {
+    width: fit-content !important;
+} */
+.register-box .all-1 .user-form div .box {
+    cursor: pointer;
+    position: absolute;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    left: -45px;
+    top: 40px;
+}
+.register-box .all-1 .user-form div span {
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+}
+.register-box .all-1 .user-form div .box span::before {
+    content: "مقارنة الباقات";
+    position: absolute;
+    /* display: none; */
+    top: -35px;
+    width: 110px;
+    color: var(--main-color-01);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-02);
+    text-align: center;
+    opacity: 0;
+    transition: var(--transition);
+}
+.register-box .all-1 .user-form div .box span:hover::before {
+    display: block;
+    content: "مقارنة الباقات";
+    opacity: 1;
+}
+
+@media (max-width: 1200px) {
+    .register-box .all-1 .user-form div .box {
+        cursor: pointer;
+        position: absolute;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 80px;
+        top: 20px;
+    }
+    .register-box .all-1 .user-form .info-package {
+        height: 120px;
+        justify-content: flex-end;
+    }
+}
+.register-box .all-1 .user-form div h5 {
+    width: 100%;
+    margin: 0;
+    color: var(--black-color-01);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-02);
+}
+
+.register-box .all-1 .user-form div select,
+.register-box .all-1 .user-form .check-mark,
+.register-box .all-1 .user-form .select-mu,
+.register-box .all-1 .user-form div input {
+    width: 100%;
+    height: 56px;
+    border: none !important;
+    outline: none !important ;
+    box-shadow: none !important;
+    padding: 0 20px;
+    border: 1px solid #e4e4e4 !important;
+    border-radius: var(--main-border-radius-04);
+    color: var(--black-color-01);
+    background-color: #fff;
+}
+.register-box .select-mu {
+    width: 100%;
+    height: 56px;
+    border: none !important;
+    outline: none !important ;
+    box-shadow: none !important;
+    padding: 0 20px;
+    border: 1px solid #e4e4e4 !important;
+    border-radius: var(--main-border-radius-04);
+    color: var(--black-color-01);
+    background-color: #fff;
+}
+
+.register-box .select-mu svg {
+    left: 20px !important;
+    right: auto !important;
+    color: #343a40;
+    font-size: 17px;
+}
+.register-box .select-mu .MuiSelect-select {
+    padding-right: 5px !important;
+    font-family: "Tajawal", sans-serif !important;
+    color: var(--font-color-05);
+}
+
+.register-box .all-1 .user-form .select-mu .MuiSelect-select,
+.register-box .all-1 .user-form div select,
+.register-box .all-1 .user-form div input::placeholder {
+    color: var(--font-color-05);
+}
+
+.register-box .all-1 .user-form div select {
+    background-position: left 20px center;
+}
+
+.register-box .all-1 .user-form div.phone {
+    position: relative;
+}
+
+.register-box .all-1 .user-form div.phone::before {
+    content: "+996";
+    position: absolute;
+    color: var(--black-color-01);
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-02);
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 20px;
+    bottom: 20px;
+    left: 20px;
+}
+
+.register-box .all-1 .owner-form {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.register-box .all-1 .owner-form form {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    margin-right: 5px;
+    gap: 25px;
+}
+
+.register-box .all-1 .owner-form form h4 {
+    margin-bottom: 0;
+    margin-right: 0px;
+}
+
+.register-box .all-1 .owner-form form div {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+.register-box .all-1 .owner-form form div input {
+    width: 100%;
+    height: 56px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 0 45px;
+    border: 1px solid #e4e4e4;
+    border-radius: var(--main-border-radius-04);
+    color: var(--black-color-01);
+}
+
+.register-box .all-1 .owner-form form div h5 {
+    width: 100%;
+    margin: 0;
+    color: var(--black-color-01);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-02);
+}
+
+.register-box .all-1 .owner-form form div.phone::before {
+    content: "+996";
+    position: absolute;
+    color: var(--black-color-01);
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-02);
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 20px;
+    bottom: 20px;
+    left: 20px;
+}
+
+.register-box .all-1 .owner-form form div.name span {
+    position: absolute;
+    width: fit-content;
+    height: 24px;
+    bottom: 20px;
+    right: 15px;
+}
+
+.register-box .all-1 .owner-form .box-pay {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+}
+
+.register-box .all-1 .owner-form .box-pay .top {
+    margin-top: 54px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: row;
+    width: 100%;
+    max-width: 350px;
+    gap: 10px;
+}
+
+.register-box .all-1 .owner-form .box-pay .top .form-check {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-box .all-1 .owner-form .box-pay .top .form-check input {
+    width: 24px;
+    height: 24px;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid var(--black-color-01);
+    cursor: pointer;
+}
+
+.register-box .all-1 .owner-form .box-pay .top h5 {
+    color: var(--font-color-05);
+    font-weight: var(--font-weight-02);
+    font-size: var(--font-size-18);
+}
+
+.register-box .all-1 .owner-form .box-pay button {
+    width: 100%;
+    background-color: var(--font-color-02);
+    margin: 20px 0;
+}
+
+.register-box .all-1 .owner-form .box-pay ul {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 !important;
+    margin: 0 !important;
+    gap: 15px;
+}
+
+.register-box .all-1 .owner-form .box-pay ul li {
+    margin: 0;
+    color: var(--black-color-01);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-02);
+    cursor: pointer;
+}
+
+.register-box .all-1 .owner-form .box-pay ul li:nth-child(2) {
+    color: var(--main-color-01);
+}
+
+@media (max-width: 992px) {
+    .register-box .all-content {
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column-reverse;
+        gap: 15px;
+        height: fit-content !important;
+    }
+
+    .register-box .all-content .box-form-banner {
+        height: 600px;
+        flex: none;
+        padding: 20px;
+        padding: 40px 10px !important;
+        max-width: 100%;
+    }
+
+    .register-box .all-content .box-container-form {
+        padding: 40px 10px !important;
+        padding-bottom: 140px !important;
+    }
+    .register-box .all-content .content form {
+        max-width: 100%;
+    }
+    .register-box .all-content .box-container-form .all {
+        max-width: 100% !important;
+    }
+    .register-box .all-1 .user-form .content {
+        padding-right: 0 !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .register-box .all-content .box-form-banner,
+    .register-box .all-content .box-container-form {
+        /* padding-right: 40px; */
+        padding: 0 40px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .register-box .all-content .box-form-banner,
+    .register-box .all-content .box-container-form {
+        /* padding-right: 80px; */
+        padding: 0 60px;
+    }
+}
+@media (min-width: 1800px) {
+    .register-box .all-content .box-form-banner,
+    .register-box .all-content .box-container-form {
+        /* padding-right: 140px; */
+        padding: 0 140px;
+    }
+}
+@media (min-width: 1200px) {
+    .register-box .all .owner-form,
+    .register-box .all-content .box-container-form .all .user-info,
+    .register-box .all-content .content form {
+        max-width: 370px;
+    }
+}
+@media (min-width: 1250px) {
+    .register-box .all .owner-form,
+    .register-box .all-content .box-container-form .all .user-info,
+    .register-box .all-content .content form {
+        max-width: 420px;
+    }
+}
+
+@media (min-width: 1300px) {
+    .register-box .all .owner-form,
+    .register-box .all-content .box-container-form .all .user-info,
+    .register-box .all-content .content form {
+        max-width: 430px;
+    }
+}
+@media (min-width: 1350px) {
+    .register-box .all .owner-form,
+    .register-box .all .owner-form,
+    .register-box .all-content .box-container-form .all .user-info,
+    .register-box .all-content .content form {
+        max-width: 460px;
+    }
+}
+@media (min-width: 1440px) {
+    .register-box .all .owner-form,
+    .register-box .all-content .box-container-form .all .user-info,
+    .register-box .all-content .content form {
+        max-width: 500px;
+    }
+}
+@media (min-width: 1480px) {
+    .register-box .all .owner-form,
+    .register-box .all-content .box-container-form .all .user-info,
+    .register-box .all-content .content form {
+        max-width: 530px;
+    }
+}
+
+@media (min-width: 1520px) {
+    .register-box .all .owner-form,
+    .register-box .all-content .box-container-form .all .user-info,
+    .register-box .all-content .content form {
+        max-width: 550px;
+    }
+}
+@media (min-width: 1550px) {
+    .register-box .all .owner-form,
+    .register-box .all-content .box-container-form .all .user-info,
+    .register-box .all-content .content form {
+        max-width: 580px;
+    }
+}
+@media (min-width: 1650px) {
+    .register-box .all .owner-form,
+    .register-box .all-content .box-container-form .all .user-info,
+    .register-box .all-content .content form {
+        max-width: 620px;
+    }
+}
+@media (min-width: 1720px) {
+    .register-box .all .owner-form,
+    .register-box .all-content .box-container-form .all .user-info,
+    .register-box .all-content .content form {
+        max-width: 657px;
+    }
+}
+
+/* ============ */
+@media (min-width: 1880px) {
+    .register-box .all-content .box-container-form {
+        padding-left: 60px;
+    }
+}
+/* ==================== */
+
+.register-box .all-content .box-container-form .all-2 {
+    padding-top: 50px;
+    display: none;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+    max-width: 665px;
+    gap: 30px;
+}
+.register-box .all-content .box-container-form .all-2.show {
+    display: flex;
+}
+
+.register-box .all-content .box-container-form .all-2 h2 {
+    margin: 0;
+    color: var(--main-color-01);
+    font-size: var(--font-size-28);
+    font-weight: var(--font-weight-04);
+}
+
+.register-box .all-content .box-container-form .all-2 h2 {
+    margin: 0;
+    color: var(--main-color-01);
+    font-size: var(--font-size-28);
+    font-weight: var(--font-weight-04);
+}
+
+.register-box .all-content .box-container-form .all-2 .user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 16px;
+}
+
+.register-box .all-content .box-container-form .all-2 .user-info button {
+    flex: 1;
+    width: 100%;
+    border: 1px solid var(--main-color-01);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-03);
+    height: 56px;
+}
+
+.register-box
+    .all-content
+    .box-container-form
+    .all-2
+    .user-info
+    button:nth-child(1) {
+    background-color: var(--main-color-01);
+    cursor: text;
+    color: var(--back-color-01);
+}
+
+.register-box
+    .all-content
+    .box-container-form
+    .all-2
+    .user-info
+    button:nth-child(2) {
+    background-color: transparent;
+    color: var(--main-color-01);
+}
+
+.register-box .all-2 .user-form {
+    width: 100%;
+}
+
+.register-box .all-2 .user-form .content {
+    width: 100%;
+    height: fit-content;
+    overflow-y: auto;
+    direction: ltr;
+    padding-right: 10px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+}
+
+.register-box .all-2 h4 {
+    width: 100%;
+    margin: 0;
+    color: var(--main-color-01);
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-03);
+    margin-bottom: 26px;
+    margin-right: 10px;
+}
+
+.register-box .all-2 .user-form .content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.register-box .all-2 .user-form .content::-webkit-scrollbar-track {
+    border: 2px solid #dddddd;
+}
+
+.register-box .all-2 .user-form .content::-webkit-scrollbar-thumb {
+    border: 2px solid #bebebe;
+    border-radius: 30px;
+}
+
+.register-box .all-2 .user-form form {
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: start;
+    flex-direction: column;
+    gap: 20px;
+    direction: rtl;
+}
+
+.register-box .all-2 .user-form div {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.register-box .all-2 .user-form div {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.register-box .all-2 .user-form div h5 {
+    width: 100%;
+    margin: 0;
+    color: var(--black-color-01);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-02);
+}
+
+.register-box .all-2 .user-form div select,
+.register-box .all-2 .user-form div input {
+    width: 100%;
+    height: 56px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 0 20px;
+    border: 1px solid #e4e4e4;
+    border-radius: var(--main-border-radius-04);
+    color: var(--black-color-01);
+}
+
+.register-box .all-2 .user-form div select,
+.register-box .all-2 .user-form div input::placeholder {
+    color: var(--font-color-05);
+}
+
+.register-box .all-2 .user-form div select {
+    background-position: left 20px center;
+}
+
+.register-box .all-2 .user-form div.phone {
+    position: relative;
+}
+
+.register-box .all-2 .user-form div.phone::before {
+    content: "+996";
+    position: absolute;
+    color: var(--black-color-01);
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-02);
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 20px;
+    bottom: 20px;
+    left: 20px;
+}
+
+.register-box .all-2 .owner-form {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.register-box .all-2 .owner-form form {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    margin-right: 5px;
+    gap: 25px;
+}
+
+.register-box .all-2 .owner-form form h4 {
+    margin-bottom: 0;
+    margin-right: 0px;
+}
+
+.register-box .all-2 .owner-form form div {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+.register-box .all-2 .owner-form form div input {
+    width: 100%;
+    height: 56px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 0 45px;
+    border: 1px solid #e4e4e4;
+    border-radius: var(--main-border-radius-04);
+    color: var(--black-color-01);
+}
+
+.register-box .all-2 .owner-form form div h5 {
+    width: 100%;
+    margin: 0;
+    color: var(--black-color-01);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-02);
+}
+
+.register-box .all-2 .owner-form form div.phone::before {
+    content: "+996";
+    position: absolute;
+    color: var(--black-color-01);
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-02);
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 20px;
+    bottom: 20px;
+    left: 20px;
+}
+
+.register-box .all-2 .owner-form form div.name span {
+    position: absolute;
+    width: fit-content;
+    height: 24px;
+    bottom: 20px;
+    right: 15px;
+}
+
+.register-box .all-2 .owner-form .box-pay {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+}
+
+.register-box .all-2 .owner-form .box-pay .top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: row;
+    width: 100%;
+    max-width: 350px;
+    gap: 10px;
+}
+
+.register-box .all-2 .owner-form .box-pay .top .form-check {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.register-box .all-2 .owner-form .box-pay .top .form-check input {
+    width: 24px;
+    height: 24px;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid var(--black-color-01);
+    cursor: pointer;
+}
+
+.register-box .all-2 .owner-form .box-pay .top h5 {
+    color: var(--font-color-05);
+    font-weight: var(--font-weight-02);
+    font-size: var(--font-size-18);
+}
+
+.register-box .all-2 .owner-form .box-pay button {
+    width: 100%;
+    background-color: var(--font-color-02);
+    margin: 20px 0;
+}
+
+.register-box .all-2 .owner-form .box-pay ul {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 15px;
+}
+
+.register-box .all-2 .owner-form .box-pay ul li {
+    margin: 0;
+    color: var(--black-color-01);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-02);
+    cursor: pointer;
+}
+
+.register-box .all-2 .owner-form .box-pay ul li:nth-child(2) {
+    color: var(--main-color-01);
+}
+@media (max-width: 390px) {
+    .register-box .all .owner-form {
+        width: 100%;
+        align-items: center;
+        justify-content: start;
+    }
+    .register-box .all-content .box-container-form .all .user-info {
+        gap: 10px;
+    }
+    .register-box .all-content .box-container-form .all .user-info button {
+        width: 100%;
+        max-width: 140px;
+        height: 45px;
+    }
+    .register-box .all .owner-form form {
+        width: 100%;
+        max-width: 270px;
+
+        gap: 25px;
+    }
+    .register-box .all-content .content form {
+        max-width: 270px;
+    }
+    .register-box .all .user-form .content {
+        justify-content: center;
+    }
+
+    .register-box .all .owner-form .box-pay ul {
+        gap: 10px;
+    }
+    .register-box .all .owner-form .box-pay ul li {
+        margin: 0;
+        white-space: nowrap;
+        font-size: var(--font-size-16);
+    }
+    .register-box .all .owner-form .box-pay {
+        width: 100%;
+        max-width: 270px;
+        margin: 0 auto;
+    }
+    /* ======================= */
+}

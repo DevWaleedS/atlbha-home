@@ -1,0 +1,106 @@
+{
+	"info": {
+		"_postman_id": "3463c99e-bc87-4ae9-8e48-21b4056c341d",
+		"name": "atlbha",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9388078"
+	},
+	"item": [
+		{
+			"name": "indexEtlobha",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://backend.atlbha.com/api/index",
+							"protocol": "https",
+							"host": [
+								"backend",
+								"atlbha",
+								"com"
+							],
+							"path": [
+								"api",
+								"index"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "blog",
+			"item": [
+				{
+					"name": "index",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://backend.atlbha.com/api/posts",
+							"protocol": "https",
+							"host": [
+								"backend",
+								"atlbha",
+								"com"
+							],
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show post details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://backend.atlbha.com/api/show_post/1",
+							"protocol": "https",
+							"host": [
+								"backend",
+								"atlbha",
+								"com"
+							],
+							"path": [
+								"api",
+								"show_post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "show as category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://backend.atlbha.com/api/show/1",
+							"protocol": "https",
+							"host": [
+								"backend",
+								"atlbha",
+								"com"
+							],
+							"path": [
+								"api",
+								"show",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

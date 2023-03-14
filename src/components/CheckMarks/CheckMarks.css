@@ -1,0 +1,31 @@
+.check-mark {
+}
+.check-mark-liData {
+    padding: 0 !important;
+    padding-bottom: 10px !important;
+}
+.check-mark svg {
+    left: 20px !important;
+    right: auto !important;
+    color: #343a40;
+    font-size: 17px;
+}
+.check-mark .MuiSelect-select {
+    /* padding-left: 0 !important;
+    padding-right: 30px !important; */
+}
+
+.check-mark-button button {
+    width: 100%;
+    background-color: var(--font-color-02);
+    padding: 0;
+    margin: 0;
+    height: 50px;
+    border: none !important;
+    color: var(--back-color-06);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-02);
+}
+.check-mark-button {
+    padding: 0 !important;
+}

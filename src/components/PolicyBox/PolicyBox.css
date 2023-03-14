@@ -1,0 +1,87 @@
+.policy-box-main {
+    min-height: 900px;
+    background-color: #fff;
+    padding-top: 80px;
+    max-width: 1920px;
+}
+
+.policy-box-main .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 60px;
+}
+
+.policy-box-main .container .all {
+    max-width: 1364px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.policy-box-main .container .all .box {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.policy-box-main .container .all .box .info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 26px;
+}
+
+.policy-box-main .container .all .box .info h5 {
+    margin: 0;
+    color: var(--font-color-02);
+    font-size: var(--font-size-18);
+    letter-spacing: 0.18px;
+    font-weight: var(--font-weight-03);
+}
+
+.policy-box-main .container .all .box .info span {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--font-color-07);
+    border-radius: 50%;
+    color: var(--font-color-02);
+    cursor: pointer;
+}
+
+.policy-box-main .container .all .box .info span svg {
+}
+
+.policy-box-main .container .all .box h6 {
+    margin: 0;
+    color: var(--font-color-02);
+    font-size: var(--font-size-20);
+    letter-spacing: 0.2px;
+    font-weight: var(--font-weight-02);
+    margin-right: 40px;
+}
+
+.policy-box-main .container .all .content {
+    box-shadow: #0000000f 0px 0px 12px;
+    padding: 24px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.policy-box-main .container .all .content p {
+    font-size: var(--font-size-20);
+    color: var(--black-color-01);
+    margin: 0;
+    font-weight: var(--font-weight-02);
+    letter-spacing: 0.2px;
+}

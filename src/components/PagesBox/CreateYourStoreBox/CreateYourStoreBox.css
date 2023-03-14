@@ -1,0 +1,536 @@
+.create-store-box {
+    background-color: var(--back-color-06);
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    overflow: auto;
+    top: 0;
+    bottom: 0;
+    z-index: 500;
+    /* background-color: #f5f8f9; */
+    max-width: 1920px;
+}
+
+.create-store-box .all-content {
+    height: 1700px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.create-store-box .all-content {
+}
+
+.create-store-box .all-content .box-form-banner {
+    flex: 1;
+    background: transparent
+        linear-gradient(
+            150deg,
+            var(--unnamed-color-1dbbbe) 0%,
+            var(--unnamed-color-02466a) 100%
+        )
+        0% 0% no-repeat padding-box;
+    background: transparent linear-gradient(150deg, #1dbbbe 0%, #02466a 100%) 0%
+        0% no-repeat padding-box;
+    opacity: 0.95;
+    height: 100%;
+    padding: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+    position: relative;
+    z-index: 22;
+    gap: 60px;
+    width: 100%;
+}
+
+/* .create-store-box .all-content .box-form-banner::before {
+  position: absolute;
+  content: '';
+  background-image: url('../../../assets/Img/hero.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: 1;
+} */
+
+.create-store-box .all-content .box-form-banner h5 {
+    width: 100%;
+    margin: 0;
+    text-align: right;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    gap: 15px;
+    cursor: pointer;
+    color: var(--font-color-default);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-03);
+    margin-bottom: 40px;
+}
+
+.create-store-box .all-content .box-form-banner .info-svg {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.create-store-box .all-content .box-form-banner .info-svg svg {
+    width: 60px;
+}
+
+.create-store-box .all-content .box-form-banner .text {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+
+.create-store-box .all-content .box-form-banner .text h1 {
+    margin: 0;
+    color: var(--back-color-01);
+    font-size: var(--font-size-94);
+    font-weight: var(--font-weight-04);
+}
+
+.create-store-box .all-content .box-form-banner .text h2 {
+    margin: 0;
+    color: var(--back-color-01);
+    font-size: var(--font-size-54);
+    font-weight: var(--font-weight-2);
+}
+
+/* ================================================== */
+
+.create-store-box .all-content .box-form-banner h5 span svg {
+    max-width: 100%;
+}
+
+.create-store-box .all-content .box-container-form {
+    flex: 1;
+    width: 100%;
+    height: 100%;
+}
+
+.create-store-box .all-content .box-container-form .all {
+    padding-top: 50px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+    /* max-width: 700px; */
+    gap: 60px;
+}
+
+.create-store-box .all-content .box-container-form .all h2 {
+    margin: 0;
+    color: var(--main-color-01);
+    font-size: var(--font-size-28);
+    font-weight: var(--font-weight-04);
+}
+
+.create-store-box .all-content .box-container-form .all h2 {
+    margin: 0;
+    color: var(--main-color-01);
+    font-size: var(--font-size-28);
+    font-weight: var(--font-weight-04);
+}
+
+.create-store-box .all-content .box-container-form .all .user-info {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 16px;
+}
+
+.create-store-box .all-content .box-container-form .all .user-info button {
+    flex: 1;
+    width: 100%;
+    border: 1px solid var(--main-color-01);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-03);
+    height: 56px;
+}
+
+.create-store-box
+    .all-content
+    .box-container-form
+    .all
+    .user-info
+    button:nth-child(1) {
+    background-color: var(--main-color-01);
+    cursor: text;
+    color: var(--back-color-01);
+}
+
+.create-store-box
+    .all-content
+    .box-container-form
+    .all
+    .user-info
+    button:nth-child(2) {
+    background-color: transparent;
+    color: var(--main-color-01);
+    cursor: text;
+}
+
+.create-store-box .all .user-form {
+    width: 100%;
+}
+
+.create-store-box .all .user-form .content {
+    width: 100%;
+    height: 600px;
+    overflow-y: auto;
+    direction: ltr;
+    padding-right: 10px;
+}
+
+.create-store-box .all h4 {
+    width: 100%;
+    margin: 0;
+    color: var(--main-color-01);
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-03);
+    margin-bottom: 26px;
+    margin-right: 10px;
+}
+
+.create-store-box .all .user-form .content::-webkit-scrollbar {
+    width: 4px;
+}
+
+.create-store-box .all .user-form .content::-webkit-scrollbar-track {
+    border: 2px solid #dddddd;
+}
+
+.create-store-box .all .user-form .content::-webkit-scrollbar-thumb {
+    border: 2px solid #bebebe;
+    border-radius: 30px;
+}
+
+.create-store-box .all .user-form form {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 20px;
+    direction: rtl;
+    height: 1020px;
+}
+
+.create-store-box .all .user-form div {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.create-store-box .all .user-form div {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.create-store-box .all .user-form div h5 {
+    width: 100%;
+    margin: 0;
+    color: var(--black-color-01);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-02);
+}
+
+.create-store-box .all .user-form div select,
+.create-store-box .all .user-form div input {
+    width: 100%;
+    height: 56px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 0 20px;
+    border: 1px solid #e4e4e4;
+    border-radius: var(--main-border-radius-04);
+    color: var(--main-color-01);
+}
+
+.create-store-box .all .user-form div select,
+.create-store-box .all .user-form div input::placeholder {
+    color: var(--main-color-01);
+}
+
+.create-store-box .all .user-form div select {
+    background-position: left 20px center;
+}
+
+.create-store-box .all .user-form div.phone {
+    position: relative;
+}
+
+.create-store-box .all .user-form div.phone::before {
+    content: "+996";
+    position: absolute;
+    color: var(--black-color-01);
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-02);
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 20px;
+    bottom: 20px;
+    left: 20px;
+}
+
+.create-store-box .all .owner-form {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.create-store-box .all .owner-form form {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    margin-right: 5px;
+    gap: 25px;
+}
+
+.create-store-box .all .owner-form form h4 {
+    margin-bottom: 0;
+    margin-right: 0px;
+}
+
+.create-store-box .all .owner-form form div {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+}
+
+.create-store-box .all .owner-form form div input {
+    width: 100%;
+    height: 56px;
+    border: none;
+    outline: none;
+    box-shadow: none;
+    padding: 0 45px;
+    border: 1px solid #e4e4e4;
+    border-radius: var(--main-border-radius-04);
+    color: var(--black-color-01);
+}
+
+.create-store-box .all .owner-form form div h5 {
+    width: 100%;
+    margin: 0;
+    color: var(--black-color-01);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-02);
+}
+
+.create-store-box .all .owner-form form div.phone::before {
+    content: "+996";
+    position: absolute;
+    color: var(--black-color-01);
+    font-size: var(--font-size-20);
+    font-weight: var(--font-weight-02);
+    width: -moz-fit-content;
+    width: fit-content;
+    height: 20px;
+    bottom: 20px;
+    left: 20px;
+}
+
+.create-store-box .all .owner-form form div.name span {
+    position: absolute;
+    width: fit-content;
+    height: 24px;
+    bottom: 20px;
+    right: 15px;
+}
+
+.create-store-box .all .owner-form .box-pay {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: column;
+    width: 100%;
+}
+
+.create-store-box .all .owner-form .box-pay .top {
+    margin-top: 54px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    flex-direction: row;
+    width: 100%;
+    max-width: 350px;
+    gap: 10px;
+}
+
+.create-store-box .all .owner-form .box-pay .top .form-check {
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-store-box .all .owner-form .box-pay .top .form-check input {
+    width: 24px;
+    height: 24px;
+    outline: none;
+    box-shadow: none;
+    border: 1px solid var(--black-color-01);
+    cursor: pointer;
+}
+
+.create-store-box .all .owner-form .box-pay .top h5 {
+    color: var(--font-color-05);
+    font-weight: var(--font-weight-02);
+    font-size: var(--font-size-18);
+}
+
+.create-store-box .all .owner-form .box-pay button {
+    width: 100%;
+    background-color: var(--font-color-02);
+    margin: 20px 0;
+}
+
+.create-store-box .all .owner-form .box-pay ul {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 !important;
+    padding: 0 !important;
+    gap: 15px;
+}
+
+.create-store-box .all .owner-form .box-pay ul li {
+    margin: 0;
+    color: var(--black-color-01);
+    font-size: var(--font-size-18);
+    font-weight: var(--font-weight-02);
+}
+
+.create-store-box .all .owner-form .box-pay ul li:nth-child(2) {
+    color: var(--main-color-01);
+    cursor: pointer;
+}
+
+@media (max-width: 992px) {
+    .create-store-box .all-content {
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column-reverse;
+        gap: 15px;
+        height: 2400px;
+    }
+
+    .create-store-box .all-content .box-form-banner {
+        height: 600px;
+        flex: none;
+        padding: 20px;
+        padding: 40px 10px !important;
+        max-width: 100%;
+    }
+
+    .create-store-box .all-content .box-container-form {
+        /* flex: 1;
+    width: 100%;
+    height: 100%; */
+        padding: 10px;
+    }
+    .create-store-box .all .user-form .content {
+        padding-right: 0px !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .create-store-box .all-content .box-form-banner,
+    .create-store-box .all-content .box-container-form {
+        padding: 0 40px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .create-store-box .all-content .box-form-banner,
+    .create-store-box .all-content .box-container-form {
+        padding: 0 60px;
+    }
+}
+@media (min-width: 1800px) {
+    .create-store-box .all-content .box-form-banner,
+    .create-store-box .all-content .box-container-form {
+        /* padding-right: 140px; */
+        padding: 0 140px;
+    }
+}
+/* ================ */
+@media (max-width: 390px) {
+    .create-store-box .all .owner-form {
+        width: 100%;
+        align-items: center;
+        justify-content: start;
+    }
+    .create-store-box .box-container-form .all .user-info {
+        gap: 10px;
+    }
+    .create-store-box .all-content .box-container-form .all .user-info button {
+        width: 100%;
+        max-width: 140px;
+        height: 45px;
+    }
+    .create-store-box .all .owner-form form {
+        width: 100%;
+        max-width: 270px;
+
+        gap: 25px;
+    }
+    .create-store-box .content form {
+        max-width: 270px;
+    }
+    .create-store-box .all .user-form .content {
+        justify-content: center;
+        display: flex;
+        align-items: center;
+    }
+
+    .create-store-box .all .owner-form .box-pay ul {
+        gap: 10px;
+    }
+    .create-store-box .all .owner-form .box-pay ul li {
+        margin: 0;
+        white-space: nowrap;
+        font-size: var(--font-size-16);
+    }
+    .create-store-box .all .owner-form .box-pay {
+        width: 100%;
+        max-width: 270px;
+        margin: 0 auto;
+    }
+    /* ======================= */
+}

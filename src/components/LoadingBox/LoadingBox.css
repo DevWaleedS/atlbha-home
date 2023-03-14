@@ -1,0 +1,12 @@
+.loading-box {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.loading-box h2 {
+  color: var(--black-color-01);
+  font-weight: 500;
+  font-size: var(--font-size-32);
+}

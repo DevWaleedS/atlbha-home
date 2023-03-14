@@ -1,0 +1,18 @@
+.main-title {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    height: fit-content;
+}
+
+.main-title .bt-main {
+    background-color: var(--default-color-01);
+    cursor: text;
+}
+
+@media (max-width: 768px) {
+    .main-title {
+        padding: 50px 0;
+    }
+}

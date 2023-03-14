@@ -146,7 +146,7 @@
     transition: var(--transition);
 }
 .main-footer .copyright-box {
-    min-height: 140px !important;
+    min-height: 75px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
@@ -154,22 +154,27 @@
     flex-direction: column !important;
     margin-top: 20px !important;
     gap: 5px !important;
+    padding-bottom: 10px;
 }
 .main-footer .copyright-box hr {
     width: 100%;
     margin: 0;
-    color: --font-color-01;
+    color: var(--font-color-04);
     margin-bottom: 20px;
 }
 .main-footer .copyright-box h5 {
     margin: 0;
     color: var(--font-color-default);
-    font-size: var(--font-size-20);
+    font-size: var(--font-size-18);
     font-weight: var(--font-weight-02);
 }
-.main-footer .copyright-box h5 span {
+.main-footer .copyright-box h5 span ,
+.main-footer .copyright-box h5 span a  {
     color: var(--font-color-02);
     font-weight: var(--font-weight-04);
+}
+.main-footer .copyright-box h5 span a:hover {
+color: #fefefe;
 }
 
 @media (max-width: 992px) {
@@ -188,4 +193,12 @@
     .main-footer .box-left ul {
         justify-content: center;
     }
+}
+@media (max-width: 490px) {
+    .main-footer .copyright-box h5 {
+  
+ 
+    font-size: var(--font-size-16);
+    font-weight: var(--font-weight-01);
+}
 }

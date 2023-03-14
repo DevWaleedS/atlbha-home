@@ -63,18 +63,7 @@ const CreateYourStoreBox = () => {
                                                 type="text"
                                                 value={"المدينة"}
                                             />
-                                            {/* <select
-                                                className="form-select"
-                                                aria-label="Default select example"
-                                            >
-                                                <option selected>
-                                                    اختر المدينة
-                                                </option>
-
-                                                <option value="1">نوع</option>
-                                                <option value="2">نوع</option>
-                                                <option value="3">نوع</option>
-                                            </select> */}
+                                         
                                         </div>
                                         <div className="phone">
                                             <h5>رقم الجوال</h5>
@@ -82,17 +71,7 @@ const CreateYourStoreBox = () => {
                                         </div>
                                         <div>
                                             <h5>نوع الباقة</h5>
-                                            {/* <select
-                                                className="form-select"
-                                                aria-label="Default select example"
-                                            >
-                                                <option selected>
-                                                    نوع النشاط
-                                                </option>
-                                                <option value="1">نوع</option>
-                                                <option value="2">نوع</option>
-                                                <option value="3">نوع</option>
-                                            </select> */}
+                                            
                                             <input
                                                 type="text"
                                                 value={"التاجر مجانيه"}
@@ -104,17 +83,7 @@ const CreateYourStoreBox = () => {
                                                 type="text"
                                                 value={"مدة الاشتراك"}
                                             />
-                                            {/* <select
-                                                className="form-select"
-                                                aria-label="Default select example"
-                                            >
-                                                <option selected>
-                                                    نوع النشاط
-                                                </option>
-                                                <option value="1">نوع</option>
-                                                <option value="2">نوع</option>
-                                                <option value="3">نوع</option>
-                                            </select> */}
+                                            
                                         </div>
                                         <div>
                                             <h5>نشاط المتجر</h5>
@@ -122,17 +91,7 @@ const CreateYourStoreBox = () => {
                                                 type="text"
                                                 value={"نشاط المتجر"}
                                             />
-                                            {/* <select
-                                                className="form-select"
-                                                aria-label="Default select example"
-                                            >
-                                                <option selected>
-                                                    نوع النشاط
-                                                </option>
-                                                <option value="1">نوع</option>
-                                                <option value="2">نوع</option>
-                                                <option value="3">نوع</option>
-                                            </select> */}
+                                          
                                         </div>
                                     </form>
                                 </div>

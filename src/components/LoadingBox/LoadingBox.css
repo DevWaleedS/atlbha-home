@@ -1,12 +1,13 @@
 .loading-box {
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: start;
+	height: 200px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
-.loading-box h2 {
-  color: var(--black-color-01);
-  font-weight: 500;
-  font-size: var(--font-size-32);
+.loading-box h3 {
+	color: var(--font-color-02);
+	font-weight: 400;
+	font-size: var(--font-size-28);
 }

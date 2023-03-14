@@ -113,8 +113,7 @@
     }
 }
 /* ================================global================================== */
-html {
-}
+
 
 body {
     background-color: var(--back-color-03) !important;
@@ -165,9 +164,6 @@ ul {
     padding-bottom: var(--main-padding-bottom);
 }
 
-.app {
-    /* max-width: 1400px; */
-}
 
 @media (min-width: 1400px) {
     .container,
@@ -197,11 +193,11 @@ body div::-webkit-scrollbar {
 }
 
 ::-webkit-scrollbar-track {
-    background-color: var(--font-color-03);
+    background-color: var(--font-color-default);
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var(--font-color-02);
+    background-color: var( --main-color-01);
     border-radius: 30px;
 }
 html::-webkit-scrollbar {
@@ -210,10 +206,10 @@ html::-webkit-scrollbar {
 }
 
 html::-webkit-scrollbar-track {
-    background-color: var(--font-color-03);
+    background-color: var(--font-color-default);
 }
 
 html::-webkit-scrollbar-thumb {
-    background-color: var(--font-color-02);
+    background-color: var(--main-color-01);
     border-radius: 30px;
 }

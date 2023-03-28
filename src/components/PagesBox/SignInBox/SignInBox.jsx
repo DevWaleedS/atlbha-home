@@ -26,7 +26,7 @@ const SignInBox = () => {
 		axios.post('https://backend.atlbha.com/api/loginapi', data).then((res) => {
 			if (res?.data?.success === true && res?.data?.data?.status === 200) {
 				setCookie('access_token', res?.data?.data?.token);
-				window.location.href=('http://localhost:3000'); // url dashboard tajer
+				window.location.href = 'http://localhost:3000'; // url dashboard tajer
 			} else {
 				setUsernameError(res?.data?.message?.en?.user_name?.[0]);
 				setPasswordError(res?.data?.message?.en?.password?.[0]);
@@ -56,7 +56,7 @@ const SignInBox = () => {
 							<div>
 								<h5>الاسم</h5>
 								<input type='text' placeholder='ادخل اسم المستخدم او البريد الالكتروني' value={username} onChange={(e) => setUsername(e.target.value)} onKeyDown={handleKeyDown} />
-								<span className='wrong-text'>{usernameError}</span>
+								{usernameError && <span className='wrong-text'>{usernameError}</span>}
 							</div>
 							<PasswordField password={password} setPassword={setPassword} passwordError={passwordError} handleKeyDown={handleKeyDown} />
 							<span className='wrong-text'>{error}</span>
@@ -80,10 +80,10 @@ const SignInBox = () => {
 							تسجيل الدخول
 						</button>
 						<ul>
-							<li> ليس لديك حساب؟</li>
+							<li>ليس لديك حساب؟</li>
 							<li
 								onClick={() => {
-									navigate('/registerMerchant');
+									navigate('/register/merchant');
 								}}
 							>
 								أنشئ حساب

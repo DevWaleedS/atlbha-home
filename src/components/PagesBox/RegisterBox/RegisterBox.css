@@ -203,7 +203,7 @@
 
 .register-box .all-1 .user-form .content {
     width: 100%;
-    height: 600px;
+    height: 670px;
     overflow-y: auto;
     direction: ltr;
     padding-right: 10px;
@@ -569,7 +569,7 @@
 
     .register-box .all-content .box-container-form {
         padding: 40px 10px !important;
-        padding-bottom: 140px !important;
+        /* padding-bottom: 140px !important; */
     }
     .register-box .all-content .content form {
         max-width: 100%;
@@ -758,7 +758,7 @@
 
 .register-box .all-2 .user-form .content {
     width: 100%;
-    height: fit-content;
+    height: 550px;
     overflow-y: auto;
     direction: ltr;
     padding-right: 10px;

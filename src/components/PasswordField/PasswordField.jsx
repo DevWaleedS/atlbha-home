@@ -3,7 +3,9 @@ import React, { useState } from "react";
 import "./PasswordField.css";
 import { ReactComponent as EyeOPen } from "../../assets/eye_open.svg";
 import { ReactComponent as EyeClose } from "../../assets/eye_close.svg";
-const PasswordField = ({password,setPassword,passwordError,handleKeyDown}) => {
+
+
+const PasswordField = ({password,setPassword,passwordError,handleKeyDown }) => {
     const [showPassword, setShowPassword] = useState(false);
     let type = "password";
     return (
@@ -40,7 +42,7 @@ const PasswordField = ({password,setPassword,passwordError,handleKeyDown}) => {
                             : type
                     }
                 />
-                <span className="wrong-text">{passwordError}</span>
+                {passwordError && <span className="wrong-text" style={{color:'red'}}>{passwordError}</span>}
             </div>
         </>
     );

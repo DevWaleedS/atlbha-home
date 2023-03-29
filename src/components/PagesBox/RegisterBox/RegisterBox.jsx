@@ -6,6 +6,8 @@ import { ReactComponent as SvgComponent } from '../../../assets/Icons/Component 
 import { ReactComponent as SvgUser } from '../../../assets/Icons/icon-24-user.svg';
 import { ReactComponent as Svgcomparison } from '../../../assets/Icons/comparison.svg';
 
+// import this library to write media query with inline style 
+import Radium  from 'radium';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Select from '@mui/material/Select';
@@ -204,6 +206,25 @@ const RegisterBox = () => {
 		});
 	};
 
+	const styles = {
+		phonenumberErrorStyle: {
+			color: 'red',
+			direction: 'ltr',
+			marginBottom: phonenumberError === 'The phonenumber field is required when user type is store.' ? '35px' : '-25px',
+			marginTop: '-10px',
+			'@media (max-width: 768px)': {
+				marginBottom: phonenumberError === 'The phonenumber field is required when user type is store.' ? '12px' : '-25px',
+			},
+		},
+
+		comparePackagesIconStyle: {
+			'@media (max-width: 768px)': {
+				top: phonenumberError === 'The phonenumber field is required when user type is store.' ? '-10px' : '20px',
+			},
+			
+		},
+	};
+
 	return (
 		<>
 			<div className='register-box' dir='ltr'>
@@ -237,7 +258,7 @@ const RegisterBox = () => {
 												<h5>اسم المتجر</h5>
 												<input name='store_name' value={storeInfo?.store_name} onChange={handleStoreInfo} type='text' placeholder='ادخل اسم المتجر' />
 												{storeNameError && (
-													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'ltr' }}>
 														{storeNameError}
 													</span>
 												)}
@@ -247,7 +268,7 @@ const RegisterBox = () => {
 												<h5>الدومين</h5>
 												<input name='domain' value={storeInfo?.domain} onChange={handleStoreInfo} type='text' placeholder='https:www.utlopha.sample.com' />
 												{domainError && (
-													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'ltr' }}>
 														{domainError}
 													</span>
 												)}
@@ -257,7 +278,7 @@ const RegisterBox = () => {
 												<h5>البريد الإلكتروني</h5>
 												<input name='store_email' value={storeInfo?.store_email} onChange={handleStoreInfo} type='email' placeholder='sapmle@gmail.com' />
 												{storeEmailError && (
-													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'ltr' }}>
 														{storeEmailError}
 													</span>
 												)}
@@ -298,7 +319,7 @@ const RegisterBox = () => {
 												</Select>
 
 												{countryError && (
-													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'ltr' }}>
 														{countryError}
 													</span>
 												)}
@@ -349,15 +370,7 @@ const RegisterBox = () => {
 												<input name='phonenumber' value={storeInfo?.phonenumber} onChange={handleStoreInfo} type='tel' placeholder='8709765342' />
 											</div>
 											{phonenumberError && (
-												<span
-													className='wrong-text w-100 d-flex justify-content-start'
-													style={{
-														color: 'red',
-														direction: 'ltr',
-														marginBottom: '-25px',
-														marginTop: '-10px',
-													}}
-												>
+												<span className='wrong-text w-100 d-flex justify-content-start' style={styles.phonenumberErrorStyle}>
 													{phonenumberError}
 												</span>
 											)}
@@ -397,12 +410,13 @@ const RegisterBox = () => {
 													))}
 												</Select>
 												{packagesError && (
-													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'ltr' }}>
 														{packagesError}
 													</span>
 												)}
 												<div
 													className='box'
+													style={styles.comparePackagesIconStyle}
 													onClick={() => {
 														navigate('/packagePage');
 													}}
@@ -831,4 +845,4 @@ const RegisterBox = () => {
 	);
 };
 
-export default RegisterBox;
+export default Radium(RegisterBox);

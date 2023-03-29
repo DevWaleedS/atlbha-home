@@ -1,12 +1,17 @@
-import React from "react";
+import React from 'react';
+// import this library to write media query with inline style
+import Radium, { StyleRoot } from 'radium';
 
-import { AllPages } from "./Pages";
+import { AllPages } from './Pages';
 const App = () => (
-    <>
-        <div className="app">
-            <AllPages />
-        </div>
-    </>
+	<>
+		{/**  we wrap the APP Component to write media query with inline style  */}
+		<StyleRoot>
+			<div className='app'>
+				<AllPages />
+			</div>
+		</StyleRoot>
+	</>
 );
 
-export default App;
+export default Radium(App);

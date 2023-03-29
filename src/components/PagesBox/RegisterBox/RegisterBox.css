@@ -1058,9 +1058,7 @@
 	.all-content.show {
 		height: max-content !important;
 	}
-	.register-box .all-content .box-container-form .all .user-info button {
-		max-width: 160px;
-	}
+	
 	
 }
 

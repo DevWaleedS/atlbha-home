@@ -221,7 +221,7 @@ const RegisterBox = () => {
 			'@media (max-width: 768px)': {
 				top: phonenumberError === 'The phonenumber field is required when user type is store.' ? '-10px' : '20px',
 			},
-			'@media (max-width: 390px)': {
+			'@media (max-width: 480px)': {
 				top: phonenumberError === 'The phonenumber field is required when user type is store.' ? '-34px' : '20px',
 			},
 			

@@ -12,7 +12,7 @@
 }
 
 .register-box .all-content {
-    height: 2000px;
+    height: 2100px;
     display: flex;
     align-items: flex-start;
     justify-content: flex-start;
@@ -20,7 +20,7 @@
 }
 
 .register-box .all-content.show {
-    height: 1200px;
+    height: 1300px;
 }
 
 .register-box .all-content .box-form-banner {
@@ -276,7 +276,8 @@
 .register-box .all-1 .user-form div .box h5 {
     width: fit-content !important;
 } */
-.register-box .all-1 .user-form div .box {
+.register-box .all-1 .user-form div .box ,
+    .register-box .all-2 .user-form div .box {
     cursor: pointer;
     position: absolute;
     width: 36px;
@@ -315,7 +316,8 @@
 }
 
 @media (max-width: 1200px) {
-    .register-box .all-1 .user-form div .box {
+    .register-box .all-1 .user-form div .box 
+    {
         cursor: pointer;
         position: absolute;
         width: 36px;
@@ -325,6 +327,17 @@
         justify-content: center;
         right: 80px;
         top: 20px;
+    }
+    .register-box .all-2 .user-form div .box{
+        cursor: pointer;
+        position: absolute;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        right: 80px;
+        top: -10px;
     }
     .register-box .all-1 .user-form .info-package {
         height: 120px;
@@ -577,9 +590,9 @@
     .register-box .all-content .box-container-form .all {
         max-width: 100% !important;
     }
-    .register-box .all-1 .user-form .content {
+    /* .register-box .all-1 .user-form .content {
         padding-right: 0 !important;
-    }
+    } */
 }
 
 @media (min-width: 992px) {
@@ -693,6 +706,7 @@
     justify-content: start;
     flex-direction: column;
     width: 100%;
+
     max-width: 665px;
     gap: 30px;
 }
@@ -807,6 +821,7 @@
     justify-content: start;
     flex-direction: column;
     gap: 10px;
+    position: relative;
 }
 
 .register-box .all-2 .user-form div {
@@ -1046,6 +1061,11 @@
         width: 100%;
         max-width: 270px;
         margin: 0 auto;
+    }
+
+    .register-box .all-1 .user-form div .box {
+    
+        top: -8px;
     }
     /* ======================= */
 }

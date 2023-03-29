@@ -46,7 +46,7 @@ const RegisterBox = () => {
 	const [passwordError, setPasswordError] = useState('');
 	const [domainError, setDomainError] = useState('');
 	const [storeNameError, setStoreNameError] = useState('');
-	
+
 	const [storeEmailError, setStoreEmailError] = useState('');
 	const [phonenumberError, setPhonenumberError] = useState('');
 	const [nameError, setNameError] = useState('');
@@ -56,7 +56,7 @@ const RegisterBox = () => {
 	const [cityError, setCityError] = useState('');
 	const [activityError, setActivityError] = useState('');
 	const [packagesError, setPackagesError] = useState('');
-	const [checkboxError,setCheckboxError] = useState('');
+	const [checkboxError, setCheckboxError] = useState('');
 
 	const [error, setError] = useState('');
 
@@ -348,16 +348,17 @@ const RegisterBox = () => {
 												<h5>رقم الجوال</h5>
 												<input name='phonenumber' value={storeInfo?.phonenumber} onChange={handleStoreInfo} type='tel' placeholder='8709765342' />
 											</div>
-											{userphonenumberError && (
+											{phonenumberError && (
 												<span
 													className='wrong-text w-100 d-flex justify-content-end'
 													style={{
 														color: 'red',
-														marginTop: '-20px',
 														direction: 'ltr',
+														marginBottom: '-25px',
+														marginTop: '-10px',
 													}}
 												>
-													{userphonenumberError}
+													{phonenumberError}
 												</span>
 											)}
 
@@ -451,8 +452,12 @@ const RegisterBox = () => {
 
 											<div>
 												<h5>نشاط المتجر</h5>
-
 												<CheckMarks activityName={activityName} setActivityName={setActivityName} />
+												{activityError && (
+													<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+														{activityError}
+													</span>
+												)}
 											</div>
 										</form>
 									</div>
@@ -486,7 +491,7 @@ const RegisterBox = () => {
 												className='wrong-text w-100 d-flex justify-content-end'
 												style={{
 													color: 'red',
-													marginTop: '-20px',
+													marginTop: '-10px',
 													direction: 'ltr',
 												}}
 											>
@@ -552,6 +557,16 @@ const RegisterBox = () => {
 													}
 													label='بتسجيلك فإنك توافق على سياسة الشروط والأحكام الخاصة بمنصة اطلبها'
 												/>
+												{checkboxError && (
+													<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+														{checkboxError}
+													</span>
+												)}
+												{error && (
+													<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+														{error}
+													</span>
+												)}
 											</div>
 											<button className='bt-main' onClick={register}>
 												تسجيل حساب جديد
@@ -624,18 +639,18 @@ const RegisterBox = () => {
 
 											<div className='phone'>
 												<h5>رقم الجوال</h5>
-												<input name='userphonenumber' value={ownerInfo?.userphonenumber} onChange={handleOwnerInfo} type='tel' placeholder='9876543234' />
+												<input name='phonenumber' value={storeInfo?.phonenumber} onChange={handleStoreInfo} type='tel' placeholder='9876543234' />
 											</div>
-											{userphonenumberError && (
+											{phonenumberError && (
 												<span
 													className='wrong-text w-100 d-flex justify-content-end'
 													style={{
 														color: 'red',
-														marginTop: '-20px',
+														marginTop: '-10px',
 														direction: 'ltr',
 													}}
 												>
-													{userphonenumberError}
+													{phonenumberError}
 												</span>
 											)}
 
@@ -766,6 +781,16 @@ const RegisterBox = () => {
 												}
 												label='بتسجيلك فإنك توافق على سياسة الشروط والأحكام الخاصة بمنصة اطلبها'
 											/>
+											{checkboxError && (
+												<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+													{checkboxError}
+												</span>
+											)}
+											{error && (
+												<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+													{error}
+												</span>
+											)}
 										</div>
 										<button className='bt-main' onClick={register}>
 											تسجيل حساب جديد

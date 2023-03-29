@@ -237,7 +237,7 @@ const RegisterBox = () => {
 												<h5>اسم المتجر</h5>
 												<input name='store_name' value={storeInfo?.store_name} onChange={handleStoreInfo} type='text' placeholder='ادخل اسم المتجر' />
 												{storeNameError && (
-													<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{storeNameError}
 													</span>
 												)}
@@ -247,7 +247,7 @@ const RegisterBox = () => {
 												<h5>الدومين</h5>
 												<input name='domain' value={storeInfo?.domain} onChange={handleStoreInfo} type='text' placeholder='https:www.utlopha.sample.com' />
 												{domainError && (
-													<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{domainError}
 													</span>
 												)}
@@ -257,7 +257,7 @@ const RegisterBox = () => {
 												<h5>البريد الإلكتروني</h5>
 												<input name='store_email' value={storeInfo?.store_email} onChange={handleStoreInfo} type='email' placeholder='sapmle@gmail.com' />
 												{storeEmailError && (
-													<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{storeEmailError}
 													</span>
 												)}
@@ -298,7 +298,7 @@ const RegisterBox = () => {
 												</Select>
 
 												{countryError && (
-													<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{countryError}
 													</span>
 												)}
@@ -338,7 +338,7 @@ const RegisterBox = () => {
 													))}
 												</Select>
 												{cityError && (
-													<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{cityError}
 													</span>
 												)}

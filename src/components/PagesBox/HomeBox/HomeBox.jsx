@@ -63,6 +63,7 @@ const HomeBox = () => {
 
     // =======================
     let [getFilterStores, setFilterStores] = useState({ Type: '', Cities: '' });
+
     let [getMedia, setMedia] = useState('');
     let changeMedia = (e) => {
         e?.small
@@ -159,7 +160,7 @@ const HomeBox = () => {
 												displayEmpty
 												renderValue={(selected) => {
 													if (getFilterStores.Type === '') {
-														return <span> نوع النشاط</span>;
+														return <> نوع النشاط</>;
 													}
 
 													return selected;
@@ -190,7 +191,7 @@ const HomeBox = () => {
 												displayEmpty
 												renderValue={(selected) => {
 													if (getFilterStores.Cities === '') {
-														return <span>المدينة</span>;
+														return <>المدينة</>;
 													}
 
 													return selected;

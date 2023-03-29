@@ -350,7 +350,7 @@ const RegisterBox = () => {
 											</div>
 											{phonenumberError && (
 												<span
-													className='wrong-text w-100 '
+													className='wrong-text w-100 d-flex justify-content-start'
 													style={{
 														color: 'red',
 														direction: 'ltr',

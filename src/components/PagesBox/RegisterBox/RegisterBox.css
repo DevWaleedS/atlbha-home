@@ -487,6 +487,7 @@
 .register-box .all-1 .owner-form .box-pay .top {
 	margin-top: 54px;
 	display: flex;
+	flex-wrap: wrap;
 	align-items: flex-start;
 	justify-content: start;
 	flex-direction: row;
@@ -1060,9 +1061,7 @@
 	.register-box .all-content .box-container-form .all .user-info button {
 		max-width: 160px;
 	}
-	.register-box .all-1 .user-form div .box {
-		top: -8px;
-	}
+	
 }
 
 	/* ======================= */

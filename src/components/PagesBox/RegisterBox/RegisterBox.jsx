@@ -397,7 +397,7 @@ const RegisterBox = () => {
 													))}
 												</Select>
 												{packagesError && (
-													<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{packagesError}
 													</span>
 												)}
@@ -454,7 +454,7 @@ const RegisterBox = () => {
 												<h5>نشاط المتجر</h5>
 												<CheckMarks activityName={activityName} setActivityName={setActivityName} />
 												{activityError && (
-													<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{activityError}
 													</span>
 												)}
@@ -508,7 +508,7 @@ const RegisterBox = () => {
 										</div>
 
 										{usernameError && (
-											<span className='wrong-text ' style={{ color: 'red', marginTop: '-20px', direction: 'ltr' }}>
+											<span className='wrong-text w-100' style={{ color: 'red', marginTop: '-20px', direction: 'ltr' }}>
 												{usernameError}
 											</span>
 										)}
@@ -517,7 +517,7 @@ const RegisterBox = () => {
 											<h5>البريد الإلكتروني</h5>
 											<input name='email' value={ownerInfo?.email} onChange={handleOwnerInfo} placeholder='sapmle@gmail.com' />
 											{emailError && (
-												<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+												<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 													{emailError}
 												</span>
 											)}
@@ -558,13 +558,8 @@ const RegisterBox = () => {
 													label='بتسجيلك فإنك توافق على سياسة الشروط والأحكام الخاصة بمنصة اطلبها'
 												/>
 												{checkboxError && (
-													<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{checkboxError}
-													</span>
-												)}
-												{error && (
-													<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
-														{error}
 													</span>
 												)}
 											</div>
@@ -611,7 +606,7 @@ const RegisterBox = () => {
 												<h5>اسم المندوب</h5>
 												<input name='name' value={ownerInfo?.name} onChange={handleOwnerInfo} type='text' placeholder='ادخل اسم المتجر' />
 												{nameError && (
-													<span className='wrong-text ' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{nameError}
 													</span>
 												)}
@@ -621,7 +616,7 @@ const RegisterBox = () => {
 												<h5>اسم المستخدم</h5>
 												<input name='user_name' value={ownerInfo?.user_name} onChange={handleOwnerInfo} type='text' placeholder='ادخل اسم المستخدم' />
 												{usernameError && (
-													<span className='wrong-text ' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{usernameError}
 													</span>
 												)}
@@ -631,7 +626,7 @@ const RegisterBox = () => {
 												<h5>البريد الإلكتروني</h5>
 												<input name='email' value={ownerInfo?.email} onChange={handleOwnerInfo} type='email' placeholder='sapmle@gmail.com' />
 												{emailError && (
-													<span className='wrong-text ' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{emailError}
 													</span>
 												)}
@@ -688,7 +683,7 @@ const RegisterBox = () => {
 												</Select>
 
 												{cityError && (
-													<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{cityError}
 													</span>
 												)}
@@ -729,7 +724,7 @@ const RegisterBox = () => {
 												</Select>
 
 												{packagesError && (
-													<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{packagesError}
 													</span>
 												)}
@@ -782,13 +777,8 @@ const RegisterBox = () => {
 												label='بتسجيلك فإنك توافق على سياسة الشروط والأحكام الخاصة بمنصة اطلبها'
 											/>
 											{checkboxError && (
-												<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
+												<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 													{checkboxError}
-												</span>
-											)}
-											{error && (
-												<span className='wrong-text' style={{ color: 'red', direction: 'ltr' }}>
-													{error}
 												</span>
 											)}
 										</div>

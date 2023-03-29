@@ -30,7 +30,7 @@ const PasswordField = ({password,setPassword,passwordError,handleKeyDown }) => {
 							) : null}
 
 							<h5>كلمة المرور</h5>
-							<input value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={handleKeyDown} type={!type === 'password' ? type : showPassword ? 'text' : type} />
+							<input autoComplete='true' value={password} onChange={(e) => setPassword(e.target.value)} onKeyDown={handleKeyDown} type={!type === 'password' ? type : showPassword ? 'text' : type} />
 							{passwordError && (
 								<span className='wrong-text w-100' style={{ color: 'red' }}>
 									{passwordError}

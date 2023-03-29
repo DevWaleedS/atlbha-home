@@ -208,7 +208,7 @@ const RegisterBox = () => {
 		<>
 			<div className='register-box' dir='ltr'>
 				<div className={registerTarget === 'represented' ? 'all-content show' : 'all-content'} dir='rtl'>
-					<div className='box-container-form' style={{ overflow: 'hidden' }}>
+					<div className='box-container-form' >
 						<LogoHeader />
 
 						<div className='all-register'>

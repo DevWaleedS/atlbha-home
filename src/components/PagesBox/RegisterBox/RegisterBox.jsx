@@ -649,7 +649,7 @@ const RegisterBox = () => {
 												</span>
 											)}
 
-											<div>
+											<div className='mb-3'>
 												<h5>المدينة</h5>
 
 												<Select

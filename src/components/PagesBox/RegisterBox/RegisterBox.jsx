@@ -208,7 +208,7 @@ const RegisterBox = () => {
 		<>
 			<div className='register-box' dir='ltr'>
 				<div className={registerTarget === 'represented' ? 'all-content show' : 'all-content'} dir='rtl'>
-					<div className='box-container-form' >
+					<div className='box-container-form'>
 						<LogoHeader />
 
 						<div className='all-register'>
@@ -338,7 +338,7 @@ const RegisterBox = () => {
 													))}
 												</Select>
 												{cityError && (
-													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'ltr' }}>
 														{cityError}
 													</span>
 												)}
@@ -350,7 +350,7 @@ const RegisterBox = () => {
 											</div>
 											{phonenumberError && (
 												<span
-													className='wrong-text w-100 d-flex justify-content-end'
+													className='wrong-text w-100 '
 													style={{
 														color: 'red',
 														direction: 'ltr',
@@ -477,7 +477,7 @@ const RegisterBox = () => {
 											</span>
 										</div>
 										{nameError && (
-											<span className='wrong-text w-100 d-flex justify-content-end' style={{ color: 'red', marginTop: '-20px', direction: 'ltr' }}>
+											<span className='wrong-text w-100 ' style={{ color: 'red', marginTop: '-20px', direction: 'ltr' }}>
 												{nameError}
 											</span>
 										)}
@@ -488,7 +488,7 @@ const RegisterBox = () => {
 										</div>
 										{userphonenumberError && (
 											<span
-												className='wrong-text w-100 d-flex justify-content-end'
+												className='wrong-text w-100 '
 												style={{
 													color: 'red',
 													marginTop: '-10px',
@@ -638,7 +638,7 @@ const RegisterBox = () => {
 											</div>
 											{phonenumberError && (
 												<span
-													className='wrong-text w-100 d-flex justify-content-end'
+													className='wrong-text w-100 '
 													style={{
 														color: 'red',
 														marginTop: '-10px',
@@ -683,7 +683,7 @@ const RegisterBox = () => {
 												</Select>
 
 												{cityError && (
-													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
+													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'ltr' }}>
 														{cityError}
 													</span>
 												)}

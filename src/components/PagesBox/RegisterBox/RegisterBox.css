@@ -1008,7 +1008,6 @@
 	.register-box .all-content,
 	.all-content.show {
 		height: max-content !important;
-		
 	}
 	.register-box .all-content .box-container-form .all .user-info {
 		gap: 10px;
@@ -1053,22 +1052,17 @@
 	.register-box .all-content .box-container-form {
 		overflow: auto;
 	}
-	
+
 	.register-box .all-content,
 	.all-content.show {
 		height: max-content !important;
-		
 	}
 	.register-box .all-content .box-container-form .all .user-info button {
-	
 		max-width: 140px;
-		
 	}
 	.register-box .all-1 .user-form div .box {
 		top: -8px;
 	}
-	
-	
 }
 @media (max-width: 390px) {
 	.register-box .all-content .box-container-form {
@@ -1082,7 +1076,6 @@
 	.register-box .all-content,
 	.all-content.show {
 		height: max-content !important;
-		
 	}
 	.register-box .all-content .box-container-form .all .user-info {
 		gap: 10px;
@@ -1092,15 +1085,7 @@
 		max-width: 140px;
 		height: 45px;
 	}
-	.register-box .all .owner-form form {
-		width: 100%;
-		max-width: 270px;
 
-		gap: 25px;
-	}
-	.register-box .all-content .content form {
-		max-width: 270px;
-	}
 	.register-box .all .user-form .content {
 		justify-content: center;
 	}
@@ -1112,11 +1097,6 @@
 		margin: 0;
 		white-space: nowrap;
 		font-size: var(--font-size-16);
-	}
-	.register-box .all .owner-form .box-pay {
-		width: 100%;
-		max-width: 270px;
-		margin: 0 auto;
 	}
 
 	.register-box .all-1 .user-form div .box {

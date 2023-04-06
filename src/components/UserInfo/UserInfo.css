@@ -1,0 +1,13 @@
+/* ==================media===================== */
+@media (max-width: 768px) {
+	.user-info-menu {
+		position: absolute ;
+		top: 6px ;
+		left: 60px ;
+		transform: translate(0px, 50%) ;
+		-webkit-transform: translate(0px, 50%) ;
+		-moz-transform: translate(0px, 50%) ;
+		-ms-transform: translate(0px, 50%) ;
+		-o-transform: translate(0px, 50%) ;
+}
+}

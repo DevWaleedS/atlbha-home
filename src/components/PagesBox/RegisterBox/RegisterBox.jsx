@@ -6,8 +6,8 @@ import { ReactComponent as SvgComponent } from '../../../assets/Icons/Component 
 import { ReactComponent as SvgUser } from '../../../assets/Icons/icon-24-user.svg';
 import { ReactComponent as Svgcomparison } from '../../../assets/Icons/comparison.svg';
 
-// import this library to write media query with inline style 
-import Radium  from 'radium';
+// import this library to write media query with inline style
+import Radium from 'radium';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Select from '@mui/material/Select';
@@ -59,9 +59,10 @@ const RegisterBox = () => {
 	const [activityError, setActivityError] = useState('');
 	const [packagesError, setPackagesError] = useState('');
 	const [checkboxError, setCheckboxError] = useState('');
-
 	const [error, setError] = useState('');
+	const [accepet, setAccepet] = useState(false);
 
+	// to assign the store info into state
 	const [storeInfo, setStoreInfo] = useState({
 		domain: '',
 		store_name: '',
@@ -69,6 +70,7 @@ const RegisterBox = () => {
 		phonenumber: '',
 	});
 
+	// to assign the owner info into state
 	const [ownerInfo, setOwnerInfo] = useState({
 		name: '',
 		user_name: '',
@@ -83,6 +85,7 @@ const RegisterBox = () => {
 			return { ...prevStoreInfo, [name]: value };
 		});
 	};
+
 	const handleOwnerInfo = (e) => {
 		const { name, value } = e.target;
 		setOwnerInfo((prevStoreInfo) => {
@@ -135,6 +138,7 @@ const RegisterBox = () => {
 			});
 	}, []);
 
+	// register function
 	const register = () => {
 		setError('');
 		setUsernameError('');
@@ -206,6 +210,7 @@ const RegisterBox = () => {
 		});
 	};
 
+	// this styles to set some style on media query
 	const styles = {
 		phonenumberErrorStyle: {
 			color: 'red',
@@ -224,7 +229,6 @@ const RegisterBox = () => {
 			'@media (max-width: 480px)': {
 				top: phonenumberError === 'The phonenumber field is required when user type is store.' ? '-34px' : '20px',
 			},
-			
 		},
 	};
 
@@ -265,6 +269,7 @@ const RegisterBox = () => {
 														{storeNameError}
 													</span>
 												)}
+												
 											</div>
 
 											<div>

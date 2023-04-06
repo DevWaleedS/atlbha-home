@@ -26,7 +26,10 @@ const SignInBox = () => {
 		axios.post('https://backend.atlbha.com/api/loginapi', data).then((res) => {
 			if (res?.data?.success === true && res?.data?.data?.status === 200) {
 				setCookie('access_token', res?.data?.data?.token);
-				window.location.href = 'http://store.atlbha.com'; // url dashboard tajer
+				// put this code when you finsh 
+				// , { domain: 'atlbha.com' , path:'/'}
+				<Navigate to='/' />;
+				// window.location.href = 'http://store.atlbha.com'; // url dashboard tajer
 			} else {
 				setUsernameError(res?.data?.message?.en?.user_name?.[0]);
 				setPasswordError(res?.data?.message?.en?.password?.[0]);

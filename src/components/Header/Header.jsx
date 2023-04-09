@@ -15,7 +15,7 @@ import { useCookies } from 'react-cookie';
 
 const Header = () => {
 	const [cookies] = useCookies(['access_token']);
-
+	console.log(cookies.access_token);
 	let location = useLocation();
 	let [activeLink, setActiveLink] = useState(`التسجيل`);
 	let [showForm, setShowForm] = useState(true);
@@ -89,15 +89,21 @@ const Header = () => {
 								<Link to={'hhh'} className={activeLink === 'السوق' ? 'active' : ''} onClick={() => setActiveLink(`السوق`)}>
 									السوق
 								</Link>
+
 								<Link to={'/blog'} className={activeLink === 'المدونة' ? 'active' : ''} onClick={() => setActiveLink(`المدونة`)}>
 									المدونة
 								</Link>
+
 								<Link to={'/start'} className={activeLink === 'كيف أبدأ' ? 'active' : ''} onClick={() => setActiveLink(`كيف أبدأ`)}>
 									كيف أبدأ
 								</Link>
 
 								{cookies.access_token ? (
 									''
+								) : cookies.access_token === 'undefined' ? (
+									<Link to={'/register/merchant'} className={location.pathname === '/' || activeLink === 'التسجيل' ? 'active' : ''} onClick={() => setActiveLink(`التسجيل`)}>
+										التسجيل
+									</Link>
 								) : (
 									<Link to={'/register/merchant'} className={location.pathname === '/' || activeLink === 'التسجيل' ? 'active' : ''} onClick={() => setActiveLink(`التسجيل`)}>
 										التسجيل
@@ -105,11 +111,7 @@ const Header = () => {
 								)}
 							</Nav>
 						</Navbar.Collapse>
-						{cookies.access_token ? (
-							<UserInfo className='user-info-menu' />
-						) : (
-							''
-						)}
+						{cookies.access_token ? <UserInfo className='user-info-menu' /> : cookies.access_token === 'undefined' ? '' : ''}
 					</Navbar>
 				</div>
 			</div>

@@ -14,7 +14,7 @@ const TermsAndConditionContent = ({ closeModal }) => {
 					<span onClick={closeModal}>
 						<ImArrowRight />
 					</span>
-					<h5>الشروط والأحكام</h5>
+					<h5 className='mb-0'>الشروط والأحكام</h5>
 				</div>
 				<div className='modal_content'>
 					تقدم منصة اطلبها تجربة مجانية تستطيع من خلالها ان تبدأ بإنشاء متجرك الخاص وإدارته بكل سهولة، حيث وفرنا لك لوحة تحكم سهلة وواضحة لتستطيع التحكم بكل ما تحتاجه قمنا بإضافة قسم السوق وبإمكانك أن تجد

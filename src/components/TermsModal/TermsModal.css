@@ -36,8 +36,12 @@
 .modal_title {
 	display: flex;
 	justify-content: flex-start;
+	align-items: center;
 	margin: 40px 0;
 	gap: 12px;
+}
+.modal_title h5 {
+	margin-bottom: 0 !important;
 }
 
 .modal_title span {

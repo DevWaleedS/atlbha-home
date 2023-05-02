@@ -10,12 +10,12 @@ import './Header.css';
 import { FiMenu } from 'react-icons/fi';
 import { ReactComponent as SearchIcon } from '../../assets/Icons/icon_24_search.svg';
 import { ReactComponent as Logo } from '../../assets/Icons/Logo.svg';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useCookies } from 'react-cookie';
 
 const Header = () => {
 	const [cookies] = useCookies(['access_token']);
-	console.log(cookies.access_token);
+	const navigate = useNavigate();
 	let location = useLocation();
 	let [activeLink, setActiveLink] = useState(`التسجيل`);
 	let [showForm, setShowForm] = useState(true);
@@ -68,7 +68,7 @@ const Header = () => {
 				<div className='container'>
 					<Navbar expand='lg'>
 						<Navbar.Brand>
-							<Logo />
+							<Logo onClick={() => navigate('/')} style={{ cursor: 'pointer' }} />
 						</Navbar.Brand>
 
 						<Navbar.Toggle aria-controls='navbarScroll'>
@@ -86,7 +86,7 @@ const Header = () => {
 									الرئيسية
 								</Link>
 
-								<Link to={'hhh'} className={activeLink === 'السوق' ? 'active' : ''} onClick={() => setActiveLink(`السوق`)}>
+								<Link  to={'/'} className={activeLink === 'السوق' ? 'active' : ''} onClick={() => setActiveLink(`السوق`)}>
 									السوق
 								</Link>
 

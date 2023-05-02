@@ -390,7 +390,7 @@
 }
 
 .register-box .all-1 .user-form div.phone::before {
-	content: '+996';
+	content: '996';
 	position: absolute;
 	color: var(--black-color-01);
 	font-size: var(--font-size-20);
@@ -456,7 +456,7 @@
 }
 
 .register-box .all-1 .owner-form form div.phone::before {
-	content: '+996';
+	content: '996';
 	position: absolute;
 	color: var(--black-color-01);
 	font-size: var(--font-size-20);
@@ -482,6 +482,7 @@
 	justify-content: start;
 	flex-direction: column;
 	width: 100%;
+
 }
 
 .register-box .all-1 .owner-form .box-pay .top {
@@ -492,7 +493,7 @@
 	justify-content: start;
 	flex-direction: row;
 	width: 100%;
-	max-width: 350px;
+	max-width: 355px;
 	gap: 10px;
 }
 
@@ -842,7 +843,7 @@
 }
 
 .register-box .all-2 .user-form div.phone::before {
-	content: '+996';
+	content: '996';
 	position: absolute;
 	color: var(--black-color-01);
 	font-size: var(--font-size-20);
@@ -943,8 +944,9 @@
 	justify-content: start;
 	flex-direction: row;
 	width: 100%;
-	max-width: 350px;
+	max-width: 355px;
 	gap: 10px;
+	margin-top: 20px;
 }
 
 .register-box .all-2 .owner-form .box-pay .top .form-check {

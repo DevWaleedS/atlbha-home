@@ -205,8 +205,7 @@ const FooterOverlay = () => {
                         <hr />
                         <h5>
                             جميع الحقوق محفوظة <span> لمنصة اطلبها </span>2023
-                        </h5>
-                        <h5>
+                        
                             برمجة وتطوير <span><a href='https://faz-it.net'>شبكة فاز</a></span>
                         </h5>
                     </div>

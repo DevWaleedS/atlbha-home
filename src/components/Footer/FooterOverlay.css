@@ -153,28 +153,28 @@
     text-align: center !important;
     flex-direction: column !important;
     margin-top: 20px !important;
-    gap: 5px !important;
-    padding-bottom: 10px;
+    gap: 10px !important;
+    padding: 10px 0;
 }
 .main-footer .copyright-box hr {
     width: 100%;
     margin: 0;
     color: var(--font-color-04);
-    margin-bottom: 20px;
+    margin-bottom: 5px;
 }
 .main-footer .copyright-box h5 {
     margin: 0;
     color: var(--font-color-default);
-    font-size: var(--font-size-18);
+    font-size: 14px;
     font-weight: var(--font-weight-02);
 }
 .main-footer .copyright-box h5 span ,
 .main-footer .copyright-box h5 span a  {
-    color: var(--font-color-02);
+    color:  #fefefe;
     font-weight: var(--font-weight-04);
 }
 .main-footer .copyright-box h5 span a:hover {
-color: #fefefe;
+color: var(--font-color-02);
 }
 
 @media (max-width: 992px) {
@@ -198,7 +198,7 @@ color: #fefefe;
     .main-footer .copyright-box h5 {
   
  
-    font-size: var(--font-size-16);
+    font-size: 12px;
     font-weight: var(--font-weight-01);
 }
 }

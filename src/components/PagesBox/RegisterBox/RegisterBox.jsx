@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { CheckMarks, LogoHeader, PasswordField } from '../../index';
 import { ReactComponent as Svgarrwos } from '../../../assets/Icons/icon-30-arrwos back1.svg';
 import { ReactComponent as SvgComponent } from '../../../assets/Icons/Component 59 – 11.svg';
@@ -8,6 +8,7 @@ import { ReactComponent as Svgcomparison } from '../../../assets/Icons/compariso
 
 // import this library to write media query with inline style
 import Radium from 'radium';
+import { Typography } from '@mui/material';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Select from '@mui/material/Select';
@@ -16,6 +17,8 @@ import { IoIosArrowDown } from 'react-icons/io';
 import { useCookies } from 'react-cookie';
 import './RegisterBox.css';
 import axios from 'axios';
+import TermsModal from '../../TermsModal/TermsModal';
+
 
 const subscriptionPeriod = [
 	{ id: 1, name: ' 6 شهور', name_en: '6months' },
@@ -28,14 +31,18 @@ const RegisterBox = () => {
 	const [registerTarget, setRegisterTarget] = useState('merchant');
 	const [cookies, setCookie] = useCookies(['access_token']);
 
+	const [showTermsModal, setShowTermsModal] = useState(false);
+
+
+
 	// TO STORE DATA FROM SELECTORS API
 	const [citiesList, setCitiesList] = useState([]);
-	const [countryList, setCountryList] = useState([]);
+	// const [countryList, setCountryList] = useState([]);
 	const [packages, setPackages] = useState([]);
 	// ---------------------------------------
 
 	const [city, setCity] = useState([]);
-	const [country, setCountry] = useState([]);
+	// const [country, setCountry] = useState([]);
 	const [packagesValues, setPackagesValues] = useState([]);
 	const [activityName, setActivityName] = React.useState([]);
 	const [subscriptionPeriodValues, setSubscriptionPeriodValues] = useState([]);
@@ -54,7 +61,7 @@ const RegisterBox = () => {
 	const [nameError, setNameError] = useState('');
 	const [emailError, setEmailError] = useState('');
 	const [userphonenumberError, setUserphonenumberError] = useState('');
-	const [countryError, setCountryError] = useState('');
+	// const [countryError, setCountryError] = useState('');
 	const [cityError, setCityError] = useState('');
 	const [activityError, setActivityError] = useState('');
 	const [packagesError, setPackagesError] = useState('');
@@ -115,16 +122,16 @@ const RegisterBox = () => {
 	}, []);
 
 	// to call countryList api
-	useEffect(() => {
-		axios
-			.get('https://backend.atlbha.com/api/selector/countries')
-			.then((response) => {
-				setCountryList(response?.data);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	}, []);
+	// useEffect(() => {
+	// 	axios
+	// 		.get('https://backend.atlbha.com/api/selector/countries')
+	// 		.then((response) => {
+	// 			setCountryList(response?.data);
+	// 		})
+	// 		.catch((error) => {
+	// 			console.log(error);
+	// 		});
+	// }, []);
 
 	// to call packages api
 	useEffect(() => {
@@ -150,7 +157,7 @@ const RegisterBox = () => {
 		setNameError('');
 		setEmailError('');
 		setUserphonenumberError('');
-		setCountryError('');
+		// setCountryError('');
 		setCityError('');
 		setActivityError('');
 		setPackagesError('');
@@ -171,9 +178,9 @@ const RegisterBox = () => {
 		formData.append('store_email', storeInfo?.store_email || '');
 		formData.append('checkbox_field', isChecked || null);
 		formData.append('periodtype', subscriptionPeriodValues || '');
-		for (let countr = 0; countr < country.length; countr++) {
-			formData.append('country_id', country[countr] || '');
-		}
+		// for (let countr = 0; countr < country.length; countr++) {
+		// 	formData.append('country_id', country[countr] || '');
+		// }
 
 		for (let cit = 0; cit < city.length; cit++) {
 			formData.append('city_id', city[cit] || '');
@@ -200,7 +207,7 @@ const RegisterBox = () => {
 				setNameError(res?.data?.message?.en?.name?.[0]);
 				setEmailError(res?.data?.message?.en?.email?.[0]);
 				setUserphonenumberError(res?.data?.message?.en?.userphonenumber?.[0]);
-				setCountryError(res?.data?.message?.en?.country_id?.[0]);
+				// setCountryError(res?.data?.message?.en?.country_id?.[0]);
 				setCityError(res?.data?.message?.en?.city_id?.[0]);
 				setActivityError(res?.data?.message?.en?.activity_id[0]?.[0]);
 				setPackagesError(res?.data?.message?.en?.package_id?.[0]);
@@ -262,19 +269,21 @@ const RegisterBox = () => {
 									<div className='content'>
 										<form action=''>
 											<div>
-												<h5>اسم المتجر</h5>
+												<h5>
+													اسم المتجر (<span style={{ color: 'red', display: 'inline' }}>باللغة الانجليزية</span>)
+												</h5>
 												<input name='store_name' value={storeInfo?.store_name} onChange={handleStoreInfo} type='text' placeholder='ادخل اسم المتجر' />
+
 												{storeNameError && (
 													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'ltr' }}>
 														{storeNameError}
 													</span>
 												)}
-												
 											</div>
 
 											<div>
 												<h5>الدومين</h5>
-												<input name='domain' value={storeInfo?.domain} onChange={handleStoreInfo} type='text' placeholder='https:www.utlopha.sample.com' />
+												<input name='domain' value={storeInfo?.domain} onChange={handleStoreInfo} type='text' placeholder='fayez.atlbha.sa' />
 												{domainError && (
 													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'ltr' }}>
 														{domainError}
@@ -284,7 +293,7 @@ const RegisterBox = () => {
 
 											<div>
 												<h5>البريد الإلكتروني</h5>
-												<input name='store_email' value={storeInfo?.store_email} onChange={handleStoreInfo} type='email' placeholder='sapmle@gmail.com' />
+												<input name='store_email' value={storeInfo?.store_email} onChange={handleStoreInfo} type='email' placeholder='atlbha@gmail.com' />
 												{storeEmailError && (
 													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'ltr' }}>
 														{storeEmailError}
@@ -294,7 +303,9 @@ const RegisterBox = () => {
 
 											<div>
 												<h5>الدوله</h5>
-												<Select
+
+												<input name='country' value={'المملكة العربية السعودية'} onChange={() => console.log(' --- ')} type='text' disabled />
+												{/** <Select
 													sx={{
 														height: '3.5rem',
 
@@ -330,7 +341,7 @@ const RegisterBox = () => {
 													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'ltr' }}>
 														{countryError}
 													</span>
-												)}
+												)} */}
 											</div>
 
 											<div>
@@ -375,7 +386,7 @@ const RegisterBox = () => {
 
 											<div className='phone'>
 												<h5>رقم الجوال</h5>
-												<input name='phonenumber' value={storeInfo?.phonenumber} onChange={handleStoreInfo} type='tel' placeholder='8709765342' />
+												<input name='phonenumber' value={storeInfo?.phonenumber} onChange={handleStoreInfo} type='tel' placeholder='500000000' />
 											</div>
 											{phonenumberError && (
 												<span className='wrong-text w-100 d-flex justify-content-start' style={styles.phonenumberErrorStyle}>
@@ -506,7 +517,7 @@ const RegisterBox = () => {
 
 										<div className='phone'>
 											<h5>رقم الجوال</h5>
-											<input name='userphonenumber' value={ownerInfo?.userphonenumber} onChange={handleOwnerInfo} type='tel' placeholder='9876543234' />
+											<input name='userphonenumber' value={ownerInfo?.userphonenumber} onChange={handleOwnerInfo} type='tel' placeholder='500000000' />
 										</div>
 										{userphonenumberError && (
 											<span
@@ -537,7 +548,7 @@ const RegisterBox = () => {
 
 										<div>
 											<h5>البريد الإلكتروني</h5>
-											<input name='email' value={ownerInfo?.email} onChange={handleOwnerInfo} placeholder='sapmle@gmail.com' />
+											<input name='email' value={ownerInfo?.email} onChange={handleOwnerInfo} placeholder='atlbha@gmail.com' />
 											{emailError && (
 												<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 													{emailError}
@@ -552,33 +563,45 @@ const RegisterBox = () => {
 										<div className='box-pay'>
 											<div className='top'>
 												<FormControlLabel
-													value={isChecked}
 													sx={{
-														gap: '10px',
-														ml: 0,
-														'& .MuiFormControlLabel-label': {
-															fontSize: '18px',
-															fontWeight: 400,
-															color: '#67747B',
-															marginTop: '20px',
-														},
+														width: '100%',
+														height: '100%',
+														display: 'flex',
+														alignItems: 'flex-start',
 													}}
+													value={isChecked}
 													control={
-														<Checkbox
-															className='form-check-input'
-															id='flexCheckDefault'
-															checked={isChecked}
-															onChange={(e) => {
-																if (e.target.checked) {
-																	setIsChecked(1);
-																} else {
-																	setIsChecked(0);
-																}
-															}}
-														/>
+														<>
+															<Checkbox
+																className='form-check-input'
+																id='flexCheckDefault'
+																checked={isChecked}
+																onChange={(e) => {
+																	if (e.target.checked) {
+																		setIsChecked(1);
+																	} else {
+																		setIsChecked(0);
+																	}
+																}}
+															/>
+
+															<Typography
+																sx={{
+																	ml: 0,
+																	mr: 1,
+
+																	fontSize: '15px',
+																	fontWeight: 400,
+																	color: '#67747B',
+																	marginTop: '-14px',
+																}}
+															>
+																بتسجيلك فإنك توافق على سياسة<Link onClick={() => setShowTermsModal(true)}> الشروط والأحكام</Link> الخاصة بمنصة اطلبها
+															</Typography>
+														</>
 													}
-													label='بتسجيلك فإنك توافق على سياسة الشروط والأحكام الخاصة بمنصة اطلبها'
 												/>
+
 												{checkboxError && (
 													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{checkboxError}
@@ -626,7 +649,7 @@ const RegisterBox = () => {
 										<form action=''>
 											<div>
 												<h5>اسم المندوب</h5>
-												<input name='name' value={ownerInfo?.name} onChange={handleOwnerInfo} type='text' placeholder='ادخل اسم المتجر' />
+												<input name='name' value={ownerInfo?.name} onChange={handleOwnerInfo} type='text' placeholder='ادخل اسمك بالكامل' />
 												{nameError && (
 													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{nameError}
@@ -646,7 +669,7 @@ const RegisterBox = () => {
 
 											<div>
 												<h5>البريد الإلكتروني</h5>
-												<input name='email' value={ownerInfo?.email} onChange={handleOwnerInfo} type='email' placeholder='sapmle@gmail.com' />
+												<input name='email' value={ownerInfo?.email} onChange={handleOwnerInfo} type='email' placeholder='atlbha@gmail.com' />
 												{emailError && (
 													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{emailError}
@@ -656,7 +679,7 @@ const RegisterBox = () => {
 
 											<div className='phone'>
 												<h5>رقم الجوال</h5>
-												<input name='phonenumber' value={storeInfo?.phonenumber} onChange={handleStoreInfo} type='tel' placeholder='9876543234' />
+												<input name='phonenumber' value={storeInfo?.phonenumber} onChange={handleStoreInfo} type='tel' placeholder='500000000 ' />
 											</div>
 											{phonenumberError && (
 												<span
@@ -710,57 +733,6 @@ const RegisterBox = () => {
 													</span>
 												)}
 											</div>
-											<div className='info-package'>
-												<h5>نوع الباقة</h5>
-
-												<Select
-													sx={{
-														height: '3.5rem',
-
-														border: '1px solid rgba(167, 167, 167, 0.5)',
-
-														'& .MuiOutlinedInput-notchedOutline': {
-															border: 'none',
-														},
-													}}
-													value={packagesValues}
-													className='select-mu'
-													onChange={(e) => {
-														setPackagesValues(e.target.value);
-													}}
-													IconComponent={IoIosArrowDown}
-													displayEmpty
-													renderValue={(selected) => {
-														if (packagesValues.length === 0) {
-															return <span>أختر نوع الباقة</span>;
-														}
-														const result = packages?.data?.packages?.filter((item) => item?.id === parseInt(selected));
-														return result[0]?.name;
-													}}
-												>
-													{packages?.data?.packages?.map((pack) => (
-														<MenuItem value={`${pack?.id}`} key={pack?.id}>
-															{pack?.name}
-														</MenuItem>
-													))}
-												</Select>
-
-												{packagesError && (
-													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
-														{packagesError}
-													</span>
-												)}
-												<div
-													className='box'
-													onClick={() => {
-														navigate('/packagePage');
-													}}
-												>
-													<span>
-														<Svgcomparison />
-													</span>
-												</div>
-											</div>
 
 											<PasswordField name='password' password={password} setPassword={setPassword} passwordError={passwordError} />
 										</form>
@@ -771,32 +743,42 @@ const RegisterBox = () => {
 									<div className='box-pay'>
 										<div className='top'>
 											<FormControlLabel
-												value={isChecked}
 												sx={{
-													gap: '10px',
-													ml: 0,
-													'& .MuiFormControlLabel-label': {
-														fontSize: '18px',
-														fontWeight: 400,
-														color: '#67747B',
-														marginTop: '20px',
-													},
+													height: '100%',
+													display: 'flex',
+													alignItems: 'flex-start',
 												}}
+												value={isChecked}
 												control={
-													<Checkbox
-														className='form-check-input'
-														id='flexCheckDefault'
-														checked={isChecked}
-														onChange={(e) => {
-															if (e.target.checked) {
-																setIsChecked(1);
-															} else {
-																setIsChecked(0);
-															}
-														}}
-													/>
+													<>
+														<Checkbox
+															className='form-check-input'
+															id='flexCheckDefault'
+															checked={isChecked}
+															onChange={(e) => {
+																if (e.target.checked) {
+																	setIsChecked(1);
+																} else {
+																	setIsChecked(0);
+																}
+															}}
+														/>
+
+														<Typography
+															sx={{
+																ml: 0,
+																mr: 1,
+
+																fontSize: '15px',
+																fontWeight: 400,
+																color: '#67747B',
+																marginTop: '-14px',
+															}}
+														>
+															بتسجيلك فإنك توافق على سياسة<Link onClick={() => setShowTermsModal(true)}> الشروط والأحكام</Link> الخاصة بمنصة اطلبها
+														</Typography>
+													</>
 												}
-												label='بتسجيلك فإنك توافق على سياسة الشروط والأحكام الخاصة بمنصة اطلبها'
 											/>
 											{checkboxError && (
 												<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
@@ -849,6 +831,8 @@ const RegisterBox = () => {
 					</div>
 				</div>
 			</div>
+			{/** terms modal*/}
+			<TermsModal show={showTermsModal} closeModal={()=>setShowTermsModal(false)} />
 		</>
 	);
 };

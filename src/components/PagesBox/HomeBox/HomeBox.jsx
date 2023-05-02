@@ -132,7 +132,7 @@ const HomeBox = () => {
 						<div className='stores-info p-main'>
 							<div className='container'>
 								<div className='header flex-column flex-md-row gap-4 gap-md-3 '>
-									<MainTitle text={'المتاجر المتميزة'} />
+									<MainTitle text={'المتاجر '} />
 									<form
 										action=''
 										onSubmit={(e) => {

@@ -270,9 +270,9 @@ const RegisterBox = () => {
 										<form action=''>
 											<div>
 												<h5>
-													اسم المتجر (<span style={{ color: 'red', display: 'inline' }}>باللغة الانجليزية</span>)
+													اسم المتجر 
 												</h5>
-												<input name='store_name' value={storeInfo?.store_name} onChange={handleStoreInfo} type='text' placeholder='ادخل اسم المتجر' />
+												<input name='store_name' value={storeInfo?.store_name} onChange={handleStoreInfo} type='text' placeholder=' ادخل اسم المتجر باللغة الانجليزية' />
 
 												{storeNameError && (
 													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'ltr' }}>

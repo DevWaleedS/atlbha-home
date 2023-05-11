@@ -1,10 +1,13 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState, useRef } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { CheckMarks, LogoHeader, PasswordField } from '../../index';
+
+// icons and images
 import { ReactComponent as Svgarrwos } from '../../../assets/Icons/icon-30-arrwos back1.svg';
 import { ReactComponent as SvgComponent } from '../../../assets/Icons/Component 59 – 11.svg';
 import { ReactComponent as SvgUser } from '../../../assets/Icons/icon-24-user.svg';
 import { ReactComponent as Svgcomparison } from '../../../assets/Icons/comparison.svg';
+import { MdErrorOutline } from 'react-icons/md';
 
 // import this library to write media query with inline style
 import Radium from 'radium';
@@ -19,11 +22,20 @@ import './RegisterBox.css';
 import axios from 'axios';
 import TermsModal from '../../TermsModal/TermsModal';
 
-
 const subscriptionPeriod = [
 	{ id: 1, name: ' 6 شهور', name_en: '6months' },
 	{ id: 2, name: 'سنوي', name_en: 'year' },
 ];
+
+/** -----------------------------------------------------------------------------------------------------------
+ *  	=> TO HANDLE THE REG_EXPRESS <=
+ *  ------------------------------------------------- */
+const USER_REGEX = /^[A-Za-z]+$/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const PHONE_REGEX = /^\+?[0-9][0-9]{9,13}$/;
+const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
+const STORE_EMAIL_REGEX = /^\S+@\S+\.\S+$/;
+const DOMAIN_REGEX = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
 
 const RegisterBox = () => {
 	const navigate = useNavigate();
@@ -31,15 +43,16 @@ const RegisterBox = () => {
 	const [registerTarget, setRegisterTarget] = useState('merchant');
 	const [cookies, setCookie] = useCookies(['access_token']);
 
+	/** -----------------------------------------------------------------------------------------------------------
+	 *  	=> TO OPEN THE TERMS AND CONDITIONS MODAL <=
+	 *  ------------------------------------------------- */
+
 	const [showTermsModal, setShowTermsModal] = useState(false);
-
-
 
 	// TO STORE DATA FROM SELECTORS API
 	const [citiesList, setCitiesList] = useState([]);
 	// const [countryList, setCountryList] = useState([]);
 	const [packages, setPackages] = useState([]);
-	// ---------------------------------------
 
 	const [city, setCity] = useState([]);
 	// const [country, setCountry] = useState([]);
@@ -50,7 +63,25 @@ const RegisterBox = () => {
 	const [password, setPassword] = useState('');
 	const [isChecked, setIsChecked] = useState(0);
 
-	// to set the validation
+	/** -----------------------------------------------------------------------------------------------------------
+	 *  	=> TO  CREATE THE VALIDATION <=
+	 *  ------------------------------------------------- */
+
+	const [validUserName, setValidUserName] = useState(false);
+	const [userNameFocus, setUserNameFocus] = useState(false);
+
+	const [validPssWord, setValidPssWord] = useState(false);
+	const [userPssWordFocus, setPssWordFocus] = useState(false);
+
+	const [validPhoneNumber, setValidPhoneNumber] = useState(false);
+	const [phoneNumberFocus, setPhoneNumberFocus] = useState(false);
+
+	const [validEmail, setValidEmail] = useState(false);
+	const [emailFocus, setEmailFocus] = useState(false);
+
+	const [validStoreEmail, setValidStoreEmail] = useState(false);
+	const [storeEmailFocus, setStoreEmailFocus] = useState(false);
+
 	const [usernameError, setUsernameError] = useState('');
 	const [passwordError, setPasswordError] = useState('');
 	const [domainError, setDomainError] = useState('');
@@ -69,12 +100,16 @@ const RegisterBox = () => {
 	const [error, setError] = useState('');
 	const [accepet, setAccepet] = useState(false);
 
+	/** -----------------------------------------------------------------------------------------------------------
+	 *  	=> THE SEND THE DATA TO SERVER  <=
+	 *  ------------------------------------------------- */
+
 	// to assign the store info into state
 	const [storeInfo, setStoreInfo] = useState({
 		domain: '',
 		store_name: '',
 		store_email: '',
-		phonenumber: '',
+		phonenumber: '+966',
 	});
 
 	// to assign the owner info into state
@@ -82,7 +117,7 @@ const RegisterBox = () => {
 		name: '',
 		user_name: '',
 		email: '',
-		userphonenumber: '',
+		userphonenumber: '+966',
 	});
 
 	// to get the values from inputs
@@ -99,6 +134,10 @@ const RegisterBox = () => {
 			return { ...prevStoreInfo, [name]: value };
 		});
 	};
+
+	/** -----------------------------------------------------------------------------------------------------------
+	 *  	=> THE SIDE EFFECTS <=
+	 *  ------------------------------------------------- */
 
 	// use effect to change user type form
 	useEffect(() => {
@@ -121,19 +160,26 @@ const RegisterBox = () => {
 			});
 	}, []);
 
-	// to call countryList api
-	// useEffect(() => {
-	// 	axios
-	// 		.get('https://backend.atlbha.com/api/selector/countries')
-	// 		.then((response) => {
-	// 			setCountryList(response?.data);
-	// 		})
-	// 		.catch((error) => {
-	// 			console.log(error);
-	// 		});
-	// }, []);
+	// TO HANDLE VALIDATION FOR USER NAME
+	useEffect(() => {
+		const UserNameValidation = USER_REGEX.test(ownerInfo?.user_name);
+		setValidUserName(UserNameValidation);
+	}, [ownerInfo?.user_name]);
 
-	// to call packages api
+	// TO HANDLE VALIDATION FOR EMAIL
+	useEffect(() => {
+		const emailValidation = EMAIL_REGEX.test(ownerInfo?.email);
+		setValidEmail(emailValidation);
+	}, [ownerInfo?.email]);
+
+	useEffect(() => {
+		const storeEmailValidation = STORE_EMAIL_REGEX.test(storeInfo?.store_email);
+		setValidStoreEmail(storeEmailValidation);
+	}, [storeInfo?.store_email]);
+
+	/** -----------------------------------------------------------------------------------------------------------
+	 *  	=> to call packages api  <=
+	 *  ------------------------------------------------- */
 	useEffect(() => {
 		axios
 			.get('https://backend.atlbha.com/api/selector/packages')
@@ -145,7 +191,9 @@ const RegisterBox = () => {
 			});
 	}, []);
 
-	// register function
+	/** -----------------------------------------------------------------------------------------------------------
+	 *  	=> REGISTER FUNCTION  <=
+	 *  ------------------------------------------------- */
 	const register = () => {
 		setError('');
 		setUsernameError('');
@@ -217,7 +265,9 @@ const RegisterBox = () => {
 		});
 	};
 
-	// this styles to set some style on media query
+	/** -----------------------------------------------------------------------------------------------------------
+	 *  	=> this styles to set some style on media query <=
+	 *  ------------------------------------------------- */
 	const styles = {
 		phonenumberErrorStyle: {
 			color: 'red',
@@ -267,11 +317,9 @@ const RegisterBox = () => {
 									<h4 className='title'>بيانات المتجر</h4>
 
 									<div className='content'>
-										<form action=''>
+										<form>
 											<div>
-												<h5>
-													اسم المتجر 
-												</h5>
+												<h5>اسم المتجر</h5>
 												<input name='store_name' value={storeInfo?.store_name} onChange={handleStoreInfo} type='text' placeholder=' ادخل اسم المتجر باللغة الانجليزية' />
 
 												{storeNameError && (
@@ -293,7 +341,26 @@ const RegisterBox = () => {
 
 											<div>
 												<h5>البريد الإلكتروني</h5>
-												<input name='store_email' value={storeInfo?.store_email} onChange={handleStoreInfo} type='email' placeholder='atlbha@gmail.com' />
+												<input
+													type='email'
+													name='store_email'
+													value={storeInfo?.store_email}
+													onChange={handleStoreInfo}
+													placeholder='atlbha@gmail.com'
+													required
+													aria-invalid={validStoreEmail ? 'false' : 'true'}
+													aria-describedby='storeEmail'
+													onFocus={() => setStoreEmailFocus(true)}
+													onBlur={() => setStoreEmailFocus(true)}
+												/>
+												<p
+													id='email'
+													className={storeEmailFocus && storeInfo?.store_email && !validStoreEmail ? ' d-block wrong-text ' : 'd-none'}
+													style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
+												>
+													<MdErrorOutline className='ms-1' />
+													تأكد من ان البريد الالكتروني يتكون من حرف واحد او اكثر ويحتوي علي علامة الـ @
+												</p>
 												{storeEmailError && (
 													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'ltr' }}>
 														{storeEmailError}
@@ -386,11 +453,11 @@ const RegisterBox = () => {
 
 											<div className='phone'>
 												<h5>رقم الجوال</h5>
-												<input name='phonenumber' value={storeInfo?.phonenumber} onChange={handleStoreInfo} type='tel' placeholder='500000000' />
+												<input name='phonenumber' maxlength='13' value={storeInfo?.phonenumber} onChange={handleStoreInfo} type='tel' placeholder='500000000' style={{ direction: 'ltr' }} />
 											</div>
 											{phonenumberError && (
 												<span className='wrong-text w-100 d-flex justify-content-start' style={styles.phonenumberErrorStyle}>
-													{phonenumberError}
+													<MdErrorOutline /> {phonenumberError}
 												</span>
 											)}
 
@@ -517,7 +584,7 @@ const RegisterBox = () => {
 
 										<div className='phone'>
 											<h5>رقم الجوال</h5>
-											<input name='userphonenumber' value={ownerInfo?.userphonenumber} onChange={handleOwnerInfo} type='tel' placeholder='500000000' />
+											<input name='userphonenumber' maxlength='13' value={ownerInfo?.userphonenumber} onChange={handleOwnerInfo} type='tel' placeholder='500000000' style={{ direction: 'ltr' }} />
 										</div>
 										{userphonenumberError && (
 											<span
@@ -534,21 +601,58 @@ const RegisterBox = () => {
 
 										<div className='name'>
 											<h5>اسم المستخدم</h5>
-											<input name='user_name' value={ownerInfo?.user_name} onChange={handleOwnerInfo} type='text' />
+											<input
+												type='text'
+												name='user_name'
+												value={ownerInfo?.user_name}
+												onChange={handleOwnerInfo}
+												required
+												aria-invalid={validUserName ? 'false' : 'true'}
+												aria-describedby='uidnote'
+												onFocus={() => setUserNameFocus(true)}
+												onBlur={() => setUserNameFocus(true)}
+											/>
 											<span>
 												<SvgUser />
 											</span>
 										</div>
+										<p
+											id='uidnote'
+											className={userNameFocus && ownerInfo?.user_name && !validUserName ? ' d-block wrong-text ' : 'd-none'}
+											style={{ color: 'red', marginTop: '-20px', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px', width: 'min-content' }}
+										>
+											<MdErrorOutline className='ms-1' />
+											يجب ان يكون اسم المستخدم باللغة الانجليزية
+										</p>
 
 										{usernameError && (
-											<span className='wrong-text w-100' style={{ color: 'red', marginTop: '-20px', direction: 'ltr' }}>
+											<p className={'wrong-text w-100'} style={{ color: 'red', marginTop: '-20px', direction: 'ltr' }}>
 												{usernameError}
-											</span>
+											</p>
 										)}
 
 										<div>
 											<h5>البريد الإلكتروني</h5>
-											<input name='email' value={ownerInfo?.email} onChange={handleOwnerInfo} placeholder='atlbha@gmail.com' />
+											<input
+												type='email'
+												name='email'
+												value={ownerInfo?.email}
+												onChange={handleOwnerInfo}
+												placeholder='atlbha@gmail.com'
+												required
+												aria-invalid={validEmail ? 'false' : 'true'}
+												aria-describedby='email'
+												onFocus={() => setEmailFocus(true)}
+												onBlur={() => setEmailFocus(true)}
+											/>
+											<p
+												id='email'
+												className={emailFocus && ownerInfo?.email && !validEmail ? ' d-block wrong-text ' : 'd-none'}
+												style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
+											>
+												<MdErrorOutline className='ms-1' />
+												تأكد من ان البريد الالكتروني يتكون من حرف واحد او اكثر ويحتوي علي علامة الـ @
+											</p>
 											{emailError && (
 												<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 													{emailError}
@@ -669,7 +773,26 @@ const RegisterBox = () => {
 
 											<div>
 												<h5>البريد الإلكتروني</h5>
-												<input name='email' value={ownerInfo?.email} onChange={handleOwnerInfo} type='email' placeholder='atlbha@gmail.com' />
+												<input
+													name='email'
+													value={ownerInfo?.email}
+													onChange={handleOwnerInfo}
+													type='email'
+													placeholder='atlbha@gmail.com'
+													required
+													aria-invalid={validEmail ? 'false' : 'true'}
+													aria-describedby='email'
+													onFocus={() => setEmailFocus(true)}
+													onBlur={() => setEmailFocus(true)}
+												/>
+												<p
+													id='email'
+													className={emailFocus && ownerInfo?.email && !validEmail ? ' d-block wrong-text ' : 'd-none'}
+													style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
+												>
+													<MdErrorOutline className='ms-1' />
+													تأكد من ان البريد الالكتروني يتكون من حرف واحد او اكثر ويحتوي علي علامة الـ @
+												</p>
 												{emailError && (
 													<span className='wrong-text w-100' style={{ color: 'red', direction: 'ltr' }}>
 														{emailError}
@@ -679,7 +802,7 @@ const RegisterBox = () => {
 
 											<div className='phone'>
 												<h5>رقم الجوال</h5>
-												<input name='phonenumber' value={storeInfo?.phonenumber} onChange={handleStoreInfo} type='tel' placeholder='500000000 ' />
+												<input name='phonenumber' maxlength='13' value={storeInfo?.phonenumber} onChange={handleStoreInfo} type='tel' placeholder='500000000' style={{ direction: 'ltr' }} />
 											</div>
 											{phonenumberError && (
 												<span
@@ -832,7 +955,7 @@ const RegisterBox = () => {
 				</div>
 			</div>
 			{/** terms modal*/}
-			<TermsModal show={showTermsModal} closeModal={()=>setShowTermsModal(false)} />
+			<TermsModal show={showTermsModal} closeModal={() => setShowTermsModal(false)} />
 		</>
 	);
 };

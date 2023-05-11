@@ -389,7 +389,7 @@
 	position: relative;
 }
 
-.register-box .all-1 .user-form div.phone::before {
+/* .register-box .all-1 .user-form div.phone::before {
 	content: '996';
 	position: absolute;
 	color: var(--black-color-01);
@@ -400,7 +400,7 @@
 	height: 20px;
 	bottom: 20px;
 	left: 20px;
-}
+} */
 
 .register-box .all-1 .owner-form {
 	width: 100%;
@@ -455,7 +455,7 @@
 	font-weight: var(--font-weight-02);
 }
 
-.register-box .all-1 .owner-form form div.phone::before {
+/* .register-box .all-1 .owner-form form div.phone::before {
 	content: '996';
 	position: absolute;
 	color: var(--black-color-01);
@@ -466,7 +466,7 @@
 	height: 20px;
 	bottom: 20px;
 	left: 20px;
-}
+} */
 
 .register-box .all-1 .owner-form form div.name span {
 	position: absolute;
@@ -842,7 +842,7 @@
 	position: relative;
 }
 
-.register-box .all-2 .user-form div.phone::before {
+/* .register-box .all-2 .user-form div.phone::before {
 	content: '996';
 	position: absolute;
 	color: var(--black-color-01);
@@ -853,7 +853,7 @@
 	height: 20px;
 	bottom: 20px;
 	left: 20px;
-}
+} */
 
 .register-box .all-2 .owner-form {
 	width: 100%;

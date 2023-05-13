@@ -482,7 +482,6 @@
 	justify-content: start;
 	flex-direction: column;
 	width: 100%;
-
 }
 
 .register-box .all-1 .owner-form .box-pay .top {
@@ -524,6 +523,10 @@
 	width: 100%;
 	background-color: var(--font-color-02);
 	margin: 20px 0;
+}
+.register-box .all-1 .owner-form .box-pay button:disabled,
+.bt-main:disabled {
+	cursor: not-allowed !important;
 }
 
 .register-box .all-1 .owner-form .box-pay ul {
@@ -1060,9 +1063,6 @@
 	.all-content.show {
 		height: max-content !important;
 	}
-	
-	
 }
 
-	/* ======================= */
-
+/* ======================= */

@@ -7,13 +7,16 @@ import axios from 'axios';
 import { useCookies } from 'react-cookie';
 
 const SignInBox = () => {
+	const navigate = useNavigate();
 	const [cookies, setCookie] = useCookies(['access_token']);
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');
+	const [rememberMe, setRememberMe] = useState(false);
+
+	// to handle errors 
 	const [usernameError, setUsernameError] = useState('');
 	const [passwordError, setPasswordError] = useState('');
 	const [error, setError] = useState('');
-	const navigate = useNavigate();
 
 	const Login = () => {
 		setError('');
@@ -26,6 +29,12 @@ const SignInBox = () => {
 		axios.post('https://backend.atlbha.com/api/loginapi', data).then((res) => {
 			if (res?.data?.success === true && res?.data?.data?.status === 200) {
 				setCookie('access_token', res?.data?.data?.token, { domain: 'atlbha.com', path: '/' });
+
+				if (rememberMe) {
+					setCookie('remember_me', 'true', { maxAge: 30 * 24 * 60 * 60 }); // Set cookie to expire in 30 days
+				} else {
+					setCookie('remember_me', 'false', { maxAge: 0 }); // Remove the cookie
+				}
 				
 				<Navigate to='/' />;
 				// window.location.href = 'http://store.atlbha.com'; // url dashboard tajer
@@ -66,7 +75,7 @@ const SignInBox = () => {
 						<div className='top'>
 							<div className='check'>
 								<div className='form-check'>
-									<input className='form-check-input' type='checkbox' defaultValue='' id='flexCheckDefault' />
+									<input className='form-check-input' type='checkbox' id='flexCheckDefault' value={rememberMe} onChange={(e) => setRememberMe(e.target.checked)} />
 								</div>
 								<h6>تذكرني</h6>
 							</div>

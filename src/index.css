@@ -1,215 +1,207 @@
 :root {
-    /* Colors: */
-    --main-color-2: #0077ff;
-    --main-color-03: #0099fb;
-    --black-color-01: #011723;
-    --font-color-08: ##bebebe;
-    --font-color-07: #02466a1a;
-    --font-color-06: #eff9ff;
-    --font-color-05: #67747b;
-    --font-color-04: #fafafa;
-    --font-color-03: #adb5b9;
-    --font-color-02: #02466a;
-    --main-color-01: #1dbbbe;
-    --font-color-default: #fff;
-    --font-color-01: #8a9191;
-    --default-color-01: #b6be34;
-    --back-color-01: #f7fcff;
-    --back-color-02: #1dbbbe1a;
-    --back-color-03: #02466a0a;
-    --back-color-04: #f4f5f7;
-    --back-color-05: #f2f5f6;
-    --back-color-06: #adb5b919;
-    --back-color-06: #f5f8f9;
+	/* Colors: */
+	--main-color-2: #0077ff;
+	--main-color-03: #0099fb;
+	--black-color-01: #011723;
+	--font-color-08: ##bebebe;
+	--font-color-07: #02466a1a;
+	--font-color-06: #eff9ff;
+	--font-color-05: #67747b;
+	--font-color-04: #fafafa;
+	--font-color-03: #adb5b9;
+	--font-color-02: #02466a;
+	--main-color-01: #1dbbbe;
+	--font-color-default: #fff;
+	--font-color-01: #8a9191;
+	--default-color-01: #b6be34;
+	--back-color-01: #f7fcff;
+	--back-color-02: #1dbbbe1a;
+	--back-color-03: #02466a0a;
+	--back-color-04: #f4f5f7;
+	--back-color-05: #f2f5f6;
+	--back-color-06: #adb5b919;
+	--back-color-06: #f5f8f9;
 
-    --box-shadow-01: 0px 3px 6px #0000000f;
-    --box-shadow-02: 3px 3px 6px #0000000a;
+	--box-shadow-01: 0px 3px 6px #0000000f;
+	--box-shadow-02: 3px 3px 6px #0000000a;
 
-    /* Font/text values */
-    --font-size-15: 15px;
-    --font-size-16: 16px;
-    --font-size-18: 18px;
-    --font-size-20: 20px;
-    --font-size-22: 22px;
-    --font-size-24: 24px;
-    --font-size-28: 28px;
-    --font-size-32: 32px;
-    --font-size-38: 38px;
-    --font-size-48: 48px;
-    --font-size-54: 54px;
-    --font-size-84: 84px;
-    --font-size-94: 94px;
-    --main-border-radius-01: 32px;
-    --main-border-radius-02: 8px;
-    --main-border-radius-16: 16px;
-    --main-border-radius-17: 17px;
-    --main-border-radius-04: 04px;
-    --font-weight-01: 300;
-    --font-weight-02: 400;
-    --font-weight-03: 500;
-    --font-weight-04: 600;
-    --font-weight-05: 700;
+	/* Font/text values */
+	--font-size-15: 15px;
+	--font-size-16: 16px;
+	--font-size-18: 18px;
+	--font-size-20: 20px;
+	--font-size-22: 22px;
+	--font-size-24: 24px;
+	--font-size-28: 28px;
+	--font-size-32: 32px;
+	--font-size-38: 38px;
+	--font-size-48: 48px;
+	--font-size-54: 54px;
+	--font-size-84: 84px;
+	--font-size-94: 94px;
+	--main-border-radius-01: 32px;
+	--main-border-radius-02: 8px;
+	--main-border-radius-16: 16px;
+	--main-border-radius-17: 17px;
+	--main-border-radius-04: 04px;
+	--font-weight-01: 300;
+	--font-weight-02: 400;
+	--font-weight-03: 500;
+	--font-weight-04: 600;
+	--font-weight-05: 700;
 
-    /* ========================================== */
-    /* --unnamed-character-spacing-0: 0px;
-  --unnamed-character-spacing-0-2: 0.2px;
-  --unnamed-character-spacing-0-28: 0.28px;
-  --unnamed-character-spacing-0-22: 0.22px;
-  --unnamed-line-spacing-28: 28px;
-  --unnamed-line-spacing-29: 29px;
-  --unnamed-line-spacing-42: 42px;
-  --unnamed-line-spacing-53: 53px;
-  --unnamed-line-spacing-80: 80px; */
-    --transition: ease 0.3s;
-    --main-padding-top: 45px;
-    --main-padding-bottom: 45px;
+	--transition: ease 0.3s;
+	--main-padding-top: 45px;
+	--main-padding-bottom: 45px;
 }
 
 @media (max-width: 1450px) {
-    :root {
-        --font-size-84: 48px;
-        --font-size-94: 65px;
-    }
+	:root {
+		--font-size-84: 48px;
+		--font-size-94: 65px;
+	}
 }
 @media (max-width: 992px) {
-    :root {
-        --font-size-15: 15px;
-        --font-size-16: 16px;
-        --font-size-18: 18px;
-        --font-size-20: 20px;
-        --font-size-24: 20px;
-        --font-size-28: 24px;
-        --font-size-32: 28px;
-        --font-size-38: 26px;
-        --font-size-48: 28px;
-        --font-size-54: 36px;
-        --font-size-84: 45px;
-        --font-size-94: 54px;
-        --main-padding-top: 20px;
-        --main-padding-bottom: 20px;
-    }
-    .bt-main {
-        padding: 8px 20px;
-    }
+	:root {
+		--font-size-15: 15px;
+		--font-size-16: 16px;
+		--font-size-18: 18px;
+		--font-size-20: 20px;
+		--font-size-24: 20px;
+		--font-size-28: 24px;
+		--font-size-32: 28px;
+		--font-size-38: 26px;
+		--font-size-48: 28px;
+		--font-size-54: 36px;
+		--font-size-84: 45px;
+		--font-size-94: 54px;
+		--main-padding-top: 20px;
+		--main-padding-bottom: 20px;
+	}
+	.bt-main {
+		padding: 8px 20px;
+	}
 }
 @media (max-width: 390px) {
-    :root {
-        --font-size-15: 14px;
-        --font-size-16: 15px;
-        --font-size-18: 17px;
-        --font-size-20: 18px;
-        --font-size-22: 20px;
-        --font-size-24: 22px;
-        --font-size-28: 24px;
-        --font-size-32: 25px;
-        --font-size-38: 26px;
-        --font-size-48: 28px;
-        --font-size-54: 36px;
-        --font-size-84: 45px;
-        --font-size-94: 48px;
-    }
-    .bt-main {
-        padding: 7px 17px;
-    }
+	:root {
+		--font-size-15: 14px;
+		--font-size-16: 15px;
+		--font-size-18: 17px;
+		--font-size-20: 18px;
+		--font-size-22: 20px;
+		--font-size-24: 22px;
+		--font-size-28: 24px;
+		--font-size-32: 25px;
+		--font-size-38: 26px;
+		--font-size-48: 28px;
+		--font-size-54: 36px;
+		--font-size-84: 45px;
+		--font-size-94: 48px;
+	}
+	.bt-main {
+		padding: 7px 17px;
+	}
 }
 /* ================================global================================== */
 
-
 body {
-    background-color: var(--back-color-03) !important;
-    /* background-color: #02466A0A !important; */
-    overflow: auto;
-    min-height: 100vh;
+	background-color: var(--back-color-03) !important;
+	/* background-color: #02466A0A !important; */
+	overflow: auto;
+	min-height: 100vh;
 }
 
 img {
-    max-width: 100%;
+	max-width: 100%;
 }
 
 a {
-    text-decoration: none !important;
+	text-decoration: none !important;
 }
-
-@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap");
+input,
+input:focus,
+input:hover {
+	all: unset;
+}
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap');
 
 * {
-    font-family: "Tajawal", sans-serif !important;
-    box-sizing: border-box !important;
-    scroll-behavior: smooth !important;
+	font-family: 'Tajawal', sans-serif !important;
+	box-sizing: border-box !important;
+	scroll-behavior: smooth !important;
 }
 
 ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 .bt-main {
-    all: unset;
-    cursor: pointer;
-    padding: 10px 30px;
-    border-radius: var(--main-border-radius-01);
-    color: var(--back-color-01);
-    font-size: var(--font-size-24);
-    font-weight: var(--font-weight-03);
-    letter-spacing: 0.1px;
-    white-space: nowrap;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+	all: unset;
+	cursor: pointer;
+	padding: 10px 30px;
+	border-radius: var(--main-border-radius-01);
+	color: var(--back-color-01);
+	font-size: var(--font-size-24);
+	font-weight: var(--font-weight-03);
+	letter-spacing: 0.1px;
+	white-space: nowrap;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .p-main {
-    padding-top: var(--main-padding-top);
-    padding-bottom: var(--main-padding-bottom);
+	padding-top: var(--main-padding-top);
+	padding-bottom: var(--main-padding-bottom);
 }
 
-
 @media (min-width: 1400px) {
-    .container,
-    .container-lg,
-    .container-md,
-    .container-sm,
-    .container-xl,
-    .container-xxl {
-        max-width: 1440px !important;
-    }
+	.container,
+	.container-lg,
+	.container-md,
+	.container-sm,
+	.container-xl,
+	.container-xxl {
+		max-width: 1440px !important;
+	}
 }
 
 .app {
-    max-width: 1920px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto;
+	max-width: 1920px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 auto;
 }
 
 body ul.MuiList-root {
-    max-height: 300px;
+	max-height: 300px;
 }
 body div::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+	width: 5px;
+	height: 5px;
 }
 
 ::-webkit-scrollbar-track {
-    background-color: var(--font-color-default);
+	background-color: var(--font-color-default);
 }
 
 ::-webkit-scrollbar-thumb {
-    background-color: var( --main-color-01);
-    border-radius: 30px;
+	background-color: var(--main-color-01);
+	border-radius: 30px;
 }
 html::-webkit-scrollbar {
-    width: 10px !important;
-    height: 5px;
+	width: 10px !important;
+	height: 5px;
 }
 
 html::-webkit-scrollbar-track {
-    background-color: var(--font-color-default);
+	background-color: var(--font-color-default);
 }
 
 html::-webkit-scrollbar-thumb {
-    background-color: var(--main-color-01);
-    border-radius: 30px;
+	background-color: var(--main-color-01);
+	border-radius: 30px;
 }

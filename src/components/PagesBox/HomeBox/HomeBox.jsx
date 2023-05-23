@@ -3,75 +3,98 @@ import './HomeBox.css';
 import { ProductSwiper, ReviewSwiper, PartnerSwiper, LoadingBox, NotFoundData } from '../../index';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
-import { IoIosArrowDown } from 'react-icons/io';
-
-import { MainTitle } from '../../index';
-import { AiOutlineSearch } from 'react-icons/ai';
-import { HiOutlineArrowNarrowLeft } from 'react-icons/hi';
-// import { Svghand } from "react-icons/tb";
-import { IoCheckmarkSharp } from 'react-icons/io5';
 
 // ===============Data================
 import Media from 'react-media';
+
 // ===============Icon================
 import { ReactComponent as Svghand } from '../../../assets/Icons/icon-touch hand-36.svg';
 import { ReactComponent as SvgVideo } from '../../../assets/Icons/ico - 24 - audiovisual - play_circle_outlined.svg';
 import { ReactComponent as Svghappy } from '../../../assets/Icons/icon-38-happy emojy.svg';
 import { ReactComponent as Svgemojy2 } from '../../../assets/Icons/icon-38-emojy2.svg';
 import { ReactComponent as Svgemojy } from '../../../assets/Icons/icon-38-emojy.svg';
+import { IoIosArrowDown } from 'react-icons/io';
+import { MainTitle } from '../../index';
+import { AiOutlineSearch } from 'react-icons/ai';
+import { HiOutlineArrowNarrowLeft } from 'react-icons/hi';
+import { IoCheckmarkSharp } from 'react-icons/io5';
+
 // ===============Img================
 import featuresIMG from '../../../assets/Img/IMG_3541-removebg-preview.png';
 import GroupIMG from '../../../assets/Img/Group 1432.png';
+
 // ===============redux================
 import { useDispatch, useSelector } from 'react-redux';
 import { VideoThunk } from '../../../RTK/Thunk/VideoThunk';
 import { storeFilterAction, storeChangeSlice } from '../../../RTK/Reducer/HomeReducer';
 import { useNavigate } from 'react-router-dom';
 import { HomeThunk } from '../../../RTK/Thunk/HomeThunk';
+
 const HomeBox = () => {
 	let dispatch = useDispatch();
 	let navigate = useNavigate();
-
 	const shouldData = useRef(true);
 
 	useEffect(() => {
 		if (shouldData.current) {
 			dispatch(VideoThunk());
 			dispatch(HomeThunk());
+
 			// ===========
 			shouldData.current = false;
 		}
 	}, [dispatch]);
-	let [getTypePackage, setTypePackage] = useState(true);
-	// ===========
-	let { productsHome, homeLoadingData, storesHome, commentHome, partnersHome, homeAllData, packagesHome, StoreCities, StoreActivities } = useSelector((state) => state.HomeReducer);
-	// ===========
+	const [getTypePackage, setTypePackage] = useState(true);
 
-	console.log(storesHome);
+	// =================
+	let { productsHome, homeLoadingData, storesHome, commentHome, partnersHome, homeAllData, packagesHome, StoreCities, StoreActivities,  } = useSelector((state) => state.HomeReducer);
+	// =================
+	// let { productsHome, homeLoadingData, storesHome, commentHome, partnersHome, homeAllData, packagesHome, StoreCities, StoreActivities, StoreNames } = useSelector((state) => state.HomeReducer);
 
+	// ========================
 	let { videoData } = useSelector((state) => state.VideoReducer);
 
-	// =======================
-	let [getFilterStores, setFilterStores] = useState({ Type: '', Cities: '' });
+	// ===================================
+	const [getFilterStores, setFilterStores] = useState({ Type: '', Cities: '' });
+	// const [getFilterStores, setFilterStores] = useState({ Type: '', Cities: '', storeName: '' });
+	const [getMedia, setMedia] = useState('');
 
-	let [getMedia, setMedia] = useState('');
 	let changeMedia = (e) => {
 		e?.small ? setMedia('small') : setMedia('large');
 	};
 
 	let filterStores = (e) => {
 		e.preventDefault();
-		if (getFilterStores.Cities && getFilterStores.Type) {
-			dispatch(storeFilterAction({ cities: getFilterStores.Cities, Type: getFilterStores.Type }));
+		if (getFilterStores?.Cities && getFilterStores?.Type) {
+			dispatch(
+				storeFilterAction({
+					cities: getFilterStores?.Cities,
+					Type: getFilterStores?.Type,
+				})
+			);
 		}
 	};
+
+	// let filterStores = (e) => {
+	// 	e.preventDefault();
+	// 	if (getFilterStores?.Cities && getFilterStores?.Type && getFilterStores?.storeName) {
+	// 		dispatch(
+	// 			storeFilterAction({
+	// 				cities: getFilterStores?.Cities,
+	// 				Type: getFilterStores?.Type,
+	// 				storeName: getFilterStores?.storeName,
+	// 			})
+	// 		);
+	// 	}
+	// };
+
 	useEffect(() => {
 		dispatch(storeChangeSlice(getMedia));
 	}, [getMedia, dispatch]);
 
 	return (
 		<>
-			{/* =============media============== */}
+			{/* ================= media ========================= */}
 			<Media
 				queries={{
 					small: '(max-width: 599px)',
@@ -80,7 +103,8 @@ const HomeBox = () => {
 					changeMedia(e);
 				}}
 			/>
-			{/* =============media============== */}
+
+			{/* ============= media ============== */}
 			<div className='hero' style={{ backgroundImage: `url(${homeAllData?.slider1})` }}>
 				<div className='container'>
 					<h2>أهلاً بك في منصة اطلبها</h2>
@@ -198,6 +222,41 @@ const HomeBox = () => {
 										: null}
 								</Select>
 							</div>
+							{/*
+						<div className='w-100 rounded-2 bg-white d-flex justify-content-center align-items-center '>
+								<Select
+									sx={{
+										'& .MuiOutlinedInput-notchedOutline': {
+											border: 'none',
+										},
+									}}
+									value={getFilterStores.storeName}
+									className='select-mu'
+									onChange={(e) => {
+										setFilterStores({ ...getFilterStores, storeName: e.target.value });
+									}}
+									IconComponent={IoIosArrowDown}
+									displayEmpty
+									renderValue={(selected) => {
+										if (getFilterStores.storeName === '') {
+											return <>اسم المتجر</>;
+										}
+										return selected;
+									}}
+								>
+									{StoreNames.length
+										? StoreNames.map((el) => {
+												return (
+													<MenuItem value={el.store_name} key={el.id}>
+														{el.store_name}
+													</MenuItem>
+												);
+										  })
+										: null}
+								</Select>
+							</div>
+						*/}
+
 							<button type='submit'>
 								تأكيد
 								<span>

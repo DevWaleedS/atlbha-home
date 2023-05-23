@@ -79,23 +79,34 @@ const Header = () => {
 								<button>
 									<SearchIcon />
 								</button>
-								<Form.Control type='search' placeholder='ادخل كلمه البحث' className='me-2' aria-label='Search' />
+								<Form.Control type='search' placeholder=' البحث في الصفحة الرئيسية' className='me-2' aria-label='Search' />
 							</Form>
 							<Nav className='me-auto my-2 my-lg-0' navbarScroll>
 								<Link to={'/'} onClick={() => setActiveLink(`التسجيل`)}>
 									الرئيسية
 								</Link>
-
-								<Link  to={'/'} className={activeLink === 'السوق' ? 'active' : ''} onClick={() => setActiveLink(`السوق`)}>
-									السوق
+								<Link to={'/'} className={activeLink === 'خدماتنا' ? 'active' : ''} onClick={() => setActiveLink(`خدماتنا`)}>
+									خدماتنا
 								</Link>
 
-								<Link to={'/blog'} className={activeLink === 'المدونة' ? 'active' : ''} onClick={() => setActiveLink(`المدونة`)}>
-									المدونة
+								<Link to={'/'} className={activeLink === 'الاكاديمية ' ? 'active' : ''} onClick={() => setActiveLink(`الاكاديمية `)}>
+									الاكاديمية
+								</Link>
+
+								<Link to={'/'} className={activeLink === 'الرحلات التجارية ' ? 'active' : ''} onClick={() => setActiveLink(`الرحلات التجارية `)}>
+									الرحلات التجارية
 								</Link>
 
 								<Link to={'/start'} className={activeLink === 'كيف أبدأ' ? 'active' : ''} onClick={() => setActiveLink(`كيف أبدأ`)}>
 									كيف أبدأ
+								</Link>
+
+								<Link to={'/'} className={activeLink === 'البراند التجاري' ? 'active' : ''} onClick={() => setActiveLink(` `)}>
+									البراند التجاري
+								</Link>
+
+								<Link to={'/blog'} className={activeLink === 'مقالات' ? 'active' : ''} onClick={() => setActiveLink(`مقالات`)}>
+									مقالات
 								</Link>
 
 								{cookies.access_token ? (

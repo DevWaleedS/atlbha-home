@@ -63,8 +63,9 @@
 }
 
 .swiper-product .box .content .info span {
+
   padding: 4px 8px;
-  background-color: var(--black-color-01);
+  background-color: var(--font-color-02);
   width: 80px;
   border-radius: var(--main-border-radius-02);
   display: flex;
@@ -73,6 +74,10 @@
   color: var(--font-color-default);
   font-weight: 500;
   font-size: var(--font-size-18);
+  -webkit-border-radius: var(--main-border-radius-02);
+  -moz-border-radius: var(--main-border-radius-02);
+  -ms-border-radius: var(--main-border-radius-02);
+  -o-border-radius: var(--main-border-radius-02);
 }
 
 
@@ -80,4 +85,5 @@
 
   font-weight: 900;
   font-size: var(--font-size-20);
+  color: var(--black-color-01)
 }

@@ -117,7 +117,7 @@
 }
 
 
-@media (max-width: 375px) {
+@media (max-width: 414px) {
 	.my_hero_swiper_slide {
 		background-size: contain !important;
 		height: 94px !important;

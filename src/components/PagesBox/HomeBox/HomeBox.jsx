@@ -98,6 +98,7 @@ const HomeBox = () => {
 	// 	}
 	// };
 
+
 	useEffect(() => {
 		dispatch(storeChangeSlice(getMedia));
 	}, [getMedia, dispatch]);
@@ -123,16 +124,10 @@ const HomeBox = () => {
 					modules={[Pagination]}
 					className='my_hero_swiper'
 				>
-					<SwiperSlide
-						className='my_hero_swiper_slide'
-						style={{
-							'background-image': `url(${homeAllData?.slider1})`,
-							'background-size': 'cover',
-							'background-position': 'center',
-							backgroundRepeat: 'no-repeat',
-							height: '480px',
-						}}
-					>
+					<SwiperSlide className='my_hero_swiper_slide'>
+						<div className='swiper_image'>
+							<img src={homeAllData?.slider1} alt='...' />
+						</div>
 						<div className='container'>
 							<h2>أهلاً بك في منصة اطلبها</h2>
 							<h3>انضم الان الى منصة التجارة الالكترونية المتكاملة</h3>
@@ -147,28 +142,10 @@ const HomeBox = () => {
 						</div>
 					</SwiperSlide>
 
-					<SwiperSlide
-						className='my_hero_swiper_slide'
-						style={{
-							'background-image': `url(${homeAllData?.slider2})`,
-							'background-size': 'cover',
-							'background-position': 'center',
-							backgroundRepeat: 'no-repeat',
-							height: '480px',
-						}}
-					>
-						{/*	<div className='container'>
-							<h2>أهلاً بك في منصة اطلبها</h2>
-							<h3>انضم الان الى منصة التجارة الالكترونية المتكاملة</h3>
-							<button
-								className='bt-main'
-								onClick={() => {
-									navigate('/register/merchant');
-								}}
-							>
-								التسجيل
-							</button>
-						</div>*/}
+					<SwiperSlide className='my_hero_swiper_slide'>
+						<div className='swiper_image'>
+							<img src={homeAllData?.slider2} alt='...' />
+						</div>
 					</SwiperSlide>
 				</Swiper>
 			</div>

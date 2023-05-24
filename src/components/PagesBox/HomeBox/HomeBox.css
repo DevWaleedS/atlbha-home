@@ -1,23 +1,12 @@
 /* ===============start-hero=================== */
 
-/* .hero {
-	position: relative;
-	height: 480px;
+.my_hero_swiper {
 	width: 100%;
-	margin-bottom: 20px;
-	-webkit-background-size: cover;
-	background-size: cover;
-	background-position: center;
-} */
+	height: 100%;
+}
 
 .my_hero_swiper_slide {
-	/* background-size: cover !important;
-	background-position: center;
-	background-repeat: no-repeat ; */
-	/* width: 100% !important;
-	height: 480px; */
 	text-align: center;
-	font-size: 18px;
 	background: #fff;
 	/* Center slide text vertically */
 	display: flex;
@@ -26,11 +15,6 @@
 	position: relative;
 	left: 0;
 	top: 0;
-}
-
-.my_hero_swiper {
-	width: 100%;
-	height: 100%;
 }
 
 .swiper-pagination-bullet {
@@ -46,9 +30,19 @@
 .swiper-pagination-bullet-active {
 	background-color: #fff !important;
 }
+.my_hero_swiper .swiper_image {
+	height: 480px;
+}
+
+.my_hero_swiper .swiper_image img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	object-position: center;
+}
 
 .hero .container {
-	position: relative;
+	position: absolute;
 	z-index: 5;
 	height: 80%;
 	display: flex;
@@ -83,31 +77,29 @@
 	padding: 6px 60px;
 }
 
+
 @media (max-width: 768px) {
-	.my_hero_swiper_slide {
-		background-size: contain !important;
-		height: 192px !important;
+	.my_hero_swiper .swiper_image{
+		height: 320px;
 	}
+	
+	
 	.hero .container {
-		position: relative;
-		top: -15px;
-		z-index: 5;
-		height: 100%;
+		height: 70%;
 	}
 
 	.hero .container h2 {
 		color: var(--back-color-01);
 		font-weight: bold;
-		font-size: var(--font-size-18);
+		font-size: var(--font-size-28);
 		margin-bottom: 20px;
 	}
 
 	.hero .container h3 {
 		color: var(--back-color-01);
 		font-weight: var(--font-weight-03);
-		font-size: var(--font-size-16);
+		font-size: var(--font-size-18);
 		margin-bottom: 40px;
-		
 	}
 
 	.hero .container button {
@@ -116,60 +108,27 @@
 	}
 }
 @media (max-width: 414px) {
-	.my_hero_swiper_slide {
-		background-size: contain !important;
-		height: 105px !important;
-	}
-	.hero .container {
-		position: relative;
-		top:-22px;
-		z-index: 5;
-		height: 100%;
-	}
-
-	.hero .container h2 {
-		color: var(--back-color-01);
-		font-weight: 400;
-		font-size: var(--font-size-18);
-		margin-bottom: 4px;
-	}
 
 	.hero .container h3 {
-		color: var(--back-color-01);
-		font-weight: 300;
-		font-size: var(--font-size-16);
-		margin-bottom: 0px;
-		
+		margin-bottom: 20px;
 	}
-
-	.hero .container button {
-		padding: 5px 15px;
-		font-size: var(--font-size-16);
-		    bottom: -10px;
-	}
+	
 
 	.swiper-pagination-bullet {
-	width: 7px;
-	height: 7px;
+		width: 7px;
+		height: 7px;
 
-	border: 1px solid #fff;
-	
-}
-.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
-    bottom: 2px;
-   
-}
-}
-
-@media (max-width: 375px) {
-	.my_hero_swiper_slide {
-		background-size: contain !important;
-		height: 94px !important;
+		border: 1px solid #fff;
 	}
-	
-
-
+	.swiper-horizontal > .swiper-pagination-bullets,
+	.swiper-pagination-bullets.swiper-pagination-horizontal,
+	.swiper-pagination-custom,
+	.swiper-pagination-fraction {
+		bottom: 2px;
+	}
 }
+
+
 
 /* ===============end-hero=================== */
 /* ===============start-outstanding-products=================== */

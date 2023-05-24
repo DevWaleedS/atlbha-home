@@ -137,15 +137,17 @@ const HomeBox = () => {
 					*/}
 				</div>
 				<div className='box-left' style={{ backgroundImage: `url(${homeAllData?.banar2})` }}>
-					<div className='container'>
+					{/**
+				<div className='container'>
 						<h4> شركات شحن متعددة</h4>
 					</div>
+				*/}
 				</div>
 			</div>
 
 			<div className='stores-info p-main'>
 				<div className='container'>
-					<div className='header flex-column flex-md-row gap-md-3 '>
+					<div className='header flex-column flex-md-row gap-4 '>
 						<MainTitle text={'المتاجر '} />
 						<form
 							action=''
@@ -301,10 +303,9 @@ const HomeBox = () => {
 			{/* =========================== */}
 			<div className='trade-info p-main'>
 				<div className='box' style={{ backgroundImage: `url(${homeAllData?.banar3})` }}>
-					{/*
-				<div className='container'>
-						<h4>نحن بوابتك لعالم التجارة الإلكترونية</h4>
-						<h5>انشئ متجرك وتمتع بالتجربة المجانية</h5>
+					<div className='container'>
+						<h4>رحلة تجارية إلى الصين</h4>
+						<h5 style={{color:'#B6BE34'}}>مدة الرحلة 5 أيام</h5>
 						<button
 							className='bt-main'
 							onClick={() => {
@@ -314,7 +315,6 @@ const HomeBox = () => {
 							التسجيل
 						</button>
 					</div>
-				*/}
 				</div>
 			</div>
 			{/* =========================== */}

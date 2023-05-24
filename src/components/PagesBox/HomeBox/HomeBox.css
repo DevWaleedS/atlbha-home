@@ -9,7 +9,7 @@
 	height: 480px;
 	width: 100%;
 	/* padding-bottom: var(--main-margin-bottom); */
-	margin-bottom: 40px;
+	margin-bottom: 20px;
 }
 
 .hero::before {
@@ -141,6 +141,7 @@
 	flex: 1;
 	height: 100%;
 	background-image: url('../../../assets/Img/pachege-2.png');
+
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -387,7 +388,7 @@
 	background-position: center;
 	background-size: cover;
 	background-repeat: no-repeat;
-	height: 530px;
+	height: 340px;
 	width: 100%;
 }
 
@@ -443,13 +444,17 @@
 		padding-top: 0;
 		padding-bottom: 0;
 	}
+	.trade-info .container {
+		height: 80%;
+	}
 
 	.trade-info .container h4 {
 		font-size: var(--font-size-38);
 	}
 	.trade-info .box {
-		height: 272px;
-		background-size: contain;
+		background: round;
+		min-height: 100%;
+
 	}
 }
 
@@ -907,6 +912,7 @@
 @media (max-width: 768px) {
 	.box-information .box-right,
 	.box-information .box-left {
-		min-height: 180px;
+		background: round;
+		min-height: 100%;
 	}
 }

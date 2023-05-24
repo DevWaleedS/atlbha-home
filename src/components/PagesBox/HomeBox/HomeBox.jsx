@@ -68,6 +68,7 @@ const HomeBox = () => {
 	const [getFilterStores, setFilterStores] = useState({ Type: '', Cities: '' });
 	// const [getFilterStores, setFilterStores] = useState({ Type: '', Cities: '', storeName: '' });
 	const [getMedia, setMedia] = useState('');
+	const [storeName, setStoreName] = useState('');
 
 	let changeMedia = (e) => {
 		e?.small ? setMedia('small') : setMedia('large');
@@ -97,7 +98,6 @@ const HomeBox = () => {
 	// 		);
 	// 	}
 	// };
-
 
 	useEffect(() => {
 		dispatch(storeChangeSlice(getMedia));
@@ -290,6 +290,14 @@ const HomeBox = () => {
 								</Select>
 							</div>
 						*/}
+
+							<div className='search_input_box w-100 justify-content-center align-items-center bg-white rounded-2 ' style={{ height: '45px' }}>
+								<div className='d-flex justify-content-center align-items-center ' style={{ width: '50px', height: '45px' }}>
+									<AiOutlineSearch style={{ color: '#b6be34', width: '22px', height: '22px' }} />
+								</div>
+
+								<input className='w-100' type='text' placeholder='ابحث باسم المتجر' value={storeName} onChange={(e) => setStoreName(e.target.value)} />
+							</div>
 
 							<button type='submit'>
 								تأكيد

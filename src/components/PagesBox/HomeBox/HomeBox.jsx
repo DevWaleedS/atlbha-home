@@ -4,6 +4,16 @@ import { ProductSwiper, ReviewSwiper, PartnerSwiper, LoadingBox, NotFoundData } 
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 
+// Import Swiper React components
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+// import required modules
+import { Pagination } from 'swiper';
+
 // ===============Data================
 import Media from 'react-media';
 
@@ -47,7 +57,7 @@ const HomeBox = () => {
 	const [getTypePackage, setTypePackage] = useState(true);
 
 	// =================
-	let { productsHome, homeLoadingData, storesHome, commentHome, partnersHome, homeAllData, packagesHome, StoreCities, StoreActivities,  } = useSelector((state) => state.HomeReducer);
+	let { productsHome, homeLoadingData, storesHome, commentHome, partnersHome, homeAllData, packagesHome, StoreCities, StoreActivities } = useSelector((state) => state.HomeReducer);
 	// =================
 	// let { productsHome, homeLoadingData, storesHome, commentHome, partnersHome, homeAllData, packagesHome, StoreCities, StoreActivities, StoreNames } = useSelector((state) => state.HomeReducer);
 
@@ -105,20 +115,62 @@ const HomeBox = () => {
 			/>
 
 			{/* ============= media ============== */}
-			<div className='hero' style={{ backgroundImage: `url(${homeAllData?.slider1})` }}>
-				<div className='container'>
-					<h2>أهلاً بك في منصة اطلبها</h2>
-					<h3>انضم الان الى منصة التجارة الالكترونية المتكاملة</h3>
-					<button
-						className='bt-main'
-						onClick={() => {
-							navigate('/register/merchant');
+			<div className='hero'>
+				<Swiper
+					pagination={{
+						dynamicBullets: true,
+					}}
+					modules={[Pagination]}
+					className='my_hero_swiper'
+				>
+					<SwiperSlide
+						className='my_hero_swiper_slide'
+						style={{
+							'background-image': `url(${homeAllData?.slider1})`,
+							'background-size': 'cover',
+							'background-position': 'center',
+							backgroundRepeat: 'no-repeat',
 						}}
 					>
-						التسجيل
-					</button>
-				</div>
+						<div className='container'>
+							<h2>أهلاً بك في منصة اطلبها</h2>
+							<h3>انضم الان الى منصة التجارة الالكترونية المتكاملة</h3>
+							<button
+								className='bt-main'
+								onClick={() => {
+									navigate('/register/merchant');
+								}}
+							>
+								التسجيل
+							</button>
+						</div>
+					</SwiperSlide>
+
+					<SwiperSlide
+						className='my_hero_swiper_slide'
+						style={{
+							'background-image': `url(${homeAllData?.slider2})`,
+							'background-size': 'cover',
+							'background-position': 'center',
+							backgroundRepeat: 'no-repeat',
+						}}
+					>
+						{/*	<div className='container'>
+							<h2>أهلاً بك في منصة اطلبها</h2>
+							<h3>انضم الان الى منصة التجارة الالكترونية المتكاملة</h3>
+							<button
+								className='bt-main'
+								onClick={() => {
+									navigate('/register/merchant');
+								}}
+							>
+								التسجيل
+							</button>
+						</div>*/}
+					</SwiperSlide>
+				</Swiper>
 			</div>
+
 			{/* =========================== */}
 			<div className='outstanding-products p-main'>
 				<div className='container'>
@@ -126,6 +178,7 @@ const HomeBox = () => {
 					<div className='all'>{homeLoadingData === true ? <LoadingBox /> : productsHome.length ? <ProductSwiper productSwiperData={productsHome} /> : <NotFoundData />}</div>
 				</div>
 			</div>
+
 			{/* =========================== */}
 			<div className='box-information p-main flex-column flex-md-row'>
 				<div className='box-right' style={{ backgroundImage: `url(${homeAllData?.banar1})` }}>
@@ -300,12 +353,13 @@ const HomeBox = () => {
 					</div>
 				</div>
 			</div>
+
 			{/* =========================== */}
 			<div className='trade-info p-main'>
 				<div className='box' style={{ backgroundImage: `url(${homeAllData?.banar3})` }}>
 					<div className='container'>
 						<h4>رحلة تجارية إلى الصين</h4>
-						<h5 style={{color:'#B6BE34'}}>مدة الرحلة 5 أيام</h5>
+						<h5 style={{ color: '#B6BE34' }}>مدة الرحلة 5 أيام</h5>
 						<button
 							className='bt-main'
 							onClick={() => {
@@ -317,6 +371,7 @@ const HomeBox = () => {
 					</div>
 				</div>
 			</div>
+
 			{/* =========================== */}
 			<div className='out-features p-main'>
 				<div className='container '>
@@ -369,6 +424,7 @@ const HomeBox = () => {
 					</div>
 				</div>
 			</div>
+
 			{/* =========================== */}
 			<div className='our-package p-main'>
 				<div className='container'>
@@ -556,6 +612,7 @@ const HomeBox = () => {
 					</div>
 				</div>
 			</div>
+
 			{/* =========================== */}
 			<div className='our-review p-main'>
 				<div className='container gap-2 gap-md-5 '>
@@ -563,6 +620,7 @@ const HomeBox = () => {
 					<div className='all'>{homeLoadingData === true ? <LoadingBox /> : commentHome.length ? <ReviewSwiper DataReviewSwiper={commentHome} /> : <NotFoundData />}</div>
 				</div>
 			</div>
+
 			{/* =========================== */}
 			<div className='our-partners p-main'>
 				<div className='container gap-2 gap-md-5 '>
@@ -570,7 +628,6 @@ const HomeBox = () => {
 					<div className='all '>{homeLoadingData === true ? <LoadingBox /> : partnersHome.length ? <PartnerSwiper PartnerDataSwiper={partnersHome} /> : <NotFoundData />}</div>
 				</div>
 			</div>
-			{/* =========================== */}
 		</>
 	);
 };

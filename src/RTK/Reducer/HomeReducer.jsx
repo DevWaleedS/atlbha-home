@@ -13,10 +13,9 @@ const initState = {
 	homeFooter: [],
 	StoreActivities: [],
 	StoreCities: [],
-	// StoreNames: [],
+	StoreNames: [],
 	homeMedia: 'large',
 };
-
 
 const HomeReducer = createSlice({
 	name: 'home',
@@ -26,18 +25,14 @@ const HomeReducer = createSlice({
 		storeFilterAction: (state, action) => {
 			let data = state.homeAllData.stores;
 
-			state.storesHome = data
-				.filter((el) => action.payload.cities === el.city.name && action.payload.Type === el.activity[0].name )
-				.slice(0, state.homeMedia === 'large' ? 24 : 10);
+			state.storesHome = data.filter((el) => action.payload.cities === el.city.name && action.payload.Type === el.activity[0].name).slice(0, state.homeMedia === 'large' ? 24 : 10);
 		},
 
-		// storeFilterAction: (state, action) => {
-		// 	let data = state.homeAllData.stores;
+		storeNameSearchAction: (state, action) => {
+			let data = state.homeAllData.stores;
 
-		// 	state.storesHome = data
-		// 		.filter((el) => action.payload.cities === el.city.name && action.payload.Type === el.activity[0].name && action.payload.storeName === el.store_name)
-		// 		.slice(0, state.homeMedia === 'large' ? 24 : 10);
-		// },
+			state.storesHome = data.filter((el) => el.store_name.includes(action.payload.storeName)).slice(0, state.homeMedia === 'large' ? 24 : 10);
+		},
 
 		storeIncrease: (state, action) => {
 			// console.log(action.payload)
@@ -64,7 +59,7 @@ const HomeReducer = createSlice({
 				state.linkWebsite = action.payload.data.website_socialmedia;
 				state.StoreCities = action.payload.data.cities;
 				state.StoreActivities = action.payload.data.store_activities;
-				// state.StoreNames = action.payload.data.stores;
+				state.StoreNames = action.payload.data.stores;
 				// console.log(action.payload.data.stores);
 			})
 			.addCase(HomeThunk.rejected, (state, action) => {
@@ -73,4 +68,4 @@ const HomeReducer = createSlice({
 	},
 });
 export default HomeReducer.reducer;
-export let { storeFilterAction, storeIncrease, storeChangeSlice } = HomeReducer.actions;
+export let { storeFilterAction, storeNameSearchAction, storeIncrease, storeChangeSlice } = HomeReducer.actions;

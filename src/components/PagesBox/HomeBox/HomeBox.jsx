@@ -36,7 +36,7 @@ import GroupIMG from '../../../assets/Img/Group 1432.png';
 // ===============redux================
 import { useDispatch, useSelector } from 'react-redux';
 import { VideoThunk } from '../../../RTK/Thunk/VideoThunk';
-import { storeFilterAction, storeChangeSlice } from '../../../RTK/Reducer/HomeReducer';
+import { storeFilterAction, storeNameSearchAction, storeChangeSlice } from '../../../RTK/Reducer/HomeReducer';
 import { useNavigate } from 'react-router-dom';
 import { HomeThunk } from '../../../RTK/Thunk/HomeThunk';
 
@@ -44,6 +44,8 @@ const HomeBox = () => {
 	let dispatch = useDispatch();
 	let navigate = useNavigate();
 	const shouldData = useRef(true);
+
+
 
 	useEffect(() => {
 		if (shouldData.current) {
@@ -58,15 +60,14 @@ const HomeBox = () => {
 
 	// =================
 	let { productsHome, homeLoadingData, storesHome, commentHome, partnersHome, homeAllData, packagesHome, StoreCities, StoreActivities } = useSelector((state) => state.HomeReducer);
-	// =================
-	// let { productsHome, homeLoadingData, storesHome, commentHome, partnersHome, homeAllData, packagesHome, StoreCities, StoreActivities, StoreNames } = useSelector((state) => state.HomeReducer);
+	
+	// console.log(StoreNames);
 
 	// ========================
 	let { videoData } = useSelector((state) => state.VideoReducer);
 
 	// ===================================
 	const [getFilterStores, setFilterStores] = useState({ Type: '', Cities: '' });
-	// const [getFilterStores, setFilterStores] = useState({ Type: '', Cities: '', storeName: '' });
 	const [getMedia, setMedia] = useState('');
 	const [storeName, setStoreName] = useState('');
 
@@ -76,28 +77,23 @@ const HomeBox = () => {
 
 	let filterStores = (e) => {
 		e.preventDefault();
-		if (getFilterStores?.Cities && getFilterStores?.Type) {
+		if (getFilterStores?.Cities && getFilterStores?.Type ) {
 			dispatch(
 				storeFilterAction({
 					cities: getFilterStores?.Cities,
 					Type: getFilterStores?.Type,
 				})
+				
+
 			);
+		
+		} else if (storeName) {
+			console.log(storeName);
+				dispatch(storeNameSearchAction({ storeName }));
 		}
 	};
 
-	// let filterStores = (e) => {
-	// 	e.preventDefault();
-	// 	if (getFilterStores?.Cities && getFilterStores?.Type && getFilterStores?.storeName) {
-	// 		dispatch(
-	// 			storeFilterAction({
-	// 				cities: getFilterStores?.Cities,
-	// 				Type: getFilterStores?.Type,
-	// 				storeName: getFilterStores?.storeName,
-	// 			})
-	// 		);
-	// 	}
-	// };
+	
 
 	useEffect(() => {
 		dispatch(storeChangeSlice(getMedia));
@@ -182,7 +178,7 @@ const HomeBox = () => {
 					<div className='header flex-column flex-md-row gap-4 '>
 						<MainTitle text={'المتاجر '} />
 						<form
-							action=''
+			
 							onSubmit={(e) => {
 								filterStores(e);
 							}}

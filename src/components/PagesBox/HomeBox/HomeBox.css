@@ -115,12 +115,10 @@
 		font-size: var(--font-size-18);
 	}
 }
-
-
 @media (max-width: 414px) {
 	.my_hero_swiper_slide {
 		background-size: contain !important;
-		height: 94px !important;
+		height: 105px !important;
 	}
 	.hero .container {
 		position: relative;
@@ -157,6 +155,20 @@
 	border: 1px solid #fff;
 	
 }
+.swiper-horizontal>.swiper-pagination-bullets, .swiper-pagination-bullets.swiper-pagination-horizontal, .swiper-pagination-custom, .swiper-pagination-fraction {
+    bottom: 2px;
+   
+}
+}
+
+@media (max-width: 375px) {
+	.my_hero_swiper_slide {
+		background-size: contain !important;
+		height: 94px !important;
+	}
+	
+
+
 }
 
 /* ===============end-hero=================== */

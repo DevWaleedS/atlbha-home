@@ -130,6 +130,7 @@ const HomeBox = () => {
 							'background-size': 'cover',
 							'background-position': 'center',
 							backgroundRepeat: 'no-repeat',
+							height: '480px',
 						}}
 					>
 						<div className='container'>
@@ -153,6 +154,7 @@ const HomeBox = () => {
 							'background-size': 'cover',
 							'background-position': 'center',
 							backgroundRepeat: 'no-repeat',
+							height: '480px',
 						}}
 					>
 						{/*	<div className='container'>

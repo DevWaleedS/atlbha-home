@@ -6,13 +6,15 @@ import MenuItem from '@mui/material/MenuItem';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+// import required modules
+import { Pagination, EffectFade, Autoplay } from "swiper";
+// import { Pagination, FreeMode, Autoplay } from "swiper";
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-
-// import required modules
-import { Pagination } from 'swiper';
+import "swiper/css";
+import "swiper/css/effect-fade";
+// import "swiper/css/free-mode";
+import "swiper/css/pagination";
 
 // ===============Data================
 import Media from 'react-media';
@@ -114,15 +116,26 @@ const HomeBox = () => {
 			{/* ============= media ============== */}
 			<div className='hero'>
 				<Swiper
+//   freeMode={true}
+ effect={"fade"}
+   
+loopFillGroupWithBlank={true}
+							loop={true}
+							autoplay={{
+								delay: 4000,
+								disableOnInteraction: false,
+							}}
 					pagination={{
 						dynamicBullets: true,
 					}}
-					modules={[Pagination]}
+					
+modules={[Pagination, EffectFade, Autoplay]}
+// modules={[Pagination, FreeMode, Autoplay]}
 					className='my_hero_swiper'
 				>
 					<SwiperSlide className='my_hero_swiper_slide'>
 						<div className='swiper_image'>
-							<img src={homeAllData?.slider1} alt='...' />
+							<img src={homeAllData?.slider1} alt='...'  loading="lazy" />
 						</div>
 						<div className='container'>
 							<h2>أهلاً بك في منصة اطلبها</h2>
@@ -140,7 +153,7 @@ const HomeBox = () => {
 
 					<SwiperSlide className='my_hero_swiper_slide'>
 						<div className='swiper_image'>
-							<img src={homeAllData?.slider2} alt='...' />
+							<img src={homeAllData?.slider2} alt='...'  loading="lazy" />
 						</div>
 					</SwiperSlide>
 				</Swiper>

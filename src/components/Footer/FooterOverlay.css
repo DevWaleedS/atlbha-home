@@ -194,6 +194,11 @@
 		flex-direction: column;
 		align-items: center;
 	}
+	.main-footer .box-right ul li ul {
+	
+	gap: 0px;
+	
+}
 }
 @media (max-width: 490px) {
 	.main-footer .copyright-box h5 {

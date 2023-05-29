@@ -10,9 +10,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination, Navigation, Autoplay } from "swiper";
 
 // Import Swiper styles
-import "./ProductSwiper.css";
 import "swiper/css";
-import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 // ===============Data================

@@ -114,6 +114,9 @@ const HomeBox = () => {
 			{/* ============= media ============== */}
 			<div className='hero'>
 				<Swiper
+autoplay= {{
+   delay: 5000,
+ }},
 					pagination={{
 						dynamicBullets: true,
 					}}
@@ -122,7 +125,7 @@ const HomeBox = () => {
 				>
 					<SwiperSlide className='my_hero_swiper_slide'>
 						<div className='swiper_image'>
-							<img src={homeAllData?.slider1} alt='...' />
+							<img src={homeAllData?.slider1} alt='...'  loading="lazy" />
 						</div>
 						<div className='container'>
 							<h2>أهلاً بك في منصة اطلبها</h2>
@@ -140,7 +143,7 @@ const HomeBox = () => {
 
 					<SwiperSlide className='my_hero_swiper_slide'>
 						<div className='swiper_image'>
-							<img src={homeAllData?.slider2} alt='...' />
+							<img src={homeAllData?.slider2} alt='...'  loading="lazy" />
 						</div>
 					</SwiperSlide>
 				</Swiper>

@@ -114,9 +114,10 @@ const HomeBox = () => {
 			{/* ============= media ============== */}
 			<div className='hero'>
 				<Swiper
-autoplay= {{
-   delay: 5000,
- }},
+autoplay={{
+								delay: 5000,
+								disableOnInteraction: false,
+							}}
 					pagination={{
 						dynamicBullets: true,
 					}}

@@ -116,7 +116,7 @@ const HomeBox = () => {
 				<Swiper
 autoplay={{
 								delay: 5000,
-								disableOnInteraction: false,
+								
 							}}
 					pagination={{
 						dynamicBullets: true,

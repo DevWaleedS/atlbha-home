@@ -6,6 +6,8 @@ import MenuItem from '@mui/material/MenuItem';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+// import required modules
+import { Pagination, Navigation, Autoplay } from "swiper";
 
 // Import Swiper styles
 import 'swiper/css';
@@ -114,9 +116,11 @@ const HomeBox = () => {
 			{/* ============= media ============== */}
 			<div className='hero'>
 				<Swiper
-autoplay={{
+loopFillGroupWithBlank={true}
+							loop={true}
+							autoplay={{
 								delay: 5000,
-								
+								disableOnInteraction: false,
 							}}
 					pagination={{
 						dynamicBullets: true,

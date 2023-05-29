@@ -122,7 +122,8 @@ loopFillGroupWithBlank={true}
 					pagination={{
 						dynamicBullets: true,
 					}}
-					modules={[Pagination]}
+					
+modules={[Pagination, Autoplay]}
 					className='my_hero_swiper'
 				>
 					<SwiperSlide className='my_hero_swiper_slide'>

@@ -7,11 +7,10 @@ import MenuItem from '@mui/material/MenuItem';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import required modules
-import { Pagination, EffectFade, FreeMode, Autoplay } from "swiper";
+import { Pagination, FreeMode, Autoplay } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/effect-fade";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
@@ -116,7 +115,7 @@ const HomeBox = () => {
 			<div className='hero'>
 				<Swiper
   freeMode={true}
-    effect={"fade"}
+   
 loopFillGroupWithBlank={true}
 							loop={true}
 							autoplay={{
@@ -127,7 +126,7 @@ loopFillGroupWithBlank={true}
 						dynamicBullets: true,
 					}}
 					
-modules={[EffectFade, Pagination, FreeMode, Autoplay]}
+modules={[Pagination, FreeMode, Autoplay]}
 					className='my_hero_swiper'
 				>
 					<SwiperSlide className='my_hero_swiper_slide'>

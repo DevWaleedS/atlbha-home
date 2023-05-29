@@ -9,8 +9,8 @@ import { useCookies } from 'react-cookie';
 const SignInBox = () => {
 	const navigate = useNavigate();
 	const [cookies, setCookie] = useCookies(['access_token']);
-	const [username, setUsername] = useState('');
-	const [password, setPassword] = useState('');
+const [username, setUsername] = useState(cookies.remember_me === 'true' ? cookies.username : '');
+const [password, setPassword] = useState(cookies.remember_me === 'true' ? cookies.password : '');
 	const [rememberMe, setRememberMe] = useState(false);
 
 	// to handle errors 
@@ -31,13 +31,17 @@ const SignInBox = () => {
 				setCookie('access_token', res?.data?.data?.token, { domain: 'atlbha.com', path: '/' });
 
 				if (rememberMe) {
-					setCookie('remember_me', 'true', { maxAge: 30 * 24 * 60 * 60 }); // Set cookie to expire in 30 days
+					setCookie('username', username, { maxAge: 30 * 24 * 60 * 60 }); // Set username cookie to expire in 30 days
+					setCookie('password', password, { maxAge: 30 * 24 * 60 * 60 }); // Set password cookie to expire in 30 days
+					setCookie('remember_me', 'true', { maxAge: 30 * 24 * 60 * 60 }); // Set remember_me cookie to expire in 30 days
 				} else {
-					setCookie('remember_me', 'false', { maxAge: 0 }); // Remove the cookie
+					setCookie('username', '', { maxAge: 0 }); // Remove the username cookie
+					setCookie('password', '', { maxAge: 0 }); // Remove the password cookie
+					setCookie('remember_me', 'false', { maxAge: 0 }); // Remove the remember_me cookie
 				}
 				
 				<Navigate to='/' />;
-				// window.location.href = 'http://store.atlbha.com'; // url dashboard tajer
+				
 			} else {
 				setUsernameError(res?.data?.message?.en?.user_name?.[0]);
 				setPasswordError(res?.data?.message?.en?.password?.[0]);
@@ -50,6 +54,16 @@ const SignInBox = () => {
 		if (event.key === 'Enter') {
 			event.preventDefault();
 			Login();
+
+			if (rememberMe) {
+				setCookie('username', username, { maxAge: 30 * 24 * 60 * 60 }); // Set username cookie to expire in 30 days
+				setCookie('password', password, { maxAge: 30 * 24 * 60 * 60 }); // Set password cookie to expire in 30 days
+				setCookie('remember_me', 'true', { maxAge: 30 * 24 * 60 * 60 }); // Set remember_me cookie to expire in 30 days
+			} else {
+				setCookie('username', '', { maxAge: 0 }); // Remove the username cookie
+				setCookie('password', '', { maxAge: 0 }); // Remove the password cookie
+				setCookie('remember_me', 'false', { maxAge: 0 }); // Remove the remember_me cookie
+			}
 		}
 	};
 

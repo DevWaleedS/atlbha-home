@@ -3,6 +3,7 @@ import './HomeBox.css';
 import { ProductSwiper, ReviewSwiper, PartnerSwiper, LoadingBox, NotFoundData } from '../../index';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
+import { useCookies } from 'react-cookie';
 
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -46,6 +47,7 @@ const HomeBox = () => {
 	let dispatch = useDispatch();
 	let navigate = useNavigate();
 	const shouldData = useRef(true);
+	const [cookies, setCookie] = useCookies(['access_token']);
 
 	useEffect(() => {
 		if (shouldData.current) {
@@ -109,7 +111,6 @@ const HomeBox = () => {
 			{/* ============= media ============== */}
 			<div className='hero'>
 				<Swiper
-					//   freeMode={true}
 					effect={'fade'}
 					loopFillGroupWithBlank={true}
 					loop={true}
@@ -119,9 +120,9 @@ const HomeBox = () => {
 					}}
 					pagination={{
 						dynamicBullets: true,
+						clickable: true,
 					}}
 					modules={[Pagination, EffectFade, Autoplay]}
-					// modules={[Pagination, FreeMode, Autoplay]}
 					className='my_hero_swiper'
 				>
 					<SwiperSlide className='my_hero_swiper_slide'>
@@ -134,7 +135,7 @@ const HomeBox = () => {
 							<button
 								className='bt-main'
 								onClick={() => {
-									navigate('/register/merchant');
+									cookies.access_token ? navigate('/signInPage') : navigate('/register/merchant');
 								}}
 							>
 								التسجيل
@@ -189,6 +190,14 @@ const HomeBox = () => {
 							<span>
 								<AiOutlineSearch />
 							</span>
+
+							<div className='search_input_box_desk_top  justify-content-center align-items-center bg-white ' style={{ height: '40px' }}>
+								<div className='d-none justify-content-center align-items-center ' style={{ width: '50px', height: '40px' }}>
+									<AiOutlineSearch style={{ color: '#b6be34', width: '22px', height: '22px' }} />
+								</div>
+
+								<input className='w-100' type='text' placeholder='ابحث باسم المتجر' value={storeName} onChange={(e) => setStoreName(e.target.value)} />
+							</div>
 							<div className='all-select'>
 								<Select
 									sx={{
@@ -255,43 +264,9 @@ const HomeBox = () => {
 										: null}
 								</Select>
 							</div>
-							{/*
-						<div className='w-100 rounded-2 bg-white d-flex justify-content-center align-items-center '>
-								<Select
-									sx={{
-										'& .MuiOutlinedInput-notchedOutline': {
-											border: 'none',
-										},
-									}}
-									value={getFilterStores.storeName}
-									className='select-mu'
-									onChange={(e) => {
-										setFilterStores({ ...getFilterStores, storeName: e.target.value });
-									}}
-									IconComponent={IoIosArrowDown}
-									displayEmpty
-									renderValue={(selected) => {
-										if (getFilterStores.storeName === '') {
-											return <>اسم المتجر</>;
-										}
-										return selected;
-									}}
-								>
-									{StoreNames.length
-										? StoreNames.map((el) => {
-												return (
-													<MenuItem value={el.store_name} key={el.id}>
-														{el.store_name}
-													</MenuItem>
-												);
-										  })
-										: null}
-								</Select>
-							</div>
-						*/}
 
-							<div className='search_input_box w-100 justify-content-center align-items-center bg-white rounded-2 ' style={{ height: '45px' }}>
-								<div className='d-flex justify-content-center align-items-center ' style={{ width: '50px', height: '45px' }}>
+							<div className='search_input_box w-100 justify-content-center align-items-center bg-white rounded-1 ' style={{ height: '40px' }}>
+								<div className='d-flex justify-content-center align-items-center ' style={{ width: '50px', height: '40px' }}>
 									<AiOutlineSearch style={{ color: '#b6be34', width: '22px', height: '22px' }} />
 								</div>
 
@@ -349,7 +324,7 @@ const HomeBox = () => {
 						<button
 							className='bt-main'
 							onClick={() => {
-								navigate('/register/merchant');
+								cookies.access_token ? navigate('/signInPage') : navigate('/register/merchant');
 							}}
 						>
 							التسجيل

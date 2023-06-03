@@ -9,11 +9,11 @@ import { useCookies } from 'react-cookie';
 const SignInBox = () => {
 	const navigate = useNavigate();
 	const [cookies, setCookie] = useCookies(['access_token']);
-const [username, setUsername] = useState(cookies.remember_me === 'true' ? cookies.username : '');
-const [password, setPassword] = useState(cookies.remember_me === 'true' ? cookies.password : '');
+	const [username, setUsername] = useState(cookies.remember_me === 'true' ? cookies.username : '');
+	const [password, setPassword] = useState(cookies.remember_me === 'true' ? cookies.password : '');
 	const [rememberMe, setRememberMe] = useState(false);
 
-	// to handle errors 
+	// to handle errors
 	const [usernameError, setUsernameError] = useState('');
 	const [passwordError, setPasswordError] = useState('');
 	const [error, setError] = useState('');
@@ -39,9 +39,8 @@ const [password, setPassword] = useState(cookies.remember_me === 'true' ? cookie
 					setCookie('password', '', { maxAge: 0 }); // Remove the password cookie
 					setCookie('remember_me', 'false', { maxAge: 0 }); // Remove the remember_me cookie
 				}
-				
+
 				<Navigate to='/' />;
-				
 			} else {
 				setUsernameError(res?.data?.message?.en?.user_name?.[0]);
 				setPasswordError(res?.data?.message?.en?.password?.[0]);

@@ -34,7 +34,7 @@ const USER_REGEX = /^[A-Za-z]+$/;
 const OWNER_REGEX = /^[\p{L}\p{M}\p{Zs}.'-]+(\s[\p{L}\p{M}\p{Zs}.'-]+){2,}$/u;
 const STORE_REGEX = /^[A-Za-z]+$/;
 const PWD_REGEX = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[\W_]).{8,24}$/;
-const PHONE_REGEX = /^\+?[0-9][0-9]{9,13}$/;
+const PHONE_REGEX = /^(5[0-9]{8})$/;
 const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
 const STORE_EMAIL_REGEX = /^\S+@\S+\.\S+$/;
 const DOMAIN_REGEX = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
@@ -122,15 +122,17 @@ const RegisterBox = () => {
 		domain: '',
 		store_name: '',
 		store_email: '',
-		phonenumber: '+966',
+		phonenumber: '',
 	});
+
+	console.log(storeInfo?.phonenumber.startsWith(5));
 
 	// to assign the owner info into state
 	const [ownerInfo, setOwnerInfo] = useState({
 		name: '',
 		user_name: '',
 		email: '',
-		userphonenumber: '+966',
+		userphonenumber: '',
 	});
 
 	// to get the values from inputs
@@ -267,10 +269,10 @@ const RegisterBox = () => {
 		formData.append('name', ownerInfo?.name || null);
 		formData.append('email', ownerInfo?.email || null);
 		formData.append('user_name', ownerInfo?.user_name || null);
-		formData.append('userphonenumber', ownerInfo?.userphonenumber || null);
+		formData.append('userphonenumber', '+966' + ownerInfo?.userphonenumber || null);
 		// Store info
 		formData.append('domain', storeInfo?.domain || null);
-		formData.append('phonenumber', storeInfo?.phonenumber || null);
+		formData.append('phonenumber', '+966' + storeInfo?.phonenumber || null);
 		formData.append('store_name', storeInfo?.store_name || null);
 		formData.append('store_email', storeInfo?.store_email || null);
 		formData.append('checkbox_field', isChecked || null);
@@ -546,29 +548,41 @@ const RegisterBox = () => {
 
 											<div className='phone'>
 												<h5>رقم الجوال</h5>
-												<input
-													type='tel'
-													name='phonenumber'
-													maxLength='13'
-													minLength='9'
-													value={storeInfo?.phonenumber}
-													onChange={handleStoreInfo}
-													placeholder='500000000'
-													style={{ direction: 'ltr' }}
-													required
-													aria-invalid={validStorePhoneNumber ? 'false' : 'true'}
-													aria-describedby='storePhoneNumber'
-													onFocus={() => setUserPhoneNumberFocus(true)}
-													onBlur={() => setUserPhoneNumberFocus(true)}
-												/>
+												<section className='d-flex align-items-center flex-row input_wrapper'>
+													<input
+														className='phone_input'
+														style={{
+															width: '100%',
+															height: '100%',
+															border: 'none',
+															outline: 'none',
+															boxShadow: 'none',
+															padding: ' 0 25px',
+															borderRadius: 'none',
+														}}
+														type='tel'
+														name='phonenumber'
+														maxLength='9'
+														minLength='0'
+														value={storeInfo?.phonenumber}
+														onChange={handleStoreInfo}
+														placeholder='500000000'
+														required
+														aria-invalid={validStorePhoneNumber ? 'false' : 'true'}
+														aria-describedby='storePhoneNumber'
+														onFocus={() => setUserPhoneNumberFocus(true)}
+														onBlur={() => setUserPhoneNumberFocus(true)}
+													/>
+													<div className='country_key'>966</div>
+												</section>
 
 												<p
 													id='storePhoneNumber'
-													className={userPhoneNumberFocus && storeInfo?.phonenumber && !validStorePhoneNumber ? ' d-block wrong-text ' : 'd-none'}
+													className={!storeInfo?.phonenumber?.startsWith(5) && userPhoneNumberFocus && storeInfo?.phonenumber && !validStorePhoneNumber ? ' d-block wrong-text ' : 'd-none'}
 													style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
 												>
 													<MdErrorOutline className='ms-1' />
-													تأكد ان رقم الجوال يبدأ بـ 966+ ولا يقل عن 9 أرقام
+													تأكد ان رقم الجوال يبدأ برقم 5 ولا يقل عن 9 أرقام
 												</p>
 											</div>
 											{phonenumberError && (
@@ -716,29 +730,41 @@ const RegisterBox = () => {
 
 										<div className='phone'>
 											<h5>رقم الجوال</h5>
-											<input
-												type='tel'
-												name='userphonenumber'
-												maxLength='13'
-												minLength='9'
-												value={ownerInfo?.userphonenumber}
-												onChange={handleOwnerInfo}
-												placeholder='500000000'
-												style={{ direction: 'ltr' }}
-												required
-												aria-invalid={validUserPhoneNumber ? 'false' : 'true'}
-												aria-describedby='userPhoneNumber'
-												onFocus={() => setUserPhoneNumberFocus(true)}
-												onBlur={() => setUserPhoneNumberFocus(true)}
-											/>
+
+											<section className='d-flex align-items-center flex-row input_wrapper for_owner'>
+												<input
+													style={{
+														width: '100%',
+														height: '100%',
+														border: 'none',
+														outline: 'none',
+														boxShadow: 'none',
+														padding: ' 0 25px',
+														borderRadius: 'none',
+													}}
+													type='tel'
+													name='userphonenumber'
+													maxLength='9'
+													minLength='0'
+													value={ownerInfo?.userphonenumber}
+													onChange={handleOwnerInfo}
+													placeholder='500000000'
+													required
+													aria-invalid={validUserPhoneNumber ? 'false' : 'true'}
+													aria-describedby='userPhoneNumber'
+													onFocus={() => setUserPhoneNumberFocus(true)}
+													onBlur={() => setUserPhoneNumberFocus(true)}
+												/>
+												<div className='country_key'>966</div>
+											</section>
 
 											<p
 												id='storePhoneNumber'
-												className={userPhoneNumberFocus && ownerInfo?.userphonenumber && !validUserPhoneNumber ? ' d-block wrong-text ' : 'd-none'}
+												className={!ownerInfo?.phonenumber?.startsWith(5) && userPhoneNumberFocus && ownerInfo?.userphonenumber && !validUserPhoneNumber ? ' d-block wrong-text ' : 'd-none'}
 												style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
 											>
 												<MdErrorOutline className='ms-1' />
-												تأكد ان رقم الجوال يبدأ بـ 966+ ولا يقل عن 9 أرقام
+												تأكد ان رقم الجوال يبدأ برقم 5 ولا يقل عن 9 أرقام
 											</p>
 										</div>
 										{userphonenumberError && (
@@ -1016,29 +1042,41 @@ const RegisterBox = () => {
 
 											<div className='phone'>
 												<h5>رقم الجوال</h5>
-												<input
-													name='userphonenumber'
-													maxLength='13'
-													minLength='9'
-													value={ownerInfo?.userphonenumber}
-													onChange={handleOwnerInfo}
-													type='tel'
-													placeholder='500000000'
-													style={{ direction: 'ltr' }}
-													required
-													aria-invalid={validUserPhoneNumber ? 'false' : 'true'}
-													aria-describedby='storePhoneNumber'
-													onFocus={() => setStorePhoneNumberFocus(true)}
-													onBlur={() => setStorePhoneNumberFocus(true)}
-												/>
+
+												<section className='d-flex align-items-center flex-row input_wrapper for_owner'>
+													<input
+														style={{
+															width: '100%',
+															height: '100%',
+															border: 'none',
+															outline: 'none',
+															boxShadow: 'none',
+															padding: ' 0 25px',
+															borderRadius: 'none',
+														}}
+														name='userphonenumber'
+														maxLength='9'
+														minLength='0'
+														value={ownerInfo?.userphonenumber}
+														onChange={handleOwnerInfo}
+														type='tel'
+														placeholder='500000000'
+														required
+														aria-invalid={validUserPhoneNumber ? 'false' : 'true'}
+														aria-describedby='storePhoneNumber'
+														onFocus={() => setStorePhoneNumberFocus(true)}
+														onBlur={() => setStorePhoneNumberFocus(true)}
+													/>
+													<section className='country_key'>966</section>
+												</section>
 
 												<p
 													id='storePhoneNumber'
-													className={storePhoneNumberFocus && ownerInfo?.userphonenumber && !validUserPhoneNumber ? ' d-block wrong-text ' : 'd-none'}
+													className={!ownerInfo?.userphonenumber?.startsWith(5) && storePhoneNumberFocus && ownerInfo?.userphonenumber && !validUserPhoneNumber ? ' d-block wrong-text ' : 'd-none'}
 													style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
 												>
 													<MdErrorOutline className='ms-1' />
-													تأكد ان رقم الجوال يبدأ بـ 966+ ولا يقل عن 9 أرقام
+													تأكد ان رقم الجوال يبدأ برقم 5 ولا يقل عن 9 أرقام
 												</p>
 											</div>
 											{phonenumberError && (
@@ -1064,9 +1102,10 @@ const RegisterBox = () => {
 														'& .MuiOutlinedInput-notchedOutline': {
 															border: 'none',
 														},
+													
 													}}
 													value={city}
-													className='select-mu'
+													className='select-mu '
 													onChange={(e) => {
 														setCity(e.target.value);
 													}}

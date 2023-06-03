@@ -32,6 +32,10 @@
 }
 .my_hero_swiper .swiper_image {
 	height: 480px;
+	width: 100%;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .my_hero_swiper .swiper_image img {
@@ -78,6 +82,10 @@
 }
 
 @media (max-width: 768px) {
+	.my_hero_swiper .swiper_image {
+		background: round;
+		height: 320px;
+	}
 	.hero .container {
 		height: 70%;
 	}
@@ -276,6 +284,7 @@
 	font-weight: var(--font-weight-03);
 	font-size: var(--font-size-16);
 	background-color: var(--font-color-default);
+	background-image: url();
 }
 .search_input_box_desk_top {
 	width: 200px;

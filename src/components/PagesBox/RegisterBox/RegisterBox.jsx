@@ -34,7 +34,7 @@ const USER_REGEX = /^[A-Za-z]+$/;
 const OWNER_REGEX = /^[\p{L}\p{M}\p{Zs}.'-]+(\s[\p{L}\p{M}\p{Zs}.'-]+){2,}$/u;
 const STORE_REGEX = /^[A-Za-z]+$/;
 const PWD_REGEX = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[\W_]).{8,24}$/;
-const PHONE_REGEX = /^(5[0-9]{8})$/;
+const PHONE_REGEX = /^(5\d{8})$/;
 const EMAIL_REGEX = /^\S+@\S+\.\S+$/;
 const STORE_EMAIL_REGEX = /^\S+@\S+\.\S+$/;
 const DOMAIN_REGEX = /^https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&\/=]*)$/;
@@ -125,7 +125,6 @@ const RegisterBox = () => {
 		phonenumber: '',
 	});
 
-	console.log(storeInfo?.phonenumber.startsWith(5));
 
 	// to assign the owner info into state
 	const [ownerInfo, setOwnerInfo] = useState({
@@ -563,7 +562,7 @@ const RegisterBox = () => {
 														type='tel'
 														name='phonenumber'
 														maxLength='9'
-														minLength='0'
+														minLength='9'
 														value={storeInfo?.phonenumber}
 														onChange={handleStoreInfo}
 														placeholder='500000000'
@@ -578,7 +577,7 @@ const RegisterBox = () => {
 
 												<p
 													id='storePhoneNumber'
-													className={!storeInfo?.phonenumber?.startsWith(5) && userPhoneNumberFocus && storeInfo?.phonenumber && !validStorePhoneNumber ? ' d-block wrong-text ' : 'd-none'}
+													className={ userPhoneNumberFocus && storeInfo?.phonenumber && !validStorePhoneNumber ? ' d-block wrong-text ' : 'd-none'}
 													style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
 												>
 													<MdErrorOutline className='ms-1' />
@@ -760,7 +759,7 @@ const RegisterBox = () => {
 
 											<p
 												id='storePhoneNumber'
-												className={!ownerInfo?.phonenumber?.startsWith(5) && userPhoneNumberFocus && ownerInfo?.userphonenumber && !validUserPhoneNumber ? ' d-block wrong-text ' : 'd-none'}
+												className={userPhoneNumberFocus && ownerInfo?.userphonenumber && !validUserPhoneNumber ? ' d-block wrong-text ' : 'd-none'}
 												style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
 											>
 												<MdErrorOutline className='ms-1' />
@@ -1072,7 +1071,7 @@ const RegisterBox = () => {
 
 												<p
 													id='storePhoneNumber'
-													className={!ownerInfo?.userphonenumber?.startsWith(5) && storePhoneNumberFocus && ownerInfo?.userphonenumber && !validUserPhoneNumber ? ' d-block wrong-text ' : 'd-none'}
+													className={storePhoneNumberFocus && ownerInfo?.userphonenumber && !validUserPhoneNumber ? ' d-block wrong-text ' : 'd-none'}
 													style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
 												>
 													<MdErrorOutline className='ms-1' />
@@ -1102,7 +1101,6 @@ const RegisterBox = () => {
 														'& .MuiOutlinedInput-notchedOutline': {
 															border: 'none',
 														},
-													
 													}}
 													value={city}
 													className='select-mu '

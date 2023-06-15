@@ -145,15 +145,7 @@ const FooterOverlay = () => {
 													</li>
 												);
 											})}
-										{/* <li>
-                                            <Link to={'/policyUse'} className="main-footer-link" onClick={() => {
-
-
-                                                goUpWindow()
-                                            }}>
-                                                سياسة الخصوصية
-                                            </Link>
-                                        </li> */}
+									
 									</ul>
 								</li>
 								<li className='text-center text-lg-end '>

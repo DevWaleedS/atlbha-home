@@ -34,8 +34,9 @@ const PolicyBox = ({
                             </div>
                             <div className="content">
 
-                                {Description !== null ? (<p>
-                                    {Description}
+                                {Description !== null ? (
+                                    <p  dangerouslySetInnerHTML={{__html: Description}}> 
+                                
                                 </p>) : (
                                     <>
                                         <p>

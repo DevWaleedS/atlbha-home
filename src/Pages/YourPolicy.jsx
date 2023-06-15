@@ -10,6 +10,8 @@ const YourPolicy = () => {
   let navigate = useNavigate();
 
   let { policyName, policyTitle, policyDescription, policyLoadingData } = useSelector((state) => state.YourPolicyReducer)
+
+  
   useEffect(() => {
     if (!isNaN(param.policyID)) {
       dispatch(YourPolicyThunk({ id: param.policyID }))
@@ -19,6 +21,8 @@ const YourPolicy = () => {
       navigate('/')
     }
   }, [param.policyID]);
+
+
   return (
     <>
       <PolicyBox

@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState, useRef } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { CheckMarks, LogoHeader, PasswordField } from '../../index';
 
@@ -56,9 +56,10 @@ const RegisterBox = () => {
 	// const [countryList, setCountryList] = useState([]);
 	const [packages, setPackages] = useState([]);
 
-	const [city, setCity] = useState([]);
-	// const [country, setCountry] = useState([]);
-	const [packagesValues, setPackagesValues] = useState([]);
+	const [city, setCity] = useState('');
+
+	// const [country, setCountry] = useState('');
+	const [packagesValues, setPackagesValues] = useState('');
 	const [activityName, setActivityName] = React.useState([]);
 	const [subscriptionPeriodValues, setSubscriptionPeriodValues] = useState([]);
 	const [userType, setUserType] = useState('marketer');
@@ -124,7 +125,6 @@ const RegisterBox = () => {
 		store_email: '',
 		phonenumber: '',
 	});
-
 
 	// to assign the owner info into state
 	const [ownerInfo, setOwnerInfo] = useState({
@@ -276,20 +276,14 @@ const RegisterBox = () => {
 		formData.append('store_email', storeInfo?.store_email || null);
 		formData.append('checkbox_field', isChecked || null);
 		formData.append('periodtype', subscriptionPeriodValues || null);
-		// for (let countr = 0; countr < country.length; countr++) {
-		// 	formData.append('country_id', country[countr] || '');
-		// }
-
-		for (let cit = 0; cit < city.length; cit++) {
-			formData.append('city_id', city[cit] || null);
-		}
-
+		// 	formData.append('country_id', country || null);
+		formData.append('city_id', city || null);
 		for (let i = 0; i < activityName.length; i++) {
 			formData.append(`activity_id[${i}]`, activityName[i] || null);
 		}
-		for (let i = 0; i < packagesValues.length; i++) {
-			formData.append('package_id', packagesValues[i] || null);
-		}
+
+			formData.append('package_id', packagesValues || null);
+		
 
 		axios.post('https://backend.atlbha.com/api/registerapi', formData).then((res) => {
 			if (res?.data?.success === true && res?.data?.data?.status === 200) {
@@ -529,11 +523,12 @@ const RegisterBox = () => {
 															return <span>اختر المدينة</span>;
 														}
 														const result = citiesList?.data?.cities?.filter((item) => item?.id === parseInt(selected));
+
 														return result[0]?.name;
 													}}
 												>
 													{citiesList?.data?.cities?.map((city) => (
-														<MenuItem value={`${city?.id}`} key={city?.id}>
+														<MenuItem value={city?.id} key={city?.id}>
 															{city?.name}
 														</MenuItem>
 													))}
@@ -577,7 +572,7 @@ const RegisterBox = () => {
 
 												<p
 													id='storePhoneNumber'
-													className={ userPhoneNumberFocus && storeInfo?.phonenumber && !validStorePhoneNumber ? ' d-block wrong-text ' : 'd-none'}
+													className={userPhoneNumberFocus && storeInfo?.phonenumber && !validStorePhoneNumber ? ' d-block wrong-text ' : 'd-none'}
 													style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
 												>
 													<MdErrorOutline className='ms-1' />

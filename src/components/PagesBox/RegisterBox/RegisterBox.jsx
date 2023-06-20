@@ -282,8 +282,7 @@ const RegisterBox = () => {
 			formData.append(`activity_id[${i}]`, activityName[i] || null);
 		}
 
-			formData.append('package_id', packagesValues || null);
-		
+		formData.append('package_id', packagesValues || null);
 
 		axios.post('https://backend.atlbha.com/api/registerapi', formData).then((res) => {
 			if (res?.data?.success === true && res?.data?.data?.status === 200) {
@@ -366,176 +365,64 @@ const RegisterBox = () => {
 
 									<div className='content'>
 										<form onSubmit={handleSubmit}>
-											<div>
-												<h5>اسم المتجر</h5>
+											<div className='name'>
+												<h5>اسم المستخدم</h5>
 												<input
+													style={{ paddingRight: '42px' }}
 													type='text'
-													name='store_name'
-													value={storeInfo?.store_name}
-													onChange={handleStoreInfo}
-													placeholder=' ادخل اسم المتجر باللغة الانجليزية'
+													name='user_name'
+													value={ownerInfo?.user_name}
+													onChange={handleOwnerInfo}
 													required
-													aria-invalid={validStoreName ? 'false' : 'true'}
-													aria-describedby='storeName'
-													onFocus={() => setStoreNameFocus(true)}
-													onBlur={() => setStoreNameFocus(true)}
+													placeholder='اسم المستخدم باللغة الانجليزية'
+													aria-invalid={validUserName ? 'false' : 'true'}
+													aria-describedby='uidnote'
+													onFocus={() => setUserNameFocus(true)}
+													onBlur={() => setUserNameFocus(true)}
 												/>
-												<p
-													id='storeName'
-													className={storeNameFocus && storeInfo?.store_name && !validStoreName ? ' d-block wrong-text ' : 'd-none'}
-													style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
-												>
-													<MdErrorOutline className='ms-1' />
-													يجب ان يكون اسم المتجر باللغة الانجليزية
-												</p>
-
-												{storeNameError && (
-													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'rtl' }}>
-														{storeNameError}
-													</span>
-												)}
+												<div id='span-icon'>
+													<SvgUser />
+												</div>
 											</div>
+											<p
+												id='uidnote'
+												className={userNameFocus && ownerInfo?.user_name && !validUserName ? ' d-block wrong-text ' : 'd-none'}
+												style={{ color: 'red', marginTop: '-20px', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
+											>
+												<MdErrorOutline className='ms-1' />
+												يجب ان يكون اسم المستخدم باللغة الانجليزية وبدون مسافات
+											</p>
 
-											<div>
-												<h5>الدومين</h5>
-												<input
-													type='url'
-													name='domain'
-													value={storeInfo?.domain}
-													onChange={handleStoreInfo}
-													placeholder='fayez.atlbha.sa'
-													required
-													aria-invalid={validStoreName ? 'false' : 'true'}
-													aria-describedby='domainNmae'
-													onFocus={() => setDomainNameFocus(true)}
-													onBlur={() => setDomainNameFocus(true)}
-												/>
-												<p
-													id='storeName'
-													className={domainNameFocus && storeInfo?.domain && !validDomainName ? ' d-block wrong-text ' : 'd-none'}
-													style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
-												>
-													<MdErrorOutline className='ms-1' />
-													يرجي ادخال الدومين بالكامل مثال :
-													<br />
-													(http://fayez.atlbha.sa) أو (https://fayez.atlbha.sa)
+											{usernameError && (
+												<p className={'wrong-text w-100'} style={{ color: 'red', marginTop: '-20px', direction: 'rtl' }}>
+													{usernameError}
 												</p>
-												{domainError && (
-													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'rtl' }}>
-														{domainError}
-													</span>
-												)}
-											</div>
-
+											)}
 											<div>
 												<h5>البريد الإلكتروني</h5>
 												<input
 													type='email'
-													name='store_email'
-													value={storeInfo?.store_email}
-													onChange={handleStoreInfo}
+													name='email'
+													value={ownerInfo?.email}
+													onChange={handleOwnerInfo}
 													placeholder='atlbha@gmail.com'
 													required
-													aria-invalid={validStoreEmail ? 'false' : 'true'}
-													aria-describedby='storeEmail'
-													onFocus={() => setStoreEmailFocus(true)}
-													onBlur={() => setStoreEmailFocus(true)}
+													aria-invalid={validEmail ? 'false' : 'true'}
+													aria-describedby='email'
+													onFocus={() => setEmailFocus(true)}
+													onBlur={() => setEmailFocus(true)}
 												/>
 												<p
 													id='email'
-													className={storeEmailFocus && storeInfo?.store_email && !validStoreEmail ? ' d-block wrong-text ' : 'd-none'}
+													className={emailFocus && ownerInfo?.email && !validEmail ? ' d-block wrong-text ' : 'd-none'}
 													style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
 												>
 													<MdErrorOutline className='ms-1' />
 													تأكد من ان البريد الالكتروني يتكون من حرف واحد او اكثر ويحتوي علي علامة الـ @
 												</p>
-												{storeEmailError && (
-													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'rtl' }}>
-														{storeEmailError}
-													</span>
-												)}
-											</div>
-
-											<div>
-												<h5>الدوله</h5>
-
-												<input name='country' value={'المملكة العربية السعودية'} onChange={() => console.log(' --- ')} type='text' disabled />
-												{/** <Select
-													sx={{
-														height: '3.5rem',
-
-														border: '1px solid rgba(167, 167, 167, 0.5)',
-
-														'& .MuiOutlinedInput-notchedOutline': {
-															border: 'none',
-														},
-													}}
-													value={country}
-													className='select-mu'
-													onChange={(e) => {
-														setCountry(e.target.value);
-													}}
-													IconComponent={IoIosArrowDown}
-													displayEmpty
-													renderValue={(selected) => {
-														if (country?.length === 0) {
-															return <span>اختر الدولة</span>;
-														}
-														const result = countryList?.data?.countries?.filter((item) => item?.id === parseInt(selected));
-														return result[0]?.name;
-													}}
-												>
-													{countryList?.data?.countries?.map((country) => (
-														<MenuItem value={`${country?.id}`} key={country?.id}>
-															{country?.name}
-														</MenuItem>
-													))}
-												</Select>
-
-												{countryError && (
-													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'rtl' }}>
-														{countryError}
-													</span>
-												)} */}
-											</div>
-
-											<div>
-												<h5>المدينة</h5>
-												<Select
-													sx={{
-														height: '3.5rem',
-
-														border: '1px solid rgba(167, 167, 167, 0.5)',
-
-														'& .MuiOutlinedInput-notchedOutline': {
-															border: 'none',
-														},
-													}}
-													value={city}
-													className='select-mu'
-													onChange={(e) => {
-														setCity(e.target.value);
-													}}
-													IconComponent={IoIosArrowDown}
-													displayEmpty
-													renderValue={(selected) => {
-														if (city?.length === 0) {
-															return <span>اختر المدينة</span>;
-														}
-														const result = citiesList?.data?.cities?.filter((item) => item?.id === parseInt(selected));
-
-														return result[0]?.name;
-													}}
-												>
-													{citiesList?.data?.cities?.map((city) => (
-														<MenuItem value={city?.id} key={city?.id}>
-															{city?.name}
-														</MenuItem>
-													))}
-												</Select>
-												{cityError && (
-													<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red', direction: 'rtl' }}>
-														{cityError}
+												{emailError && (
+													<span className='wrong-text w-100' style={{ color: 'red', direction: 'rtl' }}>
+														{emailError}
 													</span>
 												)}
 											</div>
@@ -584,6 +471,17 @@ const RegisterBox = () => {
 													{phonenumberError}
 												</span>
 											)}
+
+											<PasswordField
+												name='password'
+												password={password}
+												setPassword={setPassword}
+												passwordError={passwordError}
+												required
+												validPssWord={validPssWord}
+												pssWordFocus={pssWordFocus}
+												setPssWordFocus={setPssWordFocus}
+											/>
 
 											<div className='info-package'>
 												<h5>نوع الباقة</h5>
@@ -670,16 +568,6 @@ const RegisterBox = () => {
 													))}
 												</Select>
 											</div>
-
-											<div>
-												<h5>نشاط المتجر</h5>
-												<CheckMarks activityName={activityName} setActivityName={setActivityName} />
-												{activityError && (
-													<span className='wrong-text w-100' style={{ color: 'red', direction: 'rtl' }}>
-														{activityError}
-													</span>
-												)}
-											</div>
 										</form>
 									</div>
 								</div>
@@ -687,166 +575,6 @@ const RegisterBox = () => {
 								{/*--------------------------------------------------------------------*/}
 								{/*  owner info  form */}
 								<div className='owner-form'>
-									<form onSubmit={handleSubmit}>
-										<h4>بيانات المالك</h4>
-
-										<div className='name'>
-											<h5>الاسم كامل</h5>
-											<input
-												type='text'
-												name='name'
-												value={ownerInfo?.name}
-												onChange={handleOwnerInfo}
-												required
-												aria-invalid={validOwnerName ? 'false' : 'true'}
-												aria-describedby='ownerName'
-												onFocus={() => setOwnerNameFocus(true)}
-												onBlur={() => setOwnerNameFocus(true)}
-											/>
-											<span>
-												<SvgUser />
-											</span>
-										</div>
-										<p
-											id='ownerName'
-											className={ownerNameFocus && ownerInfo?.userphonenumber && !validOwnerName ? ' d-block wrong-text ' : 'd-none'}
-											style={{ color: 'red', direction: 'rtl', marginTop: '-20px', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
-										>
-											<MdErrorOutline className='ms-1' />
-											برجاء كتابة الاسم بالكامل كما هو موجود في الهوية
-											<br />
-										</p>
-										{nameError && (
-											<span className='wrong-text w-100 ' style={{ color: 'red', marginTop: '-20px', direction: 'rtl' }}>
-												{nameError}
-											</span>
-										)}
-
-										<div className='phone'>
-											<h5>رقم الجوال</h5>
-
-											<section className='d-flex align-items-center flex-row input_wrapper for_owner'>
-												<input
-													style={{
-														width: '100%',
-														height: '100%',
-														border: 'none',
-														outline: 'none',
-														boxShadow: 'none',
-														padding: ' 0 25px',
-														borderRadius: 'none',
-													}}
-													type='tel'
-													name='userphonenumber'
-													maxLength='9'
-													minLength='0'
-													value={ownerInfo?.userphonenumber}
-													onChange={handleOwnerInfo}
-													placeholder='500000000'
-													required
-													aria-invalid={validUserPhoneNumber ? 'false' : 'true'}
-													aria-describedby='userPhoneNumber'
-													onFocus={() => setUserPhoneNumberFocus(true)}
-													onBlur={() => setUserPhoneNumberFocus(true)}
-												/>
-												<div className='country_key'>966</div>
-											</section>
-
-											<p
-												id='storePhoneNumber'
-												className={userPhoneNumberFocus && ownerInfo?.userphonenumber && !validUserPhoneNumber ? ' d-block wrong-text ' : 'd-none'}
-												style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
-											>
-												<MdErrorOutline className='ms-1' />
-												تأكد ان رقم الجوال يبدأ برقم 5 ولا يقل عن 9 أرقام
-											</p>
-										</div>
-										{userphonenumberError && (
-											<span
-												className='wrong-text w-100 '
-												style={{
-													color: 'red',
-													marginTop: '-10px',
-													direction: 'rtl',
-												}}
-											>
-												{userphonenumberError}
-											</span>
-										)}
-
-										<div className='name'>
-											<h5>اسم المستخدم</h5>
-											<input
-												type='text'
-												name='user_name'
-												value={ownerInfo?.user_name}
-												onChange={handleOwnerInfo}
-												required
-												aria-invalid={validUserName ? 'false' : 'true'}
-												aria-describedby='uidnote'
-												onFocus={() => setUserNameFocus(true)}
-												onBlur={() => setUserNameFocus(true)}
-											/>
-											<span>
-												<SvgUser />
-											</span>
-										</div>
-										<p
-											id='uidnote'
-											className={userNameFocus && ownerInfo?.user_name && !validUserName ? ' d-block wrong-text ' : 'd-none'}
-											style={{ color: 'red', marginTop: '-20px', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
-										>
-											<MdErrorOutline className='ms-1' />
-											يجب ان يكون اسم المستخدم باللغة الانجليزية
-										</p>
-
-										{usernameError && (
-											<p className={'wrong-text w-100'} style={{ color: 'red', marginTop: '-20px', direction: 'rtl' }}>
-												{usernameError}
-											</p>
-										)}
-
-										<div>
-											<h5>البريد الإلكتروني</h5>
-											<input
-												type='email'
-												name='email'
-												value={ownerInfo?.email}
-												onChange={handleOwnerInfo}
-												placeholder='atlbha@gmail.com'
-												required
-												aria-invalid={validEmail ? 'false' : 'true'}
-												aria-describedby='email'
-												onFocus={() => setEmailFocus(true)}
-												onBlur={() => setEmailFocus(true)}
-											/>
-											<p
-												id='email'
-												className={emailFocus && ownerInfo?.email && !validEmail ? ' d-block wrong-text ' : 'd-none'}
-												style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
-											>
-												<MdErrorOutline className='ms-1' />
-												تأكد من ان البريد الالكتروني يتكون من حرف واحد او اكثر ويحتوي علي علامة الـ @
-											</p>
-											{emailError && (
-												<span className='wrong-text w-100' style={{ color: 'red', direction: 'rtl' }}>
-													{emailError}
-												</span>
-											)}
-										</div>
-
-										<PasswordField
-											name='password'
-											password={password}
-											setPassword={setPassword}
-											passwordError={passwordError}
-											required
-											validPssWord={validPssWord}
-											pssWordFocus={pssWordFocus}
-											setPssWordFocus={setPssWordFocus}
-										/>
-									</form>
-
 									<div className='owner-form'>
 										<div className='box-pay'>
 											<div className='top'>
@@ -903,11 +631,7 @@ const RegisterBox = () => {
 												)}
 											</div>
 
-											<button
-												disabled={!validStoreName || !validDomainName || !validUserName || !validStorePhoneNumber || !validUserPhoneNumber || !validPssWord || !validEmail || !validStoreEmail ? true : false}
-												className='bt-main'
-												onClick={register}
-											>
+											<button disabled={!validUserName || !validPssWord || !validEmail ? true : false} className='bt-main' onClick={register}>
 												تسجيل حساب جديد
 											</button>
 
@@ -942,7 +666,7 @@ const RegisterBox = () => {
 								</div>
 
 								<div className='user-form'>
-									<h4 className='title'>بيانات المتجر</h4>
+									<h4 className='title'>بيانات المندوب</h4>
 
 									<div className='content'>
 										<form onSubmit={handleSubmit}>
@@ -1193,7 +917,7 @@ const RegisterBox = () => {
 												</span>
 											)}
 										</div>
-										<button disabled={!validUserName || !validUserPhoneNumber || !validPssWord || !validEmail ? true : false} className='bt-main' onClick={register}>
+										<button disabled={!validUserName || !validPssWord || !validEmail ? true : false} className='bt-main' onClick={register}>
 											تسجيل حساب جديد
 										</button>
 

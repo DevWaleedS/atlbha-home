@@ -32,6 +32,7 @@ const PasswordField = ({ password, setPassword, passwordError, handleKeyDown, va
 				<input
 					autoComplete='off'
 					value={password}
+					placeholder='********'
 					maxLength={24}
 					minLength={8}
 					onChange={(e) => setPassword(e.target.value)}

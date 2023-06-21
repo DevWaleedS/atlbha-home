@@ -18,6 +18,12 @@ const SignInBox = () => {
 	const [passwordError, setPasswordError] = useState('');
 	const [error, setError] = useState('');
 
+	// go to url store dashboard if logign
+	function NavigateTodDashboard() {
+		window.location.href = 'http://store.atlbha.com';
+		return null;
+	}
+
 	const Login = () => {
 		setError('');
 		setUsernameError('');
@@ -40,7 +46,7 @@ const SignInBox = () => {
 					setCookie('remember_me', 'false', { maxAge: 0 }); // Remove the remember_me cookie
 				}
 
-				<Navigate to='/' />;
+				<NavigateTodDashboard />;
 			} else {
 				setUsernameError(res?.data?.message?.en?.user_name?.[0]);
 				setPasswordError(res?.data?.message?.en?.password?.[0]);
@@ -66,10 +72,7 @@ const SignInBox = () => {
 		}
 	};
 
-	return cookies.access_token ? (
-		// url dashboard tajer
-		<Navigate to='/' />
-	) : (
+	return (
 		<div className='sign-in-box' dir='ltr'>
 			<div className='all-content' dir='rtl'>
 				<div className='box-container-form'>

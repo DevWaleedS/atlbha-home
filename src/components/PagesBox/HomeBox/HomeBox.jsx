@@ -96,45 +96,7 @@ const HomeBox = () => {
 		dispatch(storeChangeSlice(getMedia));
 	}, [getMedia, dispatch]);
 
-	// <Swiper
-	// 	effect={'fade'}
-	// 	loopFillGroupWithBlank={true}
-	// 	loop={true}
-	// 	autoplay={{
-	// 		delay: 4000,
-	// 		disableOnInteraction: false,
-	// 	}}
-	// 	pagination={{
-	// 		dynamicBullets: true,
-	// 		clickable: true,
-	// 	}}
-	// 	modules={[Pagination, EffectFade, Autoplay]}
-	// 	className='my_hero_swiper'
-	// >
-	// 	<SwiperSlide className='my_hero_swiper_slide'>
-	// 		<div className='swiper_image'>
-	// 			<img src={homeAllData?.slider1} alt='...' loading='lazy' />
-	// 		</div>
-	// 		<div className='container'>
-	// 			<h2>أهلاً بك في منصة اطلبها</h2>
-	// 			<h3>انضم الان الى منصة التجارة الالكترونية المتكاملة</h3>
-	// 			<button
-	// 				className='bt-main'
-	// 				onClick={() => {
-	// 					cookies.access_token ? navigate('/signInPage') : navigate('/register/merchant');
-	// 				}}
-	// 			>
-	// 				التسجيل
-	// 			</button>
-	// 		</div>
-	// 	</SwiperSlide>
 
-	// 	<SwiperSlide className='my_hero_swiper_slide'>
-	// 		<div className='swiper_image'>
-	// 			<img src={homeAllData?.slider2} alt='...' loading='lazy' />
-	// 		</div>
-	// 	</SwiperSlide>
-	// </Swiper>;
 
 	return (
 		<>

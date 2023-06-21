@@ -47,6 +47,7 @@ function UserInfo() {
 	const logOut = () => {
 		setAnchorElUser(null);
 		removeCookies('access_token', { domain: 'atlbha.com', path: '/' });
+		window.location.reload();
 	};
 
 	return (

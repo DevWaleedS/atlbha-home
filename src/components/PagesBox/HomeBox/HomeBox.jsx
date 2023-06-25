@@ -63,7 +63,7 @@ const HomeBox = () => {
 	// =================
 	let { productsHome, homeLoadingData, storesHome, commentHome, partnersHome, homeAllData, packagesHome, StoreCities, StoreActivities } = useSelector((state) => state.HomeReducer);
 
-	// console.log(StoreNames);
+	console.log(productsHome);
 
 	// ========================
 	let { videoData } = useSelector((state) => state.VideoReducer);
@@ -95,8 +95,6 @@ const HomeBox = () => {
 	useEffect(() => {
 		dispatch(storeChangeSlice(getMedia));
 	}, [getMedia, dispatch]);
-
-
 
 	return (
 		<>

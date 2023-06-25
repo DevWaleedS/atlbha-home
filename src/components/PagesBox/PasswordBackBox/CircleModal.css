@@ -1,0 +1,80 @@
+.backdrop {
+	background-color: #242424;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100vh;
+	z-index: 9999;
+	opacity: 0.3;
+}
+
+.circle-modal_body {
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	width: 175px;
+	height: 175px;
+	overflow: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: white;
+	box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+	transform: translate(195%, -22%);
+	-webkit-transform: translate(195%, -22%);
+	-moz-transform: translate(195%, -22%);
+	-ms-transform: translate(195%, -22%);
+	-o-transform: translate(195%, -22%);
+	border-radius: 50%;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	-ms-border-radius: 50%;
+	-o-border-radius: 50%;
+	z-index: 9999;
+}
+
+.circle-wrap {
+	position: relative;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.CircularProgressbar .CircularProgressbar-path {
+	stroke: #14e29d;
+}
+
+.CircularProgressbar .CircularProgressbar-trail {
+	stroke: #fff;
+	stroke-linecap: round;
+}
+
+.CircularProgressbar .CircularProgressbar-text {
+	font-size: 21px;
+	font-weight: 400;
+	letter-spacing: 0.48px;
+	fill: #14e29d;
+}
+.second {
+	position: absolute;
+	bottom: 35px;
+	font-size: 20px;
+	letter-spacing: 0.2px;
+	color: #14e29d;
+}
+
+/* media query */
+@media (max-width: 768px) {
+	.circle-modal_body {
+		left: 0%;
+		top: 0%;
+		transform: translate(100%, 172%);
+		-webkit-transform: translate(100%, 172%);
+		-moz-transform: translate(100%, 172%);
+		-ms-transform: translate(100%, 172%);
+		-o-transform: translate(100%, 172%);
+	}
+}

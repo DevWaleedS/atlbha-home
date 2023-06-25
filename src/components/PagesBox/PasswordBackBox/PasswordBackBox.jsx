@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import AppContext from '../../../Context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import { LogoHeader } from '../../index';
 import { ReactComponent as SvgComponent } from '../../../assets/Icons/Component 59 – 11.svg';
@@ -7,10 +8,16 @@ import './PasswordBackBox.css';
 import axios from 'axios';
 const PasswordBackBox = () => {
 	const navigate = useNavigate();
+	const contextStore = useContext(AppContext);
+	const { email, setEmail } = contextStore;
 
 	// to send code on your email
 	const [userName, setUserName] = useState('');
 	const [usernameError, setUsernameError] = useState('');
+	// to set email to resend page
+	setEmail(userName);
+
+
 	const sendPassWord = () => {
 		setUsernameError('');
 		const formData = new FormData();
@@ -18,9 +25,10 @@ const PasswordBackBox = () => {
 
 		axios.post('https://backend.atlbha.com/api/password/create', formData).then((res) => {
 			if (res?.data?.success === true && res?.data?.data?.status === 200) {
-				navigate('/sendPasswordPage');
+				navigate('/SendVerifcationCodePage');
+	
 			} else {
-				setUsernameError(res?.data?.message?.ar?.user_name?.[0]);
+				setUsernameError(res?.data?.message?.en?.user_name?.[0]);
 			}
 		});
 	};
@@ -35,13 +43,14 @@ const PasswordBackBox = () => {
 							<h2>قم بتسجيل الدخول الى حسابك</h2>
 							<div className='box'>
 								<h5>البريد الالكتروني</h5>
-								<input value={userName} onChange={(e) => setUserName(e.target.value)} type='email' name='userName' placeholder='atlobha@gmail.com' />
+								<input value={userName} onChange={(e) => setUserName(e.target.value)} type='email' name='userName' placeholder=' ارسل الكود عبر البريد الالكتروني ' />
 							</div>
-							{usernameError && (
+							{usernameError && userName === '' && (
 								<p className={'wrong-text w-100'} style={{ color: 'red', marginTop: '-20px', direction: 'rtl' }}>
-									{usernameError}
+									يرجي ادخال البريد الالكتروني حتي نتكمن من ارسال كود التحقق
 								</p>
 							)}
+
 							<button className='bt-main' onClick={sendPassWord}>
 								ارسال
 							</button>

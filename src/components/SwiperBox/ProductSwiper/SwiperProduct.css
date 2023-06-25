@@ -1,89 +1,82 @@
 .swiper-product {
-
-
-  height: 100%;
-
+	height: 100%;
 }
 
 .swiper-product .box {
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: var(--back-color-05);
-  gap: 8px;
-  height: 100%;
-  border-radius: var(--main-border-radius-02);
-  overflow: hidden;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+	background-color: var(--back-color-05);
+	gap: 8px;
+	height: 100%;
+	border-radius: var(--main-border-radius-02);
+	overflow: hidden;
 }
 
 .swiper-product .box .box-img {
-  flex: 1;
-  max-height: 245px;
+	flex: 1;
+	max-height: 245px;
 }
 
 .swiper-product .box .box-img img {
-  height: 100%;
-  max-width: 100%;
-  object-fit: cover;
+	height: 100%;
+	max-width: 100%;
+	object-fit: cover;
+	mix-blend-mode: multiply;
 }
 
-
 .swiper-product .box hr {
-  all: unset;
-  background-color: var(--main-color-01);
-  height: 1px !important;
-  width: 100%;
+	all: unset;
+	background-color: var(--main-color-01);
+	height: 1px !important;
+	width: 100%;
 }
 
 .swiper-product .box .content {
-  flex: .5;
-  width: 100%;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  flex-direction: column;
-  padding: 8px;
-  padding-top: 0;
+	flex: 0.5;
+	width: 100%;
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	flex-direction: column;
+	padding: 8px;
+	padding-top: 0;
 }
 
 .swiper-product .box .content h6 {
-  color: var(--black-color-01);
-  font-weight: 400;
-  font-size: var(--font-size-20);
+	color: var(--black-color-01);
+	font-weight: 400;
+	font-size: var(--font-size-20);
 }
 
 .swiper-product .box .content .info {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  width: 100%;
-  margin-bottom: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	margin-bottom: 15px;
 }
 
 .swiper-product .box .content .info span {
-
-  padding: 4px 8px;
-  background-color: var(--font-color-02);
-  width: 80px;
-  border-radius: var(--main-border-radius-02);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: var(--font-color-default);
-  font-weight: 500;
-  font-size: var(--font-size-18);
-  -webkit-border-radius: var(--main-border-radius-02);
-  -moz-border-radius: var(--main-border-radius-02);
-  -ms-border-radius: var(--main-border-radius-02);
-  -o-border-radius: var(--main-border-radius-02);
+	padding: 4px 8px;
+	background-color: var(--font-color-02);
+	width: 80px;
+	border-radius: var(--main-border-radius-02);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: var(--font-color-default);
+	font-weight: 500;
+	font-size: var(--font-size-18);
+	-webkit-border-radius: var(--main-border-radius-02);
+	-moz-border-radius: var(--main-border-radius-02);
+	-ms-border-radius: var(--main-border-radius-02);
+	-o-border-radius: var(--main-border-radius-02);
 }
 
-
 .swiper-product .box .content .info bdi {
-
-  font-weight: 900;
-  font-size: var(--font-size-20);
-  color: var(--black-color-01)
+	font-weight: 900;
+	font-size: var(--font-size-20);
+	color: var(--black-color-01);
 }

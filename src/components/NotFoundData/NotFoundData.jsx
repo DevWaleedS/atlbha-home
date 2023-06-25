@@ -6,7 +6,7 @@ const NotFoundData = () => {
 			<h2
 				className='d-flex justify-content-center align-items-center'
 				style={{
-					height: '100vh',
+					height: '50vh',
 				}}
 			>
 				لم يتم العثور على البيانات!

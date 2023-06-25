@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { LogoHeader, PasswordField } from '../../index';
 import { ReactComponent as SvgComponent } from '../../../assets/Icons/Component 59 – 11.svg';
 import './SignInBox.css';
@@ -45,8 +45,8 @@ const SignInBox = () => {
 					setCookie('password', '', { maxAge: 0 }); // Remove the password cookie
 					setCookie('remember_me', 'false', { maxAge: 0 }); // Remove the remember_me cookie
 				}
-
-				<NavigateTodDashboard />;
+				// if  login is go to dashboard
+				NavigateTodDashboard();
 			} else {
 				setUsernameError(res?.data?.message?.en?.user_name?.[0]);
 				setPasswordError(res?.data?.message?.en?.password?.[0]);

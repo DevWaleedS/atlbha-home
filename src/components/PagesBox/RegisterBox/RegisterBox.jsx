@@ -53,7 +53,6 @@ const RegisterBox = () => {
 	const [city, setCity] = useState('');
 	const [packages, setPackages] = useState([]);
 	const [packagesValues, setPackagesValues] = useState('');
-	console.log(packagesValues[0]);
 	const [activityName, setActivityName] = React.useState([]);
 	const [subscriptionPeriodValues, setSubscriptionPeriodValues] = useState([]);
 	const [userType, setUserType] = useState('store');
@@ -85,6 +84,8 @@ const RegisterBox = () => {
 	const [packagesError, setPackagesError] = useState('');
 	const [checkboxError, setCheckboxError] = useState('');
 	const [error, setError] = useState('');
+
+	console.log(error);
 
 	/** -----------------------------------------------------------------------------------------------------------
 	 *  	=> THE SEND THE DATA TO SERVER  <=
@@ -216,6 +217,7 @@ const RegisterBox = () => {
 		formData.append('checkbox_field', isChecked);
 		formData.append('periodtype', subscriptionPeriodValues);
 		formData.append('city_id', city);
+
 		for (let i = 0; i < activityName.length; i++) {
 			formData.append(`activity_id[${i}]`, activityName[i]);
 		}
@@ -225,6 +227,8 @@ const RegisterBox = () => {
 			if (res?.data?.success === true && res?.data?.data?.status === 200) {
 				setCookie('access_token', res?.data?.data?.token);
 				navigate('/verificationPage');
+			} else if (res) {
+				setError('تم ايقاف التسجيل مؤقتا');
 			} else {
 				setUsernameError(res?.data?.message?.en?.user_name?.[0]);
 				setPasswordError(res?.data?.message?.en?.password?.[0]);
@@ -236,7 +240,6 @@ const RegisterBox = () => {
 				setActivityError(res?.data?.message?.en?.activity_id[0]?.[0]);
 				setPackagesError(res?.data?.message?.en?.package_id?.[0]);
 				setCheckboxError(res?.data?.message?.en?.checkbox_field?.[0]);
-				setError(res?.data?.message?.en);
 			}
 		});
 	};
@@ -563,17 +566,16 @@ const RegisterBox = () => {
 														{checkboxError}
 													</span>
 												)}
-
-												{error && (
-													<span className='wrong-text w-100' style={{ color: 'red', direction: 'rtl' }}>
-														{error}
-													</span>
-												)}
 											</div>
 
 											<button disabled={!validUserName || !validPssWord || !validEmail ? true : false} className='bt-main' onClick={register}>
 												تسجيل حساب جديد
 											</button>
+											{error && (
+												<span className='wrong-text w-100 mb-3 text-center' style={{ color: 'red', direction: 'rtl', marginTop: '-20px', fontSize: '18px' }}>
+													{error}
+												</span>
+											)}
 
 											<ul>
 												<li>لديك حساب بالفعل ؟</li>
@@ -850,16 +852,15 @@ const RegisterBox = () => {
 													{checkboxError}
 												</span>
 											)}
-
-											{error && (
-												<span className='wrong-text w-100' style={{ color: 'red', direction: 'rtl' }}>
-													{error}
-												</span>
-											)}
 										</div>
 										<button disabled={!validUserName || !validPssWord || !validEmail ? true : false} className='bt-main' onClick={register}>
 											تسجيل حساب جديد
 										</button>
+										{error && (
+											<span className='wrong-text w-100 mb-3 text-center' style={{ color: 'red', direction: 'rtl', marginTop: '-20px', fontSize: '18px' }}>
+												{error}
+											</span>
+										)}
 
 										<ul>
 											<li>لديك حساب بالفعل ؟</li>

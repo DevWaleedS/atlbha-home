@@ -202,7 +202,7 @@ const HomeBox = () => {
 									<AiOutlineSearch style={{ color: '#b6be34', width: '22px', height: '22px' }} />
 								</div>
 
-								<input className='w-100' type='text' placeholder='ابحث باسم المتجر' value={storeName} onChange={(e) => setStoreName(e.target.value)} />
+								<input className='w-100 search-byStoreName-input' type='text' placeholder='ابحث باسم المتجر' value={storeName} onChange={(e) => setStoreName(e.target.value)} />
 							</div>
 							<div className='all-select'>
 								<Select
@@ -276,7 +276,7 @@ const HomeBox = () => {
 									<AiOutlineSearch style={{ color: '#b6be34', width: '22px', height: '22px' }} />
 								</div>
 
-								<input className='w-100' type='text' placeholder='ابحث باسم المتجر' value={storeName} onChange={(e) => setStoreName(e.target.value)} />
+								<input className='w-100 search-byStoreName-input' type='text' placeholder='ابحث باسم المتجر' value={storeName} onChange={(e) => setStoreName(e.target.value)} />
 							</div>
 
 							<button type='submit'>

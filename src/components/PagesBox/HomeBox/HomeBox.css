@@ -333,6 +333,12 @@
 .search_input_box {
 	display: none;
 }
+.search-byStoreName-input,
+.search-byStoreName-input:hover,
+.search-byStoreName-input:focus {
+	border: none;
+	outline: none;
+}
 
 .stores-info .content-stores .container-box {
 	margin: 15px 0;

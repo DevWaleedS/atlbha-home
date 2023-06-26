@@ -6,13 +6,14 @@ const BackDrop = () => {
 	return <div className='backdrop'></div>;
 };
 
-export const AlertModalContent = () => {
+export const AlertModalContent = ({ message }) => {
+
 	return (
 		<Fragment>
 			<BackDrop />
 			<div className='alert-modal_body'>
 				<div className='alert-message'>
-					<div className='alert-message'>تم إرسال الكود إلى البريد الإلكتروني</div>
+					<div className='alert-message'>{message}</div>
 
 					<div className='progress-bar'></div>
 				</div>
@@ -21,8 +22,8 @@ export const AlertModalContent = () => {
 	);
 };
 
-const AlertModal = ({ show }) => {
-	return show && <Fragment>{ReactDom.createPortal(<AlertModalContent />, document.getElementById('alert-modal'))}</Fragment>;
+const AlertModal = ({ show, message }) => {
+	return show && <Fragment>{ReactDom.createPortal(<AlertModalContent message={message} />, document.getElementById('alert-modal'))}</Fragment>;
 };
 
 export default AlertModal;

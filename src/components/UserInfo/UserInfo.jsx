@@ -94,16 +94,16 @@ function UserInfo() {
 							},
 						}}
 					>
-						<Typography textAlign='right' sx={{ fontSize: '18px', width: '100%' }}>
+						<Typography textAlign='left' sx={{ fontSize: '18px', width: '100%' }}>
 							{userInfoData?.data?.users?.name}
 						</Typography>
 						<Typography
-							t
-							extAlign='right'
+							textAlign='left'
 							sx={{
 								color: 'rgba(0, 0, 0, 0.46)',
 								borderBottom: '1px solid rgba(0, 0, 0, 0.04)',
 								paddingBottom: '8px',
+								fontSize:'14px',
 								width: '100%',
 							}}
 						>

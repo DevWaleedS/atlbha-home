@@ -15,30 +15,20 @@ const SendVerifcationCodeBox = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const contextStore = useContext(AppContext);
-	const { email } = contextStore;
+	const { email, resendButtonDisabled, setResendButtonDisabled, setDisabledBtn, disapledBtn } = contextStore;
 	const { setResetPasswordToken } = contextStore;
 	const [codeValue, setCodeValue] = useState('');
+	const [reSendVerificationCodeByEmailDisabled, setReSendVerificationCodeByEmailDisabled] = useState(false);
 	const [showCircleModal, setShowCircleModal] = useState(false);
 	const [showAlertModal, setShowAlertModal] = useState(false);
 	const [currentTime, setCurrentTime] = useState(new Date());
-	const [resendButtonDisabled, setResendButtonDisabled] = useState(false);
 	const [countdown, setCountdown] = useState(60);
+	const [message, setMessage] = useState('');
 
-	// to create circle timer
-	useEffect(() => {
-		// Update the current time every second
-		const timer = setInterval(() => {
-			setCurrentTime(new Date());
-		}, 1000);
-
-		// Clean up the timer when the component unmounts
-		return () => {
-			clearInterval(timer);
-		};
-	}, []);
-
+	// to resend by email
 	useEffect(() => {
 		// Start the countdown when resendButtonDisabled becomes true
+
 		if (resendButtonDisabled) {
 			const countdownTimer = setInterval(() => {
 				setCountdown((prevCountdown) => prevCountdown - 1);
@@ -47,8 +37,9 @@ const SendVerifcationCodeBox = () => {
 			// Clear the countdown timer when countdown reaches 0
 			if (countdown === 0) {
 				setShowCircleModal(false);
-				setShowAlertModal(true);
 				clearInterval(countdownTimer);
+				setResendButtonDisabled(false);
+				setReSendVerificationCodeByEmailDisabled(false);
 			}
 
 			// Clean up the countdown timer when the component unmounts
@@ -58,7 +49,7 @@ const SendVerifcationCodeBox = () => {
 		}
 	}, [resendButtonDisabled, countdown]);
 
-	// --------------------------------------------------------------- //
+	// -------------------------------------------------------------------------------------------------- //
 
 	// SEND VERIFY CODE BY EMAIL AND CODE
 	const verifyCode = () => {
@@ -80,9 +71,13 @@ const SendVerifcationCodeBox = () => {
 	const reSendVerificationCodeByPhone = () => {
 		const formData = new FormData();
 		formData.append('user_name', email);
-
 		axios.post('https://backend.atlbha.com/api/password/create', formData).then((res) => {
 			if (res?.data?.success === true && res?.data?.data?.status === 200) {
+				setMessage('تم إرسال الكود إلى هاتفك');
+				setShowAlertModal(true);
+				setResendButtonDisabled(true);
+				setDisabledBtn(true);
+				setCountdown(60);
 			} else {
 				console.log(res?.data?.message?.en?.user_name?.[0]);
 			}
@@ -91,13 +86,15 @@ const SendVerifcationCodeBox = () => {
 
 	//  RE-SEND VERIFY CODE BY EMAIL
 	const reSendVerificationCodeByEmail = () => {
-		setResendButtonDisabled(true);
 		const formData = new FormData();
 		formData.append('user_name', email);
 
 		axios.post('https://backend.atlbha.com/api/password/create-by-email', formData).then((res) => {
 			if (res?.data?.success === true && res?.data?.data?.status === 200) {
-				setShowCircleModal(true);
+				setMessage('تم إرسال الكود إلى البريد الإلكتروني');
+				setShowAlertModal(true);
+				setReSendVerificationCodeByEmailDisabled(true);
+				setCountdown(60);
 			} else {
 				console.log(res?.data?.message?.en?.user_name?.[0]);
 			}
@@ -105,11 +102,7 @@ const SendVerifcationCodeBox = () => {
 
 		// Wait for one minute before enabling the button again
 		setTimeout(() => {
-			setResendButtonDisabled(false);
 			setShowCircleModal(false);
-			setShowAlertModal(true);
-
-			setCountdown(60);
 		}, 600000);
 	};
 
@@ -121,6 +114,19 @@ const SendVerifcationCodeBox = () => {
 			}, 3000);
 		}
 	}, [showAlertModal]);
+
+	// to create circle timer
+	useEffect(() => {
+		// Update the current time every second
+		const timer = setInterval(() => {
+			setCurrentTime(new Date());
+		}, 1000);
+
+		// Clean up the timer when the component unmounts
+		return () => {
+			clearInterval(timer);
+		};
+	}, []);
 
 	if (location.pathname === '/SendVerifcationCodeBox') {
 		document.querySelector('body').style.overflow = 'hidden';
@@ -143,8 +149,9 @@ const SendVerifcationCodeBox = () => {
 									<SvgRepeat style={{ width: '20px', marginLeft: '3px' }} />
 								</span>
 								اعد ارسال الكود
+								<span className={`${disapledBtn ? 'd-inline' : 'd-none'}`}> {countdown === 0 ? ' ' : countdown} </span>
 							</button>
-							<button className='send-by-email-btn' onClick={reSendVerificationCodeByEmail}>
+							<button className='send-by-email-btn' disabled={reSendVerificationCodeByEmailDisabled} onClick={reSendVerificationCodeByEmail}>
 								ارسل الكود عبر البريد الالكتروني
 							</button>
 
@@ -166,7 +173,7 @@ const SendVerifcationCodeBox = () => {
 				</div>
 			</div>
 			<CircleModal countdown={countdown} show={showCircleModal} closeModal={() => setShowCircleModal(false)} />
-			<AlertModal countdown={countdown} show={showAlertModal} />
+			<AlertModal show={showAlertModal} message={message} />
 		</>
 	);
 };

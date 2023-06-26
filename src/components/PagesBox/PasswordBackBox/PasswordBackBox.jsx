@@ -9,7 +9,8 @@ import axios from 'axios';
 const PasswordBackBox = () => {
 	const navigate = useNavigate();
 	const contextStore = useContext(AppContext);
-	const { email, setEmail } = contextStore;
+	const { setEmail, setResendButtonDisabled, setDisabledBtn } = contextStore;
+	
 
 	// to send code on your email
 	const [userName, setUserName] = useState('');
@@ -26,6 +27,8 @@ const PasswordBackBox = () => {
 		axios.post('https://backend.atlbha.com/api/password/create', formData).then((res) => {
 			if (res?.data?.success === true && res?.data?.data?.status === 200) {
 				navigate('/SendVerifcationCodePage');
+				setResendButtonDisabled(true);
+				setDisabledBtn(true);
 	
 			} else {
 				setUsernameError(res?.data?.message?.en?.user_name?.[0]);

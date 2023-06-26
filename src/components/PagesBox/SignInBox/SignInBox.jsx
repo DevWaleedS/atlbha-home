@@ -21,7 +21,21 @@ const SignInBox = () => {
 	// go to url store dashboard if logign
 	function NavigateTodDashboard() {
 		window.location.href = 'http://store.atlbha.com';
-		return null;
+	}
+
+	//Set username , password and remember_me cookie to expire
+	function setUserInfoToCookies() {
+		// Set username cookie to expire in 1 days
+		setCookie('username', username, { maxAge: 24 * 60 * 60 });
+		setCookie('password', password, { maxAge: 24 * 60 * 60 }); // Set password cookie to expire in 1 days
+		setCookie('remember_me', 'true', { maxAge: 30 * 24 * 60 * 60 }); // Set remember_me cookie to expire in 30 days
+	}
+
+	//remove username , password and remember_me cookie to expire
+	function removeUserInfoToCookies() {
+		setCookie('username', '', { maxAge: 0 }); // Remove the username cookie
+		setCookie('password', '', { maxAge: 0 }); // Remove the password cookie
+		setCookie('remember_me', 'false', { maxAge: 0 }); // Remove the remember_me cookie
 	}
 
 	const Login = () => {
@@ -37,16 +51,15 @@ const SignInBox = () => {
 				setCookie('access_token', res?.data?.data?.token, { domain: 'atlbha.com', path: '/' });
 
 				if (rememberMe) {
-					setCookie('username', username, { maxAge: 30 * 24 * 60 * 60 }); // Set username cookie to expire in 30 days
-					setCookie('password', password, { maxAge: 30 * 24 * 60 * 60 }); // Set password cookie to expire in 30 days
-					setCookie('remember_me', 'true', { maxAge: 30 * 24 * 60 * 60 }); // Set remember_me cookie to expire in 30 days
+					//Set username , password and remember_me cookie to expire
+					setUserInfoToCookies();
 				} else {
-					setCookie('username', '', { maxAge: 0 }); // Remove the username cookie
-					setCookie('password', '', { maxAge: 0 }); // Remove the password cookie
-					setCookie('remember_me', 'false', { maxAge: 0 }); // Remove the remember_me cookie
+					//remove username , password and remember_me cookie to expire
+					removeUserInfoToCookies();
 				}
 				// if  login is go to dashboard
-				NavigateTodDashboard();
+				// NavigateTodDashboard();
+				navigate('/');
 			} else {
 				setUsernameError(res?.data?.message?.en?.user_name?.[0]);
 				setPasswordError(res?.data?.message?.en?.password?.[0]);
@@ -61,18 +74,18 @@ const SignInBox = () => {
 			Login();
 
 			if (rememberMe) {
-				setCookie('username', username, { maxAge: 30 * 24 * 60 * 60 }); // Set username cookie to expire in 30 days
-				setCookie('password', password, { maxAge: 30 * 24 * 60 * 60 }); // Set password cookie to expire in 30 days
-				setCookie('remember_me', 'true', { maxAge: 30 * 24 * 60 * 60 }); // Set remember_me cookie to expire in 30 days
+				//Set username , password and remember_me cookie to expire
+				setUserInfoToCookies();
 			} else {
-				setCookie('username', '', { maxAge: 0 }); // Remove the username cookie
-				setCookie('password', '', { maxAge: 0 }); // Remove the password cookie
-				setCookie('remember_me', 'false', { maxAge: 0 }); // Remove the remember_me cookie
+				//remove username , password and remember_me cookie to expire
+				removeUserInfoToCookies();
 			}
 		}
 	};
 
-	return (
+	return cookies?.access_token ? (
+		navigate('/')
+	) : (
 		<div className='sign-in-box' dir='ltr'>
 			<div className='all-content' dir='rtl'>
 				<div className='box-container-form'>

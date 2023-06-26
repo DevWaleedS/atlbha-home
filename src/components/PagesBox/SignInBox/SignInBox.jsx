@@ -9,6 +9,7 @@ import { useCookies } from 'react-cookie';
 const SignInBox = () => {
 	const navigate = useNavigate();
 	const [cookies, setCookie] = useCookies(['access_token']);
+	console.log(cookies);
 	const [username, setUsername] = useState(cookies.remember_me === 'true' ? cookies.username : '');
 	const [password, setPassword] = useState(cookies.remember_me === 'true' ? cookies.password : '');
 	const [rememberMe, setRememberMe] = useState(false);
@@ -20,7 +21,11 @@ const SignInBox = () => {
 
 	// go to url store dashboard if logign
 	function NavigateTodDashboard() {
-		window.location.href = 'http://store.atlbha.com';
+		if (cookies?.access_token) {
+			window.location.href = 'http://store.atlbha.com';
+		} else {
+			navigate('/');
+		}
 	}
 
 	//Set username , password and remember_me cookie to expire
@@ -48,7 +53,7 @@ const SignInBox = () => {
 		};
 		axios.post('https://backend.atlbha.com/api/loginapi', data).then((res) => {
 			if (res?.data?.success === true && res?.data?.data?.status === 200) {
-				setCookie('access_token', res?.data?.data?.token, { domain: 'atlbha.com', path: '/' });
+				setCookie('access_token', res?.data?.data?.token, { path: '/', domain: '.atlbha.com' });
 
 				if (rememberMe) {
 					//Set username , password and remember_me cookie to expire
@@ -58,8 +63,7 @@ const SignInBox = () => {
 					removeUserInfoToCookies();
 				}
 				// if  login is go to dashboard
-				// NavigateTodDashboard();
-				navigate('/');
+				NavigateTodDashboard();
 			} else {
 				setUsernameError(res?.data?.message?.en?.user_name?.[0]);
 				setPasswordError(res?.data?.message?.en?.password?.[0]);
@@ -83,9 +87,7 @@ const SignInBox = () => {
 		}
 	};
 
-	return cookies?.access_token ? (
-		navigate('/')
-	) : (
+	return (
 		<div className='sign-in-box' dir='ltr'>
 			<div className='all-content' dir='rtl'>
 				<div className='box-container-form'>

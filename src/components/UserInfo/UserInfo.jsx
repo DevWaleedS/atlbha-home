@@ -46,7 +46,7 @@ function UserInfo() {
 
 	const logOut = () => {
 		setAnchorElUser(null);
-		removeCookies('access_token', { domain: 'atlbha.com', path: '/' });
+			removeCookies('access_token', { path: '/', domain: '.atlbha.com' });
 		window.location.reload();
 	};
 

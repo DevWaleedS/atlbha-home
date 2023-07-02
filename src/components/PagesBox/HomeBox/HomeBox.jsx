@@ -297,7 +297,9 @@ const HomeBox = () => {
 										return (
 											<div className=' container-box col-6  col-md-4 col-lg-3 col-xl-2 ' key={el.id}>
 												<div className='box'>
-													<img src={el.logo} alt='' />
+													<a href={`https://template.atlbha.com/${el.domain}`} target='_blank' rel='noreferrer'>
+														<img src={el.logo} alt='' />
+													</a>
 												</div>
 											</div>
 										);

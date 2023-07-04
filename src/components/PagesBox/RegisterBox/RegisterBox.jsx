@@ -250,23 +250,28 @@ const RegisterBox = () => {
 			if (res?.data?.success === true && res?.data?.data?.status === 200) {
 				setCookie('access_token', res?.data?.data?.token);
 				navigate('/verificationPage');
+				setEmail(ownerInfo?.email)
 				setResendButtonDisabled(true);
 				setDisabledBtn(true);
-				setEmail(ownerInfo?.email)
 
 			}else{
-				setUsernameError(res?.data?.message?.en?.user_name??[0] );
-				setPasswordError(res?.data?.message?.en?.password??[0]);
-				setPhonenumberError(res?.data?.message?.en?.phonenumber??[0]);
-				setNameError(res?.data?.message?.en?.name??[0]);
-				setEmailError(res?.data?.message?.en?.email??[0]);
-				setCityError(res?.data?.message?.en?.city_id??[0]);
-				setActivityError(res?.data?.message?.en?.activity_id[0]??[0]);
-				setPackagesError(res?.data?.message?.en?.package_id??[0]);
-				setCheckboxError(res?.data?.message?.en?.checkbox_field??[0] );
 				if( res?.data?.message.ar === 'stop_registration'){
 					setError(res?.data?.message.en)
+				}else{
+				
+					setUsernameError(res?.data?.message?.en?.user_name?.[0] );
+					setPasswordError(res?.data?.message?.en?.password?.[0]);
+					setPhonenumberError(res?.data?.message?.en?.phonenumber?.[0]);
+					setNameError(res?.data?.message?.en?.name?.[0]);
+					setEmailError(res?.data?.message?.en?.email?.[0]);
+					setCityError(res?.data?.message?.en?.city_id?.[0]);
+					setActivityError(res?.data?.message?.en?.activity_id[0]?.[0]);
+					setPackagesError(res?.data?.message?.en?.package_id?.[0]);
+					setCheckboxError(res?.data?.message?.en?.checkbox_field?.[0] );
 				}
+				
+
+				
 				
 			}
 		});

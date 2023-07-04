@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from 'react';
+import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { CheckMarks, LogoHeader, PasswordField } from '../../index';
 
@@ -21,6 +21,7 @@ import { useCookies } from 'react-cookie';
 import './RegisterBox.css';
 import axios from 'axios';
 import TermsModal from '../../TermsModal/TermsModal';
+import AppContext from '../../../Context/AppContext';
 
 const subscriptionPeriod = [
 	{ id: 1, name: ' 6 شهور', name_en: '6months' },
@@ -41,6 +42,8 @@ const RegisterBox = () => {
 	const parm = useParams();
 	const [registerTarget, setRegisterTarget] = useState('merchant');
 	const [cookies, setCookie] = useCookies(['access_token']);
+	const contextStore = useContext(AppContext);
+	const { setEmail, setResendButtonDisabled, setDisabledBtn } = contextStore;
 
 	/** -----------------------------------------------------------------------------------------------------------
 	 *  	=> TO OPEN THE TERMS AND CONDITIONS MODAL <=
@@ -56,6 +59,8 @@ const RegisterBox = () => {
 	const [activityName, setActivityName] = React.useState([]);
 	const [subscriptionPeriodValues, setSubscriptionPeriodValues] = useState([]);
 	const [userType, setUserType] = useState('store');
+
+
 	const [password, setPassword] = useState('');
 	const [isChecked, setIsChecked] = useState(0);
 
@@ -64,20 +69,29 @@ const RegisterBox = () => {
 	 *  ------------------------------------------------- */
 	const [validUserName, setValidUserName] = useState(false);
 	const [userNameFocus, setUserNameFocus] = useState(false);
+
+	const [validOwnerName, setValidOwnerName] = useState(false);
+	const [ownerNameFocus, setOwnerNameFocus] = useState(false);
+
 	const [validStorePhoneNumber, setValidStorePhoneNumber] = useState(false);
 	const [storePhoneNumberFocus, setStorePhoneNumberFocus] = useState(false);
+
 	const [validUserPhoneNumber, setValidUserPhoneNumber] = useState(false);
+	const [userPhoneNumberFocus, setUserPhoneNumberFocus] = useState(false);
 
 	const [validPssWord, setValidPssWord] = useState(false);
 	const [pssWordFocus, setPssWordFocus] = useState(false);
+
 	const [validEmail, setValidEmail] = useState(false);
 	const [emailFocus, setEmailFocus] = useState(false);
+
 	const [usernameError, setUsernameError] = useState('');
 	const [passwordError, setPasswordError] = useState('');
 	const [phonenumberError, setPhonenumberError] = useState('');
 	const [nameError, setNameError] = useState('');
-	const [validOwnerName, setValidOwnerName] = useState(false);
-	const [ownerNameFocus, setOwnerNameFocus] = useState(false);
+
+	
+
 	const [emailError, setEmailError] = useState('');
 	const [cityError, setCityError] = useState('');
 	const [activityError, setActivityError] = useState('');
@@ -85,7 +99,7 @@ const RegisterBox = () => {
 	const [checkboxError, setCheckboxError] = useState('');
 	const [error, setError] = useState('');
 
-	console.log(error);
+
 
 	/** -----------------------------------------------------------------------------------------------------------
 	 *  	=> THE SEND THE DATA TO SERVER  <=
@@ -101,6 +115,7 @@ const RegisterBox = () => {
 		name: '',
 		user_name: '',
 		email: '',
+		userphonenumber : '',
 	});
 
 	// to get the values from inputs
@@ -161,11 +176,17 @@ const RegisterBox = () => {
 		setValidEmail(emailValidation);
 	}, [ownerInfo?.email]);
 
-	// TO HANDLE VALIDATION PHONE NUMBER
+	// TO HANDLE VALIDATION STORE PHONE NUMBER
 	useEffect(() => {
 		const storePhoneNumberValidation = PHONE_REGEX.test(storeInfo?.phonenumber);
 		setValidStorePhoneNumber(storePhoneNumberValidation);
 	}, [storeInfo?.phonenumber]);
+
+	// TO HANDLE VALIDATION USER PHONE NUMBER
+	useEffect(() => {
+		const userPhoneNumberValidation = PHONE_REGEX.test(ownerInfo?.userphonenumber);
+		setValidUserPhoneNumber(userPhoneNumberValidation);
+	}, [ownerInfo?.userphonenumber]);
 
 	// TO HANDLE VALIDATION PASSWORD
 	useEffect(() => {
@@ -205,12 +226,14 @@ const RegisterBox = () => {
 
 		let formData = new FormData();
 		formData.append('user_type', userType);
+
 		// Owner info
 		formData.append('password', password);
 		formData.append('name', ownerInfo?.name);
 		formData.append('email', ownerInfo?.email);
 		formData.append('user_name', ownerInfo?.user_name);
-		formData.append('userphonenumber', '+966' + ownerInfo?.userphonenumber);
+		ownerInfo?.userphonenumber ? formData.append('userphonenumber', '+966' + ownerInfo?.userphonenumber ) : formData.append('userphonenumber',  ownerInfo?.userphonenumber );
+		
 
 		// Store info
 		formData.append('phonenumber', '+966' + storeInfo?.phonenumber);
@@ -227,19 +250,24 @@ const RegisterBox = () => {
 			if (res?.data?.success === true && res?.data?.data?.status === 200) {
 				setCookie('access_token', res?.data?.data?.token);
 				navigate('/verificationPage');
-			} else if (res) {
-				setError('تم ايقاف التسجيل مؤقتا');
-			} else {
-				setUsernameError(res?.data?.message?.en?.user_name?.[0]);
-				setPasswordError(res?.data?.message?.en?.password?.[0]);
-				setPhonenumberError(res?.data?.message?.en?.phonenumber?.[0]);
-				setNameError(res?.data?.message?.en?.name?.[0]);
-				setEmailError(res?.data?.message?.en?.email?.[0]);
+				setResendButtonDisabled(true);
+				setDisabledBtn(true);
+				setEmail(ownerInfo?.email)
 
-				setCityError(res?.data?.message?.en?.city_id?.[0]);
-				setActivityError(res?.data?.message?.en?.activity_id[0]?.[0]);
-				setPackagesError(res?.data?.message?.en?.package_id?.[0]);
-				setCheckboxError(res?.data?.message?.en?.checkbox_field?.[0]);
+			}else{
+				setUsernameError(res?.data?.message?.en?.user_name??[0] );
+				setPasswordError(res?.data?.message?.en?.password??[0]);
+				setPhonenumberError(res?.data?.message?.en?.phonenumber??[0]);
+				setNameError(res?.data?.message?.en?.name??[0]);
+				setEmailError(res?.data?.message?.en?.email??[0]);
+				setCityError(res?.data?.message?.en?.city_id??[0]);
+				setActivityError(res?.data?.message?.en?.activity_id[0]??[0]);
+				setPackagesError(res?.data?.message?.en?.package_id??[0]);
+				setCheckboxError(res?.data?.message?.en?.checkbox_field??[0] );
+				if( res?.data?.message.ar === 'stop_registration'){
+					setError(res?.data?.message.en)
+				}
+				
 			}
 		});
 	};
@@ -289,7 +317,7 @@ const RegisterBox = () => {
 										className='bt-main'
 										onClick={() => {
 											navigate('/register/represented ');
-											setUserType('store');
+											setUserType('marketer');
 										}}
 									>
 										تسجيل مندوب
@@ -385,7 +413,7 @@ const RegisterBox = () => {
 														onChange={handleStoreInfo}
 														placeholder='500000000'
 														required
-														aria-invalid={validUserPhoneNumber ? 'false' : 'true'}
+														aria-invalid={validStorePhoneNumber ? 'false' : 'true'}
 														aria-describedby='storePhoneNumber'
 														onFocus={() => setStorePhoneNumberFocus(true)}
 														onBlur={() => setStorePhoneNumberFocus(true)}
@@ -395,7 +423,7 @@ const RegisterBox = () => {
 
 												<p
 													id='storePhoneNumber'
-													className={storePhoneNumberFocus && ownerInfo?.userphonenumber && !validUserPhoneNumber ? ' d-block wrong-text ' : 'd-none'}
+													className={storePhoneNumberFocus && storeInfo?.phonenumber && !validStorePhoneNumber ? ' d-block wrong-text ' : 'd-none'}
 													style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
 												>
 													<MdErrorOutline className='ms-1' />
@@ -600,7 +628,8 @@ const RegisterBox = () => {
 										className='bt-main'
 										onClick={() => {
 											navigate('/register/merchant');
-											setUserType('marketer');
+											setUserType('store');
+
 										}}
 									>
 										تسجيل تاجر
@@ -724,15 +753,15 @@ const RegisterBox = () => {
 														required
 														aria-invalid={validUserPhoneNumber ? 'false' : 'true'}
 														aria-describedby='storePhoneNumber'
-														onFocus={() => setStorePhoneNumberFocus(true)}
-														onBlur={() => setStorePhoneNumberFocus(true)}
+														onFocus={() => setUserPhoneNumberFocus(true)}
+														onBlur={() => setUserPhoneNumberFocus(true)}
 													/>
 													<section className='country_key'>966</section>
 												</section>
 
 												<p
 													id='storePhoneNumber'
-													className={storePhoneNumberFocus && ownerInfo?.userphonenumber && !validUserPhoneNumber ? ' d-block wrong-text ' : 'd-none'}
+													className={userPhoneNumberFocus && ownerInfo?.userphonenumber && !validUserPhoneNumber ? ' d-block wrong-text ' : 'd-none'}
 													style={{ color: 'red', direction: 'rtl', background: '#ffffff5e', padding: '10px 10px 10px 20px', borderRadius: '8px' }}
 												>
 													<MdErrorOutline className='ms-1' />

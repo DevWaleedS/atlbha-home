@@ -29,7 +29,7 @@ const PolicyPayment = React.lazy(() => import('./PolicyPayment'));
 const PolicyUse = React.lazy(() => import('./PolicyUse'));
 const PaymentPage = React.lazy(() => import('./PaymentPage'));
 const Register = React.lazy(() => import('./Register'));
-const RegisterRepresentative = React.lazy(() => import('./RegisterRepresentative'));
+
 const VerificationPage = React.lazy(() => import('./VerificationPage'));
 const SendVerifcationCodePage = React.lazy(() => import('./SendVerifcationCodePage'));
 const CreateNewPasswordPage = React.lazy(() => import('./CreateNewPasswordPage'));

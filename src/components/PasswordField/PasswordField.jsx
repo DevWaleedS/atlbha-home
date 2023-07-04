@@ -30,6 +30,7 @@ const PasswordField = ({ password, setPassword, passwordError, handleKeyDown, va
 
 				<h5>كلمة المرور</h5>
 				<input
+				style={{direction:'ltr', textAlign:'right'}}
 					autoComplete='off'
 					value={password}
 					placeholder='********'

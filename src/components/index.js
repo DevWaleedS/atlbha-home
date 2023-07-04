@@ -13,7 +13,7 @@ import DetailBlogBox from './PagesBox/DetailBlogBox/DetailBlogBox';
 import PaymentBox from './PagesBox/PaymentBox/PaymentBox';
 import StartBox from './PagesBox/StartBox/StartBox';
 import RegisterBox from './PagesBox/RegisterBox/RegisterBox';
-import RegisterRepresentativeBox from './PagesBox/RegisterRepresentativeBox/RegisterRepresentativeBox';
+
 import VerificationBox from './PagesBox/VerificationBox/VerificationBox';
 import SendVerifcationCodeBox from './PagesBox/PasswordBackBox/SendVerifcationCodeBox.jsx';
 import CreateNewPassword from './PagesBox/PasswordBackBox/CreateNewPassword.jsx';
@@ -53,7 +53,7 @@ export {
 	PaymentBox,
 	LogoHeader,
 	RegisterBox,
-	RegisterRepresentativeBox,
+
 	VerificationBox,
 	SendVerifcationCodeBox,
 	CreateNewPassword,

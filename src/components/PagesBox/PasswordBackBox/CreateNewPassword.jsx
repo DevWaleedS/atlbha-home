@@ -14,22 +14,38 @@ import { useCookies } from 'react-cookie';
 
 const CreateNewPassword = () => {
 	const navigate = useNavigate();
+	let type = 'password';
+
 	const contextStore = useContext(AppContext);
 	const { email } = contextStore;
 	const { resetPasswordToken } = contextStore;
 	const [cookies, setCookie] = useCookies(['access_token']);
 	const [showPassword, setShowPassword] = useState(false);
 	const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-
 	const [password, setPassword] = useState(cookies.remember_me === 'true' ? cookies.password : '');
 	const [confirmPassword, setConfirmPassword] = useState('');
 	const [rememberMe, setRememberMe] = useState(false);
-
 	// to handle errors
 	const [passwordError, setPasswordError] = useState('');
-	let type = 'password';
 
-	const reateNewPasswordFunction = () => {
+
+
+
+
+	//Set  password and remember_me cookie to expire
+	function setUserInfoToCookies() {
+		setCookie('password', password, { maxAge: 24 * 60 * 60 }); // Set password cookie to expire in 1 days
+		setCookie('remember_me', 'true', { maxAge: 30 * 24 * 60 * 60 }); // Set remember_me cookie to expire in 30 days
+	}
+
+	//remove password and remember_me cookie to expire
+	function removeUserInfoToCookies() {
+
+		setCookie('password', '', { maxAge: 0 }); // Remove the password cookie
+		setCookie('remember_me', 'false', { maxAge: 0 }); // Remove the remember_me cookie
+	}
+
+	const reCreateNewPasswordFunction = () => {
 		setPasswordError('');
 		const formData = new FormData();
 		formData.append('password', password);
@@ -38,17 +54,18 @@ const CreateNewPassword = () => {
 		formData.append('token', resetPasswordToken);
 		axios.post('https://backend.atlbha.com/api/password/reset-password', formData).then((res) => {
 			if (res?.data?.success === true && res?.data?.data?.status === 200) {
-				setCookie('access_token', res?.data?.data?.token, { domain: 'atlbha.com', path: '/' });
+				setCookie('access_token', res?.data?.data?.token, { domain: '.atlbha.com', path: '/' });
 
 				if (rememberMe) {
-					setCookie('password', password, { maxAge: 30 * 24 * 60 * 60 }); // Set password cookie to expire in 30 days
-					setCookie('remember_me', 'true', { maxAge: 30 * 24 * 60 * 60 }); // Set remember_me cookie to expire in 30 days
+					//Set  password and remember_me cookie to expire
+					setUserInfoToCookies() 
 
 					// Navigate the user to login page
 					navigate('/SignInPage');
 				} else {
-					setCookie('password', '', { maxAge: 0 }); // Remove the password cookie
-					setCookie('remember_me', 'false', { maxAge: 0 }); // Remove the remember_me cookie
+
+					//remove  password and remember_me cookie to expire
+					removeUserInfoToCookies()
 				}
 			} else {
 				setPasswordError(res?.data?.message?.en?.password?.[0]);
@@ -56,19 +73,22 @@ const CreateNewPassword = () => {
 		});
 	};
 
-	console.log(resetPasswordToken);
+	
 
 	const handleKeyDown = (event) => {
 		if (event.key === 'Enter') {
 			event.preventDefault();
-			reateNewPasswordFunction();
+			reCreateNewPasswordFunction();
 
 			if (rememberMe) {
-				setCookie('password', password, { maxAge: 30 * 24 * 60 * 60 }); // Set password cookie to expire in 30 days
-				setCookie('remember_me', 'true', { maxAge: 30 * 24 * 60 * 60 }); // Set remember_me cookie to expire in 30 days
+				//Set  password and remember_me cookie to expire
+				setUserInfoToCookies() 
+
+				
 			} else {
-				setCookie('password', '', { maxAge: 0 }); // Remove the password cookie
-				setCookie('remember_me', 'false', { maxAge: 0 }); // Remove the remember_me cookie
+
+				//remove  password and remember_me cookie to expire
+				removeUserInfoToCookies()
 			}
 		}
 	};
@@ -102,6 +122,7 @@ const CreateNewPassword = () => {
 
 								<h5>كلمة المرور</h5>
 								<input
+								style={{direction:'ltr', textAlign:'right'}}
 									autoComplete='off'
 									value={password}
 									placeholder='********'
@@ -140,6 +161,7 @@ const CreateNewPassword = () => {
 
 								<h5>تأكيد كلمة المرور</h5>
 								<input
+								style={{direction:'ltr', textAlign:'right'}}
 									autoComplete='off'
 									value={confirmPassword}
 									placeholder='********'
@@ -155,6 +177,12 @@ const CreateNewPassword = () => {
 										{passwordError}
 									</span>
 								)}
+
+								{confirmPassword && confirmPassword !== password && (
+									<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red' }}>
+										كلمة المرور غير مطابقة!
+									</span>
+								)}
 							</div>
 						</div>
 						<div className='top'>
@@ -165,7 +193,7 @@ const CreateNewPassword = () => {
 								<h6>تذكرني</h6>
 							</div>
 						</div>
-						<button className='bt-main' onClick={reateNewPasswordFunction}>
+						<button className='bt-main' onClick={reCreateNewPasswordFunction}>
 							تسجيل الدخول
 						</button>
 					</div>

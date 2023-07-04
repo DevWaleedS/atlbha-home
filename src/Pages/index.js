@@ -9,7 +9,7 @@ export { default as PolicyPayment } from './PolicyPayment.jsx';
 export { default as PolicyUse } from './PolicyUse.jsx';
 export { default as PaymentPage } from './PaymentPage.jsx';
 export { default as Register } from './Register.jsx';
-export { default as RegisterRepresentative } from './RegisterRepresentative.jsx';
+
 export { default as VerificationPage } from './VerificationPage.jsx';
 export { default as SendVerifcationCodePage } from './SendVerifcationCodePage.jsx';
 export { default as CreateNewPasswordPage } from './CreateNewPasswordPage.jsx';

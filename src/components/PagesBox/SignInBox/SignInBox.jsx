@@ -1,15 +1,31 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { LogoHeader, PasswordField } from '../../index';
+import { LogoHeader } from '../../index';
 import { ReactComponent as SvgComponent } from '../../../assets/Icons/Component 59 – 11.svg';
+import { ReactComponent as EyeOPen } from '../../../assets/eye_open.svg';
+import { ReactComponent as EyeClose } from '../../../assets/eye_close.svg';
 import './SignInBox.css';
 import axios from 'axios';
 import { useCookies } from 'react-cookie';
+import AppContext from '../../../Context/AppContext';
+
+
+/** -----------------------------------------------------------------------------------------------------------
+ *  	=> TO HANDLE THE REG_EXPRESS <=
+ *  ------------------------------------------------- */
+
+const PWD_REGEX = /^(?=.*?[a-z])(?=.*?[A-Z])(?=.*?\d)(?=.*?[\W_]).{8,24}$/;
 
 const SignInBox = () => {
+	let type = 'password';
 	const navigate = useNavigate();
 	const [cookies, setCookie] = useCookies(['access_token']);
-	console.log(cookies);
+	const contextStore = useContext(AppContext);
+	const { setEmail, setResendButtonDisabled, setDisabledBtn } = contextStore;
+	const [validPssWord, setValidPssWord] = useState(false);
+	const [showPassword, setShowPassword] = useState(false);
+
+	
 	const [username, setUsername] = useState(cookies.remember_me === 'true' ? cookies.username : '');
 	const [password, setPassword] = useState(cookies.remember_me === 'true' ? cookies.password : '');
 	const [rememberMe, setRememberMe] = useState(false);
@@ -68,6 +84,12 @@ const SignInBox = () => {
 				setUsernameError(res?.data?.message?.en?.user_name?.[0]);
 				setPasswordError(res?.data?.message?.en?.password?.[0]);
 				setError(res?.data?.message?.ar);
+				if(res?.data?.message?.en === 'User not verified'){
+				navigate('/verificationPage');
+				setResendButtonDisabled(true);
+				setDisabledBtn(true);
+				setEmail(username)
+				}
 			}
 		});
 	};
@@ -87,6 +109,12 @@ const SignInBox = () => {
 		}
 	};
 
+		// TO HANDLE VALIDATION PASSWORD
+		useEffect(() => {
+			const passwordValidation = PWD_REGEX.test(password);
+			setValidPssWord(passwordValidation);
+		}, [password]);
+
 	return (
 		<div className='sign-in-box' dir='ltr'>
 			<div className='all-content' dir='rtl'>
@@ -100,7 +128,44 @@ const SignInBox = () => {
 								<input type='text' placeholder='ادخل اسم المستخدم او البريد الالكتروني' value={username} onChange={(e) => setUsername(e.target.value)} onKeyDown={handleKeyDown} />
 								{usernameError && <span className='wrong-text'>{usernameError}</span>}
 							</div>
-							<PasswordField password={password} setPassword={setPassword} passwordError={passwordError} handleKeyDown={handleKeyDown} />
+							<div className='password-field'>
+								{type === 'password' ? (
+									showPassword ? (
+										<EyeOPen
+											onClick={() => {
+												setShowPassword((prev) => !prev);
+											}}
+											className='show-password-icon'
+										/>
+									) : (
+										<EyeClose
+											onClick={() => {
+												setShowPassword((prev) => !prev);
+											}}
+											className='show-password-icon'
+										/>
+									)
+								) : null}
+
+								<h5>كلمة المرور</h5>
+								<input
+								style={{direction:'ltr', textAlign:'right'}}
+									autoComplete='off'
+									value={password}
+									placeholder='********'
+									maxLength={24}
+									minLength={8}
+									onChange={(e) => setPassword(e.target.value)}
+									onKeyDown={handleKeyDown}
+									type={!type === 'password' ? type : showPassword ? 'text' : type}
+								/>
+
+								{passwordError && (
+									<span className='wrong-text w-100 d-flex justify-content-start' style={{ color: 'red' }}>
+										{passwordError}
+									</span>
+								)}
+							</div>
 							<span className='wrong-text'>{error}</span>
 						</div>
 						<div className='top'>

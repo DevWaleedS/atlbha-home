@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import AppContext from '../../../Context/AppContext';
 import { useNavigate } from 'react-router-dom';
 import { LogoHeader } from '../../index';
@@ -6,32 +6,44 @@ import { ReactComponent as SvgComponent } from '../../../assets/Icons/Component 
 import { ReactComponent as SvgKey } from '../../../assets/Icons/key.svg';
 import './PasswordBackBox.css';
 import axios from 'axios';
+import AlertModal from './AlertModal';
+
 const PasswordBackBox = () => {
 	const navigate = useNavigate();
 	const contextStore = useContext(AppContext);
-	const { setEmail, setResendButtonDisabled, setDisabledBtn } = contextStore;
+	const { setEmail, setResendButtonDisabled, setDisabledBtn,showAlertModal, setShowAlertModal,message, setMessage  } = contextStore;
 	
-
 	// to send code on your email
 	const [userName, setUserName] = useState('');
 	const [usernameError, setUsernameError] = useState('');
-	// to set email to resend page
-	setEmail(userName);
 
+	// to close Alert modal after timer end
+	useEffect(() => {
+		if (showAlertModal) {
+			setTimeout(() => {
+				setShowAlertModal(false);
+			}, 3000);
+		}
+	}, [showAlertModal]);
 
+	// send password function on your email
 	const sendPassWord = () => {
 		setUsernameError('');
+		
 		const formData = new FormData();
 		formData.append('user_name', userName);
 
 		axios.post('https://backend.atlbha.com/api/password/create', formData).then((res) => {
 			if (res?.data?.success === true && res?.data?.data?.status === 200) {
-				navigate('/SendVerifcationCodePage');
+				setMessage(res?.data?.message?.ar);
+				setShowAlertModal(true);
+				setEmail(userName);
 				setResendButtonDisabled(true);
 				setDisabledBtn(true);
+				navigate('/SendVerifcationCodePage');
 	
 			} else {
-				setUsernameError(res?.data?.message?.en?.user_name?.[0]);
+				setUsernameError(res?.data?.message?.ar);
 			}
 		});
 	};
@@ -48,13 +60,14 @@ const PasswordBackBox = () => {
 								<h5>البريد الالكتروني</h5>
 								<input value={userName} onChange={(e) => setUserName(e.target.value)} type='email' name='userName' placeholder=' ارسل الكود عبر البريد الالكتروني ' />
 							</div>
-							{usernameError && userName === '' && (
+							
+							{usernameError && (
 								<p className={'wrong-text w-100'} style={{ color: 'red', marginTop: '-20px', direction: 'rtl' }}>
-									يرجي ادخال البريد الالكتروني حتي نتكمن من ارسال كود التحقق
+									{usernameError}
 								</p>
 							)}
 
-							<button className='bt-main' onClick={sendPassWord}>
+							<button className='bt-main' onClick={sendPassWord} disabled={!userName}>
 								ارسال
 							</button>
 						</div>
@@ -73,6 +86,7 @@ const PasswordBackBox = () => {
 					</div>
 				</div>
 			</div>
+			<AlertModal show={showAlertModal} message={message} />
 		</>
 	);
 };

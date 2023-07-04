@@ -15,15 +15,14 @@ const SendVerifcationCodeBox = () => {
 	const location = useLocation();
 	const navigate = useNavigate();
 	const contextStore = useContext(AppContext);
-	const { email, resendButtonDisabled, setResendButtonDisabled, setDisabledBtn, disapledBtn } = contextStore;
+	const { email, resendButtonDisabled, setResendButtonDisabled, setDisabledBtn, disapledBtn,showAlertModal, setShowAlertModal,message, setMessage  } = contextStore;
 	const { setResetPasswordToken } = contextStore;
 	const [codeValue, setCodeValue] = useState('');
 	const [reSendVerificationCodeByEmailDisabled, setReSendVerificationCodeByEmailDisabled] = useState(false);
 	const [showCircleModal, setShowCircleModal] = useState(false);
-	const [showAlertModal, setShowAlertModal] = useState(false);
 	const [currentTime, setCurrentTime] = useState(new Date());
 	const [countdown, setCountdown] = useState(60);
-	const [message, setMessage] = useState('');
+	
 
 	// to resend by email
 	useEffect(() => {

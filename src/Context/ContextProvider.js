@@ -7,6 +7,8 @@ const ContextProvider = (props) => {
 	const [resetPasswordToken, setResetPasswordToken] = useState(null);
 	const [resendButtonDisabled, setResendButtonDisabled] = useState(false);
 	const [disapledBtn, setDisabledBtn] = useState(false);
+	const [showAlertModal, setShowAlertModal] = useState(false);
+	const [message, setMessage] = useState('');
 
 	const context = {
 		email,
@@ -17,6 +19,10 @@ const ContextProvider = (props) => {
 		setResendButtonDisabled,
 		disapledBtn,
 		setDisabledBtn,
+		showAlertModal, 
+		setShowAlertModal,
+		message,
+		 setMessage,
 	};
 	// console.log(context?.email);
 

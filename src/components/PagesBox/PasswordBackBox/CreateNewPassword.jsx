@@ -93,6 +93,7 @@ const CreateNewPassword = () => {
 		}
 	};
 
+
 	return (
 		<div className='sign-in-box' dir='ltr'>
 			<div className='all-content' dir='rtl'>

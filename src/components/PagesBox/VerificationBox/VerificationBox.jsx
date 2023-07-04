@@ -5,25 +5,26 @@ import { LogoHeader } from "../../index";
 import { ReactComponent as SvgComponent } from "../../../assets/Icons/Component 59 – 11.svg";
 import { ReactComponent as SvgRepeat } from "../../../assets/Icons/Repeat.svg";
 import OtpInput from "react-otp-input";
-
 import axios from 'axios';
-
-
 import "./VerificationBox.css";
 import AlertModal from '../PasswordBackBox/AlertModal';
+
+
+
+
 const VerificationBox = () => {
     const location = useLocation();
 	const navigate = useNavigate();
 
 	const contextStore = useContext(AppContext);
-	const { email, resendButtonDisabled, setResendButtonDisabled, setDisabledBtn, disapledBtn } = contextStore;
+	const { email, resendButtonDisabled, setResendButtonDisabled, setDisabledBtn, disapledBtn, showAlertModal, setShowAlertModal,message, setMessage } = contextStore;
 	const [codeValue, setCodeValue] = useState('')
-	const [showAlertModal, setShowAlertModal] = useState(false);
+
+	
 	
 	const [countdown, setCountdown] = useState(60);
-	const [message, setMessage] = useState('');
 
-	// to resend by email
+
 	useEffect(() => {
 		// Start the countdown when resendButtonDisabled becomes true
 
